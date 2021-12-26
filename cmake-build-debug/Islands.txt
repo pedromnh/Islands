@@ -1,0 +1,7 @@
+6 6
+cons mnC 3 3
+cons elec 2 1
+cons mnF 1 1
+cont lenhador
+cont operario
+next
