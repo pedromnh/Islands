@@ -93,7 +93,7 @@ void Interface::mainGame() {
                 break;
             case 3: //Night Phase
                 nightMessage();
-                resources.acquireWood(1);
+                resources.acquireWood(1, 1);
                 if (getDay() == 5)
                     endGame();
                 else

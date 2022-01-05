@@ -4,28 +4,28 @@
 
 #include "Resources.h"
 
-void Resources::acquireWood(double naturalMultiplier) {
-    madeira += madeira * naturalMultiplier;
+void Resources::acquireWood(double acquiredResource, double naturalMultiplier) {
+    madeira += acquiredResource * naturalMultiplier;
 }
 
-void Resources::acquireIron(double naturalMultiplier) {
-    ferro += ferro * naturalMultiplier;
+void Resources::acquireIron(double acquiredResource, double naturalMultiplier) {
+    ferro += acquiredResource * naturalMultiplier;
 }
 
-void Resources::acquireBarra(double naturalMultiplier) {
-    barra += barra * naturalMultiplier;
+void Resources::acquireBarra(double acquiredResource, double naturalMultiplier) {
+    barra += acquiredResource * naturalMultiplier;
 }
 
-void Resources::acquireCoal(double naturalMultiplier) {
-    carvao += carvao * naturalMultiplier;
+void Resources::acquireCoal(double acquiredResource, double naturalMultiplier) {
+    carvao += acquiredResource * naturalMultiplier;
 }
 
-void Resources::acquireVigas(double naturalMultiplier) {
-    vigas += vigas * naturalMultiplier;
+void Resources::acquireVigas(double acquiredResource, double naturalMultiplier) {
+    vigas += acquiredResource * naturalMultiplier;
 }
 
-void Resources::acquireEletricidade(double naturalMultiplier) {
-    eletricidade += eletricidade * naturalMultiplier;
+void Resources::acquireEletricidade(double acquiredResource, double naturalMultiplier) {
+    eletricidade += acquiredResource * naturalMultiplier;
 }
 
 void Resources::listResources() {
@@ -35,4 +35,48 @@ void Resources::listResources() {
     "Carvao: " << carvao << endl <<
     "Vigas: " << vigas << endl <<
     "Eletricidade: " << eletricidade << endl;
+}
+
+void Resources::sellWood() {
+    if (money >= 1) {
+        madeira++;
+        money--;
+    } else { cout << money << " is not enough money." << endl; }
+}
+
+double Resources::getWood() {return madeira;}
+
+void Resources::sellIron() {
+    if (money >= 1) {
+        ferro--;
+        money++;
+    } else { cout << money << " is not enough money." << endl; }
+}
+
+void Resources::sellCoal() {
+    if (money >= 1) {
+        carvao--;
+        money++;
+    } else { cout << money << " is not enough money." << endl; }
+}
+
+void Resources::sellBarra() {
+    if (money >= 2) {
+        barra--;
+        money += 2;
+    } else { cout << money << " is not enough money." << endl; }
+}
+
+void Resources::sellViga() {
+    if (money >= 2) {
+        vigas--;
+        money += 2;
+    } else { cout << money << " is not enough money." << endl; }
+}
+
+void Resources::sellEletricidade() {
+    if (money >= 1.5) {
+        eletricidade--;
+        money += 1.5;
+    } else { cout << money << " is not enough money." << endl; }
 }
