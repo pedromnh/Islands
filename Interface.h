@@ -8,7 +8,10 @@
 #include "Island.h"
 #include "Resources.h"
 #include "Montanha.h"
+#include "time.h"
 #include <sstream>
+#include <fstream>
+
 
 class Interface {
 private:
@@ -21,6 +24,10 @@ public:
         day = 0;
         chooseLoadOrStart();
     }
+
+
+    void mainGame();
+
 
     bool getLoadStatus();
 

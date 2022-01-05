@@ -12,7 +12,10 @@ void Island::list() {
         }
         cout << endl << endl << endl << endl;
     }
-    cout << "Total de trabalhadores: " << numOfLenhadores + numOfOperarios + numOfMineiros << endl << "Numero de lenhadores: " << numOfLenhadores << endl << "Numero de mineiros: " << numOfMineiros << endl << "Numero de operarios: " << numOfOperarios << endl;
+    cout << "Total de trabalhadores: " << numOfLenhadores + numOfOperarios + numOfMineiros << endl <<
+    "Numero de lenhadores: " << numOfLenhadores << endl <<
+    "Numero de mineiros: " << numOfMineiros << endl <<
+    "Numero de operarios: " << numOfOperarios << endl;
 }
 
 

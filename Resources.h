@@ -17,15 +17,26 @@ private:
 
 public:
     Resources() {
+        madeira = 0.0;
         ferro = 0.0;
         barra = 0.0;
         carvao = 0.0;
-        madeira = 0.0;
         vigas = 0.0;
         eletricidade = 0.0;
     }
 
-    void acquireResources();
+
+    void acquireWood(double naturalMultiplier);
+    void acquireIron(double naturalMultiplier);
+    void acquireBarra(double naturalMultiplier);
+    void acquireCoal(double naturalMultiplier);
+    void acquireVigas(double naturalMultiplier);
+    void acquireEletricidade(double naturalMultiplier);
+
+
+    void updateResources();
+
+    void listResources();
 };
 
 
