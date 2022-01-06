@@ -5,9 +5,9 @@
 #ifndef ISLANDSCLION_PANTANO_H
 #define ISLANDSCLION_PANTANO_H
 
-#include "Interface.h"
+#include "Zones.h"
 
-class Pantano {
+class Pantano : public Zones {
 private:
     std::string name;
 public:

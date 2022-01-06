@@ -5,9 +5,9 @@
 #ifndef ISLANDSCLION_ZONAX_H
 #define ISLANDSCLION_ZONAX_H
 
-#include "Interface.h"
+#include "Zones.h"
 
-class ZonaX {
+class ZonaX : public Zones {
 private:
     std::string name;
 public:

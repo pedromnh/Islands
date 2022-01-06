@@ -5,9 +5,9 @@
 #ifndef ISLANDSCLION_DESERTO_H
 #define ISLANDSCLION_DESERTO_H
 
-#include "Interface.h"
+#include "Zones.h"
 
-class Deserto {
+class Deserto : public Zones {
 private:
     std::string name;
 public:

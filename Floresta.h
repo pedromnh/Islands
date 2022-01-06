@@ -5,9 +5,9 @@
 #ifndef ISLANDSCLION_FLORESTA_H
 #define ISLANDSCLION_FLORESTA_H
 
-#include "Interface.h"
+#include "Zones.h"
 
-class Floresta {
+class Floresta : public Zones {
 private:
     std::string name;
 public:

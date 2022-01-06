@@ -5,9 +5,9 @@
 #ifndef ISLANDSCLION_PASTAGEM_H
 #define ISLANDSCLION_PASTAGEM_H
 
-#include "Interface.h"
+#include "Zones.h"
 
-class Pastagem {
+class Pastagem : public Zones {
 private:
     std::string name;
 public:

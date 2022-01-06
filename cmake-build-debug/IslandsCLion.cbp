@@ -180,6 +180,12 @@
 		<Unit filename="/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/ZonaX.h">
 			<Option target="IslandsCLion"/>
 		</Unit>
+		<Unit filename="/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Zones.cpp">
+			<Option target="IslandsCLion"/>
+		</Unit>
+		<Unit filename="/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Zones.h">
+			<Option target="IslandsCLion"/>
+		</Unit>
 		<Unit filename="/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/main.cpp">
 			<Option target="IslandsCLion"/>
 		</Unit>

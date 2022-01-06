@@ -537,6 +537,30 @@ ZonaX.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/IslandsCLion.dir/build.make CMakeFiles/IslandsCLion.dir/ZonaX.cpp.s
 .PHONY : ZonaX.cpp.s
 
+Zones.o: Zones.cpp.o
+.PHONY : Zones.o
+
+# target to build an object file
+Zones.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IslandsCLion.dir/build.make CMakeFiles/IslandsCLion.dir/Zones.cpp.o
+.PHONY : Zones.cpp.o
+
+Zones.i: Zones.cpp.i
+.PHONY : Zones.i
+
+# target to preprocess a source file
+Zones.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IslandsCLion.dir/build.make CMakeFiles/IslandsCLion.dir/Zones.cpp.i
+.PHONY : Zones.cpp.i
+
+Zones.s: Zones.cpp.s
+.PHONY : Zones.s
+
+# target to generate assembly for a file
+Zones.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IslandsCLion.dir/build.make CMakeFiles/IslandsCLion.dir/Zones.cpp.s
+.PHONY : Zones.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -621,6 +645,9 @@ help:
 	@echo "... ZonaX.o"
 	@echo "... ZonaX.i"
 	@echo "... ZonaX.s"
+	@echo "... Zones.o"
+	@echo "... Zones.i"
+	@echo "... Zones.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

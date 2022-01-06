@@ -38,6 +38,7 @@ class Island {
     bool roundOver = false;
 
 //    Natural Zones
+    int numOfNaturalZones = 0;
     int numOfMnt = 0;
     int numOfDsr = 0;
     int numOfPas = 0;
@@ -83,6 +84,8 @@ public:
 
 
     void randomizeNaturalZones();
+    void updateNaturalZoneCount();
+    void listNaturalZones();
 
     int getLine(){
         return lines;
