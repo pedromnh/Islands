@@ -5,6 +5,8 @@
 #include <fstream>
 #include "Island.h"
 
+Zones zone;
+
 void Island::list() {
     for (int i = 0; i < lines; i++) {
         for (int j = 0; j < cols; j++) {
@@ -12,7 +14,10 @@ void Island::list() {
         }
         cout << endl << endl << endl << endl;
     }
-    cout << "Total de trabalhadores: " << numOfLenhadores + numOfOperarios + numOfMineiros << endl << "Numero de lenhadores: " << numOfLenhadores << endl << "Numero de mineiros: " << numOfMineiros << endl << "Numero de operarios: " << numOfOperarios << endl;
+    cout << "Total de trabalhadores: " << numOfLenhadores + numOfOperarios + numOfMineiros << endl <<
+    "Numero de lenhadores: " << numOfLenhadores << endl <<
+    "Numero de mineiros: " << numOfMineiros << endl <<
+    "Numero de operarios: " << numOfOperarios << endl;
 }
 
 
@@ -103,34 +108,66 @@ void Island::morningEffects() {
 
 void Island::randomizeNaturalZones() {
     int randomizer;
-    for (int i = 1; i <= lines; i++) {
-        for (int j = 1; j <= cols; j++) {
+    for (int y = 1; y <= lines; y++) {
+        for (int x = 1; x <= cols; x++) {
             randomizer = rand()% 6 + 0;
             switch (randomizer) {
                 case 0:
-                    cons((new Montanha(numOfMnt))->getName(), i, j);
+                    zone.zonasNaturais.emplace_back(new Montanha(numOfMnt, x, y));
+                    cons(zone.zonasNaturais.back()->getName(),
+                         zone.zonasNaturais.back()->getCoordinateY(),
+                         zone.zonasNaturais.back()->getCoordinateX()
+                         );
                     numOfMnt++;
+                    updateNaturalZoneCount();
                     break;
                 case 1:
-                    cons((new Deserto(numOfDsr))->getName(), i, j);
+                    zone.zonasNaturais.emplace_back(new Deserto(numOfDsr, x, y));
+                    cons(zone.zonasNaturais.back()->getName(),
+                         zone.zonasNaturais.back()->getCoordinateY(),
+                         zone.zonasNaturais.back()->getCoordinateX()
+                         );
                     numOfDsr++;
+                    updateNaturalZoneCount();
                     break;
                 case 2:
-                    cons((new Pastagem(numOfPas))->getName(), i, j);
+                    zone.zonasNaturais.emplace_back(new Pastagem(numOfPas, x, y));
+                    cons(zone.zonasNaturais.back()->getName(),
+                         zone.zonasNaturais.back()->getCoordinateY(),
+                         zone.zonasNaturais.back()->getCoordinateX()
+                         );
                     numOfPas++;
+                    updateNaturalZoneCount();
                     break;
                 case 3:
-                    cons((new Floresta(numOfFlr))->getName(), i, j);
+                    zone.zonasNaturais.emplace_back(new Floresta(numOfFlr, x, y));
+                    cons(zone.zonasNaturais.back()->getName(),
+                         zone.zonasNaturais.back()->getCoordinateY(),
+                         zone.zonasNaturais.back()->getCoordinateX()
+                         );
                     numOfFlr++;
+                    updateNaturalZoneCount();
                     break;
                 case 4:
-                    cons((new Pantano(numOfPnt))->getName(), i, j);
+                    zone.zonasNaturais.emplace_back(new Pantano(numOfPnt, x, y));
+                    cons(zone.zonasNaturais.back()->getName(),
+                         zone.zonasNaturais.back()->getCoordinateY(),
+                         zone.zonasNaturais.back()->getCoordinateX()
+                         );
                     numOfPnt++;
+                    updateNaturalZoneCount();
                     break;
                 case 5:
-                    cons((new ZonaX(numOfZnZ))->getName(), i, j);
+                    zone.zonasNaturais.emplace_back(new ZonaX(numOfZnZ, x, y));
+                    cons(zone.zonasNaturais.back()->getName(),
+                         zone.zonasNaturais.back()->getCoordinateY(),
+                         zone.zonasNaturais.back()->getCoordinateX()
+                         );
                     numOfZnZ++;
+                    updateNaturalZoneCount();
                     break;
+                default:
+                    cout << "How did you get here?";
             }
 
         }
@@ -182,6 +219,8 @@ void Island::afternoonPhase() {
             save("saveName");
         } else if (cmd == "vende") {
             vende("Ferro", 3);
+        } else if (cmd == "listNat") {
+            listNaturalZones();
         } else {
                 cout << "Invalid command." << endl;
         }
@@ -270,6 +309,17 @@ void Island::loading() {
 
     configFile.close();
     cout << endl;
+}
+
+void Island::listNaturalZones() {
+    for (int i = 0; i < zone.zonasNaturais.size(); ++i) {
+        cout << zone.zonasNaturais.at(i)->getName() << endl;
+    }
+    cout << "There are " << zone.zonasNaturais.size() << " natural zones." << endl;
+}
+
+void Island::updateNaturalZoneCount() {
+    numOfNaturalZones = numOfMnt + numOfDsr + numOfPas + numOfFlr + numOfPnt+ numOfZnZ;
 }
 
 

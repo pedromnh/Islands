@@ -5,19 +5,21 @@
 #ifndef ISLANDSCLION_PASTAGEM_H
 #define ISLANDSCLION_PASTAGEM_H
 
-#include "Interface.h"
+#include "Zones.h"
 
-class Pastagem {
+class Pastagem : public Zones {
 private:
     std::string name;
 public:
-    Pastagem(int amountOfPas) {
+    Pastagem(int amountOfPas, int x, int y) {
         name = "pas";
         std::string amount = std::to_string(amountOfPas + 1);
         name.append(amount);
+        setCoordinateX(x);
+        setCoordinateY(y);
     }
 
-    std::string getName() {
+    std::string getName() override {
         return name;
     }
 };

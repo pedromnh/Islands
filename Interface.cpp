@@ -50,7 +50,10 @@ bool Interface::chooseLoadOrStart() {
     string userInput;
 
     while (userInput != "new_game" && userInput != "load_game") {
-        cout << "Insert one of the following commands..." <<  endl << "New Game: new_game" << endl <<"Load game: load_game" << endl << "Your input: ";
+        cout << "Insert one of the following commands..." <<  endl <<
+        "New Game: new_game" << endl <<
+        "Load game: load_game" << endl <<
+        "Your input: ";
         cin >> userInput;
 
         if (userInput == "load_game") {
@@ -66,5 +69,41 @@ bool Interface::getLoadStatus() {
 
 int Interface::getDay() {
    return day;
+}
+
+void Interface::mainGame() {
+    srand(time(NULL));
+    Island island(getLoadStatus(), island.getLine(), island.getCols());
+    Resources resources;
+
+    firstMessage();
+    setMorning();
+    do {
+        switch (getCurrentPhase()) {
+            case 1: // Morning Phase
+                cout << endl << endl << endl << endl;
+                morningMessage();
+                island.morningEffects();
+                setAfternoon();
+                break;
+            case 2: //Afternoon Phase
+                afternoonMessage();
+                island.afternoonPhase();
+                setNight();
+                break;
+            case 3: //Night Phase
+                nightMessage();
+                resources.acquireWood(1, 1);
+                if (getDay() == 5)
+                    endGame();
+                else
+                    setMorning();
+                break;
+            case 0: //End of game
+                endGame();
+                break;
+        }
+    } while (getCurrentPhase() != 0);
+    island.list();
 }
 

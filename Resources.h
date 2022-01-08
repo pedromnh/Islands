@@ -8,6 +8,7 @@
 
 class Resources {
 private:
+    double money;
     double ferro;
     double barra;
     double carvao;
@@ -17,15 +18,35 @@ private:
 
 public:
     Resources() {
+        money = 0.0;
+        madeira = 0.0;
         ferro = 0.0;
         barra = 0.0;
         carvao = 0.0;
-        madeira = 0.0;
         vigas = 0.0;
         eletricidade = 0.0;
     }
 
-    void acquireResources();
+    double getWood();
+
+
+    void acquireWood(double acquiredResource, double naturalMultiplier);
+    void acquireIron(double acquiredResource, double naturalMultiplier);
+    void acquireBarra(double acquiredResource, double naturalMultiplier);
+    void acquireCoal(double acquiredResource, double naturalMultiplier);
+    void acquireVigas(double acquiredResource, double naturalMultiplier);
+    void acquireEletricidade(double acquiredResource, double naturalMultiplier);
+
+    void sellWood();
+    void sellIron();
+    void sellCoal();
+    void sellBarra();
+    void sellViga();
+    void sellEletricidade();
+
+    void updateResources();
+
+    void listResources();
 };
 
 

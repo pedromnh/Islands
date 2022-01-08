@@ -57,10 +57,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/pedromnh/Dropbox/OOP Projecto/IslandsCLion"
+CMAKE_SOURCE_DIR = "/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/pedromnh/Dropbox/OOP Projecto/IslandsCLion/cmake-build-debug"
+CMAKE_BINARY_DIR = "/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/cmake-build-debug"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/pedromnh/Dropbox/OOP Projecto/IslandsCLion/cmake-build-debug/CMakeFiles" "/Users/pedromnh/Dropbox/OOP Projecto/IslandsCLion/cmake-build-debug//CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/cmake-build-debug/CMakeFiles" "/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/cmake-build-debug//CMakeFiles/progress.marks"
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/pedromnh/Dropbox/OOP Projecto/IslandsCLion/cmake-build-debug/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/cmake-build-debug/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -152,6 +152,30 @@ Bateria.s: Bateria.cpp.s
 Bateria.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/IslandsCLion.dir/build.make CMakeFiles/IslandsCLion.dir/Bateria.cpp.s
 .PHONY : Bateria.cpp.s
+
+Buildings.o: Buildings.cpp.o
+.PHONY : Buildings.o
+
+# target to build an object file
+Buildings.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IslandsCLion.dir/build.make CMakeFiles/IslandsCLion.dir/Buildings.cpp.o
+.PHONY : Buildings.cpp.o
+
+Buildings.i: Buildings.cpp.i
+.PHONY : Buildings.i
+
+# target to preprocess a source file
+Buildings.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IslandsCLion.dir/build.make CMakeFiles/IslandsCLion.dir/Buildings.cpp.i
+.PHONY : Buildings.cpp.i
+
+Buildings.s: Buildings.cpp.s
+.PHONY : Buildings.s
+
+# target to generate assembly for a file
+Buildings.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IslandsCLion.dir/build.make CMakeFiles/IslandsCLion.dir/Buildings.cpp.s
+.PHONY : Buildings.cpp.s
 
 CentralEletrica.o: CentralEletrica.cpp.o
 .PHONY : CentralEletrica.o
@@ -537,6 +561,30 @@ ZonaX.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/IslandsCLion.dir/build.make CMakeFiles/IslandsCLion.dir/ZonaX.cpp.s
 .PHONY : ZonaX.cpp.s
 
+Zones.o: Zones.cpp.o
+.PHONY : Zones.o
+
+# target to build an object file
+Zones.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IslandsCLion.dir/build.make CMakeFiles/IslandsCLion.dir/Zones.cpp.o
+.PHONY : Zones.cpp.o
+
+Zones.i: Zones.cpp.i
+.PHONY : Zones.i
+
+# target to preprocess a source file
+Zones.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IslandsCLion.dir/build.make CMakeFiles/IslandsCLion.dir/Zones.cpp.i
+.PHONY : Zones.cpp.i
+
+Zones.s: Zones.cpp.s
+.PHONY : Zones.s
+
+# target to generate assembly for a file
+Zones.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IslandsCLion.dir/build.make CMakeFiles/IslandsCLion.dir/Zones.cpp.s
+.PHONY : Zones.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -573,6 +621,9 @@ help:
 	@echo "... Bateria.o"
 	@echo "... Bateria.i"
 	@echo "... Bateria.s"
+	@echo "... Buildings.o"
+	@echo "... Buildings.i"
+	@echo "... Buildings.s"
 	@echo "... CentralEletrica.o"
 	@echo "... CentralEletrica.i"
 	@echo "... CentralEletrica.s"
@@ -621,6 +672,9 @@ help:
 	@echo "... ZonaX.o"
 	@echo "... ZonaX.i"
 	@echo "... ZonaX.s"
+	@echo "... Zones.o"
+	@echo "... Zones.i"
+	@echo "... Zones.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

@@ -5,19 +5,21 @@
 #ifndef ISLANDSCLION_ZONAX_H
 #define ISLANDSCLION_ZONAX_H
 
-#include "Interface.h"
+#include "Zones.h"
 
-class ZonaX {
+class ZonaX : public Zones {
 private:
     std::string name;
 public:
-    ZonaX(int amountOfZnZ) {
+    ZonaX(int amountOfZnZ, int x, int y) {
         name = "znZ";
         std::string amount = std::to_string(amountOfZnZ + 1);
         name.append(amount);
+        setCoordinateX(x);
+        setCoordinateY(y);
     }
 
-    std::string getName() {
+    std::string getName() override {
         return name;
     }
 };

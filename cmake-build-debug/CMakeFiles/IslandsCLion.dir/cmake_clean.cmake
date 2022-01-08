@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/IslandsCLion.dir/Bateria.cpp.o"
+  "CMakeFiles/IslandsCLion.dir/Buildings.cpp.o"
   "CMakeFiles/IslandsCLion.dir/CentralEletrica.cpp.o"
   "CMakeFiles/IslandsCLion.dir/Deserto.cpp.o"
   "CMakeFiles/IslandsCLion.dir/Floresta.cpp.o"
@@ -16,6 +17,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/IslandsCLion.dir/Pastagem.cpp.o"
   "CMakeFiles/IslandsCLion.dir/Resources.cpp.o"
   "CMakeFiles/IslandsCLion.dir/ZonaX.cpp.o"
+  "CMakeFiles/IslandsCLion.dir/Zones.cpp.o"
   "CMakeFiles/IslandsCLion.dir/main.cpp.o"
   "IslandsCLion"
   "IslandsCLion.pdb"

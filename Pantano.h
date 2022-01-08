@@ -5,19 +5,21 @@
 #ifndef ISLANDSCLION_PANTANO_H
 #define ISLANDSCLION_PANTANO_H
 
-#include "Interface.h"
+#include "Zones.h"
 
-class Pantano {
+class Pantano : public Zones {
 private:
     std::string name;
 public:
-    Pantano(int amountOfPnt) {
+    Pantano(int amountOfPnt, int x, int y) {
         name = "pnt";
         std::string amount = std::to_string(amountOfPnt + 1);
         name.append(amount);
+        setCoordinateX(x);
+        setCoordinateY(y);
     }
 
-    std::string getName() {
+    std::string getName() override {
         return name;
     }
 };
