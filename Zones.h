@@ -11,16 +11,27 @@ class Zones {
 private:
     std::string name;
     double productionMultiplier = 1;
+    int coordinateX;
+    int coordinateY;
 
-    void testingFunction();
 public:
-    double getProductionMultipler();
-//    std::vector<std::unique_ptr<Zones>> zonasNaturais;
     std::vector<Zones*> zonasNaturais;
 
+//    Getters
     virtual std::string getName() {
         return name;
     }
+    double getProductionMultipler();
+    int getCoordinateX() const {
+        return coordinateX;
+    }
+    int getCoordinateY() const {
+        return coordinateY;
+    }
+
+//    Setters
+    int setCoordinateX(int x) {return coordinateX = x;}
+    int setCoordinateY(int y) {return coordinateY = y;}
 };
 
 

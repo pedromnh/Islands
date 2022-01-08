@@ -21,6 +21,9 @@ CMakeFiles/IslandsCLion.dir/Bateria.cpp.o: \
  ../Resources.h \
  ../ZonaX.h \
  ../Zones.h
+CMakeFiles/IslandsCLion.dir/Buildings.cpp.o: \
+ ../Buildings.cpp \
+ ../Buildings.h
 CMakeFiles/IslandsCLion.dir/CentralEletrica.cpp.o: \
  ../Bateria.h \
  ../CentralEletrica.cpp \

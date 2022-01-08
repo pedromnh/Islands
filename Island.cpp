@@ -108,53 +108,66 @@ void Island::morningEffects() {
 
 void Island::randomizeNaturalZones() {
     int randomizer;
-    for (int i = 1; i <= lines; i++) {
-        for (int j = 1; j <= cols; j++) {
+    for (int y = 1; y <= lines; y++) {
+        for (int x = 1; x <= cols; x++) {
             randomizer = rand()% 6 + 0;
             switch (randomizer) {
                 case 0:
-                    zone.zonasNaturais.emplace_back(new Montanha(numOfMnt));
-                    cout << "Zona natural: " << zone.zonasNaturais.back()->getName() << endl;
-                    cons(zone.zonasNaturais.back()->getName(), i, j);
-//                    cons((new Montanha(numOfMnt))->getName(), i, j);
+                    zone.zonasNaturais.emplace_back(new Montanha(numOfMnt, x, y));
+                    cons(zone.zonasNaturais.back()->getName(),
+                         zone.zonasNaturais.back()->getCoordinateY(),
+                         zone.zonasNaturais.back()->getCoordinateX()
+                         );
                     numOfMnt++;
                     updateNaturalZoneCount();
                     break;
                 case 1:
-                    zone.zonasNaturais.emplace_back(new Deserto(numOfDsr));
-                    cons(zone.zonasNaturais.back()->getName(), i, j);
-//                    cons((new Deserto(numOfDsr))->getName(), i, j);
+                    zone.zonasNaturais.emplace_back(new Deserto(numOfDsr, x, y));
+                    cons(zone.zonasNaturais.back()->getName(),
+                         zone.zonasNaturais.back()->getCoordinateY(),
+                         zone.zonasNaturais.back()->getCoordinateX()
+                         );
                     numOfDsr++;
                     updateNaturalZoneCount();
                     break;
                 case 2:
-                    zone.zonasNaturais.emplace_back(new Pastagem(numOfPas));
-                    cons(zone.zonasNaturais.back()->getName(), i, j);
-//                    cons((new Pastagem(numOfPas))->getName(), i, j);
+                    zone.zonasNaturais.emplace_back(new Pastagem(numOfPas, x, y));
+                    cons(zone.zonasNaturais.back()->getName(),
+                         zone.zonasNaturais.back()->getCoordinateY(),
+                         zone.zonasNaturais.back()->getCoordinateX()
+                         );
                     numOfPas++;
                     updateNaturalZoneCount();
                     break;
                 case 3:
-                    zone.zonasNaturais.emplace_back(new Floresta(numOfFlr));
-                    cons(zone.zonasNaturais.back()->getName(), i, j);
-//                    cons((new Floresta(numOfFlr))->getName(), i, j);
+                    zone.zonasNaturais.emplace_back(new Floresta(numOfFlr, x, y));
+                    cons(zone.zonasNaturais.back()->getName(),
+                         zone.zonasNaturais.back()->getCoordinateY(),
+                         zone.zonasNaturais.back()->getCoordinateX()
+                         );
                     numOfFlr++;
                     updateNaturalZoneCount();
                     break;
                 case 4:
-                    zone.zonasNaturais.emplace_back(new Pantano(numOfPnt));
-                    cons(zone.zonasNaturais.back()->getName(), i, j);
-//                    cons((new Pantano(numOfPnt))->getName(), i, j);
+                    zone.zonasNaturais.emplace_back(new Pantano(numOfPnt, x, y));
+                    cons(zone.zonasNaturais.back()->getName(),
+                         zone.zonasNaturais.back()->getCoordinateY(),
+                         zone.zonasNaturais.back()->getCoordinateX()
+                         );
                     numOfPnt++;
                     updateNaturalZoneCount();
                     break;
                 case 5:
-                    zone.zonasNaturais.emplace_back(new ZonaX(numOfZnZ));
-                    cons(zone.zonasNaturais.back()->getName(), i, j);
-//                    cons((new ZonaX(numOfZnZ))->getName(), i, j);
+                    zone.zonasNaturais.emplace_back(new ZonaX(numOfZnZ, x, y));
+                    cons(zone.zonasNaturais.back()->getName(),
+                         zone.zonasNaturais.back()->getCoordinateY(),
+                         zone.zonasNaturais.back()->getCoordinateX()
+                         );
                     numOfZnZ++;
                     updateNaturalZoneCount();
                     break;
+                default:
+                    cout << "How did you get here?";
             }
 
         }

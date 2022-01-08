@@ -11,13 +11,15 @@ class Deserto : public Zones {
 private:
     std::string name;
 public:
-    Deserto(int amountOfDsr) {
+    Deserto(int amountOfDsr, int x, int y) {
         name = "dsr";
         std::string amount = std::to_string(amountOfDsr + 1);
         name.append(amount);
+        setCoordinateX(x);
+        setCoordinateY(y);
     }
 
-    std::string getName() {
+    std::string getName() override {
         return name;
     }
 };

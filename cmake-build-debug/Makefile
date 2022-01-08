@@ -153,6 +153,30 @@ Bateria.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/IslandsCLion.dir/build.make CMakeFiles/IslandsCLion.dir/Bateria.cpp.s
 .PHONY : Bateria.cpp.s
 
+Buildings.o: Buildings.cpp.o
+.PHONY : Buildings.o
+
+# target to build an object file
+Buildings.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IslandsCLion.dir/build.make CMakeFiles/IslandsCLion.dir/Buildings.cpp.o
+.PHONY : Buildings.cpp.o
+
+Buildings.i: Buildings.cpp.i
+.PHONY : Buildings.i
+
+# target to preprocess a source file
+Buildings.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IslandsCLion.dir/build.make CMakeFiles/IslandsCLion.dir/Buildings.cpp.i
+.PHONY : Buildings.cpp.i
+
+Buildings.s: Buildings.cpp.s
+.PHONY : Buildings.s
+
+# target to generate assembly for a file
+Buildings.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IslandsCLion.dir/build.make CMakeFiles/IslandsCLion.dir/Buildings.cpp.s
+.PHONY : Buildings.cpp.s
+
 CentralEletrica.o: CentralEletrica.cpp.o
 .PHONY : CentralEletrica.o
 
@@ -597,6 +621,9 @@ help:
 	@echo "... Bateria.o"
 	@echo "... Bateria.i"
 	@echo "... Bateria.s"
+	@echo "... Buildings.o"
+	@echo "... Buildings.i"
+	@echo "... Buildings.s"
 	@echo "... CentralEletrica.o"
 	@echo "... CentralEletrica.i"
 	@echo "... CentralEletrica.s"
