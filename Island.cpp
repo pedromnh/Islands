@@ -6,6 +6,7 @@
 #include "Island.h"
 
 Zones zone;
+Buildings building;
 
 void Island::list() {
     for (int i = 0; i < lines; i++) {
@@ -31,7 +32,11 @@ void Island::inicializeIsland(){
 
 
 void Island::cons(string type, int line, int col){
-    if (island.at(line - 1).at(col - 1).find("mnF") != string::npos || island.at(line - 1).at(col - 1).find("mnC") != string::npos || island.at(line - 1).at(col - 1).find("elec") != string::npos || island.at(line - 1).at(col - 1).find("bat") != string::npos || island.at(line - 1).at(col - 1).find("fun") != string::npos) {
+    if (island.at(line - 1).at(col - 1).find("mnF") != string::npos
+    || island.at(line - 1).at(col - 1).find("mnC") != string::npos
+    || island.at(line - 1).at(col - 1).find("elec") != string::npos
+    || island.at(line - 1).at(col - 1).find("bat") != string::npos
+    || island.at(line - 1).at(col - 1).find("fun") != string::npos) {
         cout << "Can't overwrite in that position." << endl;
     } else {
         island.at(line - 1).at(col - 1) = type;
@@ -185,15 +190,35 @@ void Island::afternoonPhase() {
         if (cmd == "cons") {
             cin >> type >> line >> col;
             if (type == "mnF") {
-                cons((new MinaFerro(numOfMnF))->getName(), line, col);
+                building.edificios.emplace_back(new MinaFerro(numOfMnF, line, col));
+                cons(building.edificios.back()->getName(),
+                     building.edificios.back()->getCoordinateY(),
+                     building.edificios.back()->getCoordinateX()
+                     );
             } else if (type == "mnC") {
-                cons((new MinaCarvao(numOfMnC))->getName(), line, col);
+                building.edificios.emplace_back(new MinaCarvao(numOfMnC, line, col));
+                cons(building.edificios.back()->getName(),
+                     building.edificios.back()->getCoordinateY(),
+                     building.edificios.back()->getCoordinateX()
+                     );
             } else if (type == "elec") {
-                cons((new CentralEletrica(numOfElec))->getName(), line, col);
+                building.edificios.emplace_back(new CentralEletrica(numOfElec, line, col));
+                cons(building.edificios.back()->getName(),
+                     building.edificios.back()->getCoordinateY(),
+                     building.edificios.back()->getCoordinateX()
+                );
             } else if (type == "bat") {
-                cons((new Bateria(numOfBat))->getName(), line, col);
+                building.edificios.emplace_back(new Bateria(numOfBat, line, col));
+                cons(building.edificios.back()->getName(),
+                     building.edificios.back()->getCoordinateY(),
+                     building.edificios.back()->getCoordinateX()
+                );
             } else if (type == "fun") {
-                cons((new Fundicao(numOfFun))->getName(), line, col);
+                building.edificios.emplace_back(new Fundicao(numOfFun, line, col));
+                cons(building.edificios.back()->getName(),
+                     building.edificios.back()->getCoordinateY(),
+                     building.edificios.back()->getCoordinateX()
+                );
             }
         } else if (cmd == "cont") {
             cin >> type;
@@ -260,15 +285,35 @@ void Island::loading() {
 //                cout << cmd << " + " << type << " + " << linePosition << " + " << colPosition << endl;
                 if (cmd == "cons") {
                     if (type == "mnF") {
-                        cons((new MinaFerro(numOfMnF))->getName(), linePosition, colPosition);
+                        building.edificios.emplace_back(new MinaFerro(numOfMnF, linePosition, colPosition));
+                        cons(building.edificios.back()->getName(),
+                             building.edificios.back()->getCoordinateY(),
+                             building.edificios.back()->getCoordinateX()
+                        );
                     } else if (type == "mnC") {
-                        cons((new MinaCarvao(numOfMnC))->getName(), linePosition, colPosition);
+                        building.edificios.emplace_back(new MinaCarvao(numOfMnC, linePosition, colPosition));
+                        cons(building.edificios.back()->getName(),
+                             building.edificios.back()->getCoordinateY(),
+                             building.edificios.back()->getCoordinateX()
+                        );
                     } else if (type == "elec") {
-                        cons((new CentralEletrica(numOfElec))->getName(), linePosition, colPosition);
+                        building.edificios.emplace_back(new CentralEletrica(numOfElec, linePosition, colPosition));
+                        cons(building.edificios.back()->getName(),
+                             building.edificios.back()->getCoordinateY(),
+                             building.edificios.back()->getCoordinateX()
+                        );
                     } else if (type == "bat") {
-                        cons((new Bateria(numOfBat))->getName(), linePosition, colPosition);
+                        building.edificios.emplace_back(new Bateria(numOfBat, linePosition, colPosition));
+                        cons(building.edificios.back()->getName(),
+                             building.edificios.back()->getCoordinateY(),
+                             building.edificios.back()->getCoordinateX()
+                        );
                     } else if (type == "fun") {
-                        cons((new Fundicao(numOfFun))->getName(), linePosition, colPosition);
+                        building.edificios.emplace_back(new Fundicao(numOfFun, linePosition, colPosition));
+                        cons(building.edificios.back()->getName(),
+                             building.edificios.back()->getCoordinateY(),
+                             building.edificios.back()->getCoordinateX()
+                        );
                     }
                 }
             } else if (amountOfWords == 2) {

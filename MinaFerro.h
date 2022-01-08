@@ -5,19 +5,21 @@
 #ifndef ISLANDSCLION_MINAFERRO_H
 #define ISLANDSCLION_MINAFERRO_H
 
-#include "Interface.h"
+#include "Buildings.h"
 
-class MinaFerro {
+class MinaFerro : public Buildings{
 private:
     std::string name;
 public:
-    MinaFerro(int amountOfMnf) {
+    MinaFerro(int amountOfMnf, int x, int y) {
         name = "mnF";
         std::string amount = std::to_string(amountOfMnf + 1);
         name.append(amount);
+        setCoordinateX(x);
+        setCoordinateY(y);
     }
 
-    std::string getName() {
+    std::string getName() override {
         return name;
     }
 };

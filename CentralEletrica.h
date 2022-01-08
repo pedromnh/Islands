@@ -5,19 +5,21 @@
 #ifndef ISLANDSCLION_CENTRALELETRICA_H
 #define ISLANDSCLION_CENTRALELETRICA_H
 
-#include "Interface.h"
+#include "Buildings.h"
 
-class CentralEletrica {
+class CentralEletrica : public Buildings {
 private:
     std::string name;
 public:
-    CentralEletrica(int amountOfElec) {
+    CentralEletrica(int amountOfElec, int x, int y) {
         name = "elec";
         std::string amount = std::to_string(amountOfElec + 1);
         name.append(amount);
+        setCoordinateX(x);
+        setCoordinateY(y);
     }
 
-    std::string getName() {
+    std::string getName() override {
         return name;
     }
 };

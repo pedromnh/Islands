@@ -4,46 +4,14 @@
 CMakeFiles/IslandsCLion.dir/Bateria.cpp.o
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Bateria.cpp
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Bateria.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/CentralEletrica.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Deserto.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Floresta.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Fundicao.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Interface.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Island.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Lenhador.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/MinaCarvao.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/MinaFerro.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Mineiro.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Montanha.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Operario.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Pantano.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Pastagem.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Resources.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/ZonaX.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Zones.h
+ /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Buildings.h
 CMakeFiles/IslandsCLion.dir/Buildings.cpp.o
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Buildings.cpp
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Buildings.h
 CMakeFiles/IslandsCLion.dir/CentralEletrica.cpp.o
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Bateria.h
+ /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Buildings.h
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/CentralEletrica.cpp
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/CentralEletrica.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Deserto.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Floresta.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Fundicao.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Interface.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Island.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Lenhador.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/MinaCarvao.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/MinaFerro.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Mineiro.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Montanha.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Operario.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Pantano.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Pastagem.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Resources.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/ZonaX.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Zones.h
 CMakeFiles/IslandsCLion.dir/Deserto.cpp.o
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Deserto.cpp
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Deserto.h
@@ -54,26 +22,12 @@ CMakeFiles/IslandsCLion.dir/Floresta.cpp.o
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Zones.h
 CMakeFiles/IslandsCLion.dir/Fundicao.cpp.o
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Bateria.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/CentralEletrica.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Deserto.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Floresta.h
+ /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Buildings.h
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Fundicao.cpp
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Fundicao.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Interface.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Island.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Lenhador.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/MinaCarvao.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/MinaFerro.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Mineiro.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Montanha.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Operario.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Pantano.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Pastagem.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Resources.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/ZonaX.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Zones.h
 CMakeFiles/IslandsCLion.dir/Interface.cpp.o
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Bateria.h
+ /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Buildings.h
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/CentralEletrica.h
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Deserto.h
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Floresta.h
@@ -94,6 +48,7 @@ CMakeFiles/IslandsCLion.dir/Interface.cpp.o
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Zones.h
 CMakeFiles/IslandsCLion.dir/Island.cpp.o
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Bateria.h
+ /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Buildings.h
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/CentralEletrica.h
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Deserto.h
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Floresta.h
@@ -114,6 +69,7 @@ CMakeFiles/IslandsCLion.dir/Island.cpp.o
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Zones.h
 CMakeFiles/IslandsCLion.dir/Lenhador.cpp.o
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Bateria.h
+ /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Buildings.h
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/CentralEletrica.h
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Deserto.h
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Floresta.h
@@ -133,47 +89,16 @@ CMakeFiles/IslandsCLion.dir/Lenhador.cpp.o
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/ZonaX.h
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Zones.h
 CMakeFiles/IslandsCLion.dir/MinaCarvao.cpp.o
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Bateria.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/CentralEletrica.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Deserto.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Floresta.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Fundicao.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Interface.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Island.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Lenhador.h
+ /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Buildings.h
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/MinaCarvao.cpp
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/MinaCarvao.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/MinaFerro.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Mineiro.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Montanha.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Operario.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Pantano.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Pastagem.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Resources.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/ZonaX.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Zones.h
 CMakeFiles/IslandsCLion.dir/MinaFerro.cpp.o
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Bateria.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/CentralEletrica.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Deserto.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Floresta.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Fundicao.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Interface.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Island.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Lenhador.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/MinaCarvao.h
+ /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Buildings.h
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/MinaFerro.cpp
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/MinaFerro.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Mineiro.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Montanha.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Operario.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Pantano.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Pastagem.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Resources.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/ZonaX.h
- /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Zones.h
 CMakeFiles/IslandsCLion.dir/Mineiro.cpp.o
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Bateria.h
+ /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Buildings.h
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/CentralEletrica.h
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Deserto.h
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Floresta.h
@@ -198,6 +123,7 @@ CMakeFiles/IslandsCLion.dir/Montanha.cpp.o
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Zones.h
 CMakeFiles/IslandsCLion.dir/Operario.cpp.o
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Bateria.h
+ /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Buildings.h
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/CentralEletrica.h
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Deserto.h
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Floresta.h
@@ -226,6 +152,7 @@ CMakeFiles/IslandsCLion.dir/Pastagem.cpp.o
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Zones.h
 CMakeFiles/IslandsCLion.dir/Resources.cpp.o
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Bateria.h
+ /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Buildings.h
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/CentralEletrica.h
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Deserto.h
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Floresta.h
@@ -253,6 +180,7 @@ CMakeFiles/IslandsCLion.dir/Zones.cpp.o
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Zones.h
 CMakeFiles/IslandsCLion.dir/main.cpp.o
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Bateria.h
+ /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Buildings.h
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/CentralEletrica.h
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Deserto.h
  /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Floresta.h

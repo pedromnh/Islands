@@ -5,19 +5,21 @@
 #ifndef ISLANDSCLION_FUNDICAO_H
 #define ISLANDSCLION_FUNDICAO_H
 
-#include "Interface.h"
+#include "Bateria.h"
 
-class Fundicao {
+class Fundicao : public Buildings {
 private:
     std::string name;
 public:
-    Fundicao(int amountOfFun) {
+    Fundicao(int amountOfFun, int x, int y) {
         name = "fun";
         std::string amount = std::to_string(amountOfFun + 1);
         name.append(amount);
+        setCoordinateX(x);
+        setCoordinateY(y);
     }
 
-    std::string getName() {
+    std::string getName() override {
         return name;
     }
 };

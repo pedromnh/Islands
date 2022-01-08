@@ -45,6 +45,9 @@ public:
     void setMaxStorage(double storageLimit) {storage = storageLimit;}
     void setMaxLevel(int levelCap) {maxLevel = levelCap;}
     void setChanceOfBreaking(int chance) {chanceOfBreaking = chance;}
+
+    int setCoordinateX(int x) {return coordinateX = x;}
+    int setCoordinateY(int y) {return coordinateY = y;}
 };
 
 

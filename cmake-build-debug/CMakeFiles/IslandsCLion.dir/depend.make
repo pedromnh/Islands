@@ -4,46 +4,14 @@
 CMakeFiles/IslandsCLion.dir/Bateria.cpp.o: \
  ../Bateria.cpp \
  ../Bateria.h \
- ../CentralEletrica.h \
- ../Deserto.h \
- ../Floresta.h \
- ../Fundicao.h \
- ../Interface.h \
- ../Island.h \
- ../Lenhador.h \
- ../MinaCarvao.h \
- ../MinaFerro.h \
- ../Mineiro.h \
- ../Montanha.h \
- ../Operario.h \
- ../Pantano.h \
- ../Pastagem.h \
- ../Resources.h \
- ../ZonaX.h \
- ../Zones.h
+ ../Buildings.h
 CMakeFiles/IslandsCLion.dir/Buildings.cpp.o: \
  ../Buildings.cpp \
  ../Buildings.h
 CMakeFiles/IslandsCLion.dir/CentralEletrica.cpp.o: \
- ../Bateria.h \
+ ../Buildings.h \
  ../CentralEletrica.cpp \
- ../CentralEletrica.h \
- ../Deserto.h \
- ../Floresta.h \
- ../Fundicao.h \
- ../Interface.h \
- ../Island.h \
- ../Lenhador.h \
- ../MinaCarvao.h \
- ../MinaFerro.h \
- ../Mineiro.h \
- ../Montanha.h \
- ../Operario.h \
- ../Pantano.h \
- ../Pastagem.h \
- ../Resources.h \
- ../ZonaX.h \
- ../Zones.h
+ ../CentralEletrica.h
 CMakeFiles/IslandsCLion.dir/Deserto.cpp.o: \
  ../Deserto.cpp \
  ../Deserto.h \
@@ -54,26 +22,12 @@ CMakeFiles/IslandsCLion.dir/Floresta.cpp.o: \
  ../Zones.h
 CMakeFiles/IslandsCLion.dir/Fundicao.cpp.o: \
  ../Bateria.h \
- ../CentralEletrica.h \
- ../Deserto.h \
- ../Floresta.h \
+ ../Buildings.h \
  ../Fundicao.cpp \
- ../Fundicao.h \
- ../Interface.h \
- ../Island.h \
- ../Lenhador.h \
- ../MinaCarvao.h \
- ../MinaFerro.h \
- ../Mineiro.h \
- ../Montanha.h \
- ../Operario.h \
- ../Pantano.h \
- ../Pastagem.h \
- ../Resources.h \
- ../ZonaX.h \
- ../Zones.h
+ ../Fundicao.h
 CMakeFiles/IslandsCLion.dir/Interface.cpp.o: \
  ../Bateria.h \
+ ../Buildings.h \
  ../CentralEletrica.h \
  ../Deserto.h \
  ../Floresta.h \
@@ -94,6 +48,7 @@ CMakeFiles/IslandsCLion.dir/Interface.cpp.o: \
  ../Zones.h
 CMakeFiles/IslandsCLion.dir/Island.cpp.o: \
  ../Bateria.h \
+ ../Buildings.h \
  ../CentralEletrica.h \
  ../Deserto.h \
  ../Floresta.h \
@@ -114,6 +69,7 @@ CMakeFiles/IslandsCLion.dir/Island.cpp.o: \
  ../Zones.h
 CMakeFiles/IslandsCLion.dir/Lenhador.cpp.o: \
  ../Bateria.h \
+ ../Buildings.h \
  ../CentralEletrica.h \
  ../Deserto.h \
  ../Floresta.h \
@@ -133,47 +89,16 @@ CMakeFiles/IslandsCLion.dir/Lenhador.cpp.o: \
  ../ZonaX.h \
  ../Zones.h
 CMakeFiles/IslandsCLion.dir/MinaCarvao.cpp.o: \
- ../Bateria.h \
- ../CentralEletrica.h \
- ../Deserto.h \
- ../Floresta.h \
- ../Fundicao.h \
- ../Interface.h \
- ../Island.h \
- ../Lenhador.h \
+ ../Buildings.h \
  ../MinaCarvao.cpp \
- ../MinaCarvao.h \
- ../MinaFerro.h \
- ../Mineiro.h \
- ../Montanha.h \
- ../Operario.h \
- ../Pantano.h \
- ../Pastagem.h \
- ../Resources.h \
- ../ZonaX.h \
- ../Zones.h
+ ../MinaCarvao.h
 CMakeFiles/IslandsCLion.dir/MinaFerro.cpp.o: \
- ../Bateria.h \
- ../CentralEletrica.h \
- ../Deserto.h \
- ../Floresta.h \
- ../Fundicao.h \
- ../Interface.h \
- ../Island.h \
- ../Lenhador.h \
- ../MinaCarvao.h \
+ ../Buildings.h \
  ../MinaFerro.cpp \
- ../MinaFerro.h \
- ../Mineiro.h \
- ../Montanha.h \
- ../Operario.h \
- ../Pantano.h \
- ../Pastagem.h \
- ../Resources.h \
- ../ZonaX.h \
- ../Zones.h
+ ../MinaFerro.h
 CMakeFiles/IslandsCLion.dir/Mineiro.cpp.o: \
  ../Bateria.h \
+ ../Buildings.h \
  ../CentralEletrica.h \
  ../Deserto.h \
  ../Floresta.h \
@@ -198,6 +123,7 @@ CMakeFiles/IslandsCLion.dir/Montanha.cpp.o: \
  ../Zones.h
 CMakeFiles/IslandsCLion.dir/Operario.cpp.o: \
  ../Bateria.h \
+ ../Buildings.h \
  ../CentralEletrica.h \
  ../Deserto.h \
  ../Floresta.h \
@@ -226,6 +152,7 @@ CMakeFiles/IslandsCLion.dir/Pastagem.cpp.o: \
  ../Zones.h
 CMakeFiles/IslandsCLion.dir/Resources.cpp.o: \
  ../Bateria.h \
+ ../Buildings.h \
  ../CentralEletrica.h \
  ../Deserto.h \
  ../Floresta.h \
@@ -253,6 +180,7 @@ CMakeFiles/IslandsCLion.dir/Zones.cpp.o: \
  ../Zones.h
 CMakeFiles/IslandsCLion.dir/main.cpp.o: \
  ../Bateria.h \
+ ../Buildings.h \
  ../CentralEletrica.h \
  ../Deserto.h \
  ../Floresta.h \
