@@ -11,21 +11,40 @@ class Buildings {
 private:
     std::string name;
     std::string status;
-    double productionMultiplier = 1;
+    std::string requirement;
 
+    double cost;
+    double costOfLevelUp;
+    double storage;
+    int maxLevel;
+    int chanceOfBreaking;
+
+    int coordinateX;
+    int coordinateY;
 public:
-    double getProductionMultipler();
-//    std::vector<std::unique_ptr<Zones>> zonasNaturais;
     std::vector<Buildings*> edificios;
 
-    virtual std::string getName() {
-        return name;
-    }
+//    Getters
+    virtual std::string getName() {return name;}
+    virtual std::string getStatus() {return status;}
+    virtual std::string getRequirement() {return requirement;}
 
-    virtual std::string getStatus() {
-        return status;
-    }
+    double getCost() const {return cost;}
+    double getCostOfLevelUp() const {return  costOfLevelUp;}
+    double getStorage() const {return storage;}
+    int getMaxLevel() const {return maxLevel;}
+    int getChanceOfBreaking() const {return chanceOfBreaking;}
 
+    int getCoordinateX() const {return coordinateX;}
+    int getCoordinateY() const {return coordinateY;}
+
+
+//    Setters
+    void setCost(double custo) {cost = custo;}
+    void setCostOfLevelUp(double custo) {costOfLevelUp = custo;}
+    void setMaxStorage(double storageLimit) {storage = storageLimit;}
+    void setMaxLevel(int levelCap) {maxLevel = levelCap;}
+    void setChanceOfBreaking(int chance) {chanceOfBreaking = chance;}
 };
 
 
