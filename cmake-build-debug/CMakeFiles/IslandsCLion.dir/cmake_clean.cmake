@@ -16,6 +16,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/IslandsCLion.dir/Pantano.cpp.o"
   "CMakeFiles/IslandsCLion.dir/Pastagem.cpp.o"
   "CMakeFiles/IslandsCLion.dir/Resources.cpp.o"
+  "CMakeFiles/IslandsCLion.dir/Workers.cpp.o"
   "CMakeFiles/IslandsCLion.dir/ZonaX.cpp.o"
   "CMakeFiles/IslandsCLion.dir/Zones.cpp.o"
   "CMakeFiles/IslandsCLion.dir/main.cpp.o"

@@ -537,6 +537,30 @@ Resources.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/IslandsCLion.dir/build.make CMakeFiles/IslandsCLion.dir/Resources.cpp.s
 .PHONY : Resources.cpp.s
 
+Workers.o: Workers.cpp.o
+.PHONY : Workers.o
+
+# target to build an object file
+Workers.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IslandsCLion.dir/build.make CMakeFiles/IslandsCLion.dir/Workers.cpp.o
+.PHONY : Workers.cpp.o
+
+Workers.i: Workers.cpp.i
+.PHONY : Workers.i
+
+# target to preprocess a source file
+Workers.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IslandsCLion.dir/build.make CMakeFiles/IslandsCLion.dir/Workers.cpp.i
+.PHONY : Workers.cpp.i
+
+Workers.s: Workers.cpp.s
+.PHONY : Workers.s
+
+# target to generate assembly for a file
+Workers.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IslandsCLion.dir/build.make CMakeFiles/IslandsCLion.dir/Workers.cpp.s
+.PHONY : Workers.cpp.s
+
 ZonaX.o: ZonaX.cpp.o
 .PHONY : ZonaX.o
 
@@ -669,6 +693,9 @@ help:
 	@echo "... Resources.o"
 	@echo "... Resources.i"
 	@echo "... Resources.s"
+	@echo "... Workers.o"
+	@echo "... Workers.i"
+	@echo "... Workers.s"
 	@echo "... ZonaX.o"
 	@echo "... ZonaX.i"
 	@echo "... ZonaX.s"

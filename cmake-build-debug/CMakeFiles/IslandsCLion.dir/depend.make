@@ -44,6 +44,7 @@ CMakeFiles/IslandsCLion.dir/Interface.cpp.o: \
  ../Pantano.h \
  ../Pastagem.h \
  ../Resources.h \
+ ../Workers.h \
  ../ZonaX.h \
  ../Zones.h
 CMakeFiles/IslandsCLion.dir/Island.cpp.o: \
@@ -65,29 +66,13 @@ CMakeFiles/IslandsCLion.dir/Island.cpp.o: \
  ../Pantano.h \
  ../Pastagem.h \
  ../Resources.h \
+ ../Workers.h \
  ../ZonaX.h \
  ../Zones.h
 CMakeFiles/IslandsCLion.dir/Lenhador.cpp.o: \
- ../Bateria.h \
- ../Buildings.h \
- ../CentralEletrica.h \
- ../Deserto.h \
- ../Floresta.h \
- ../Fundicao.h \
- ../Interface.h \
- ../Island.h \
  ../Lenhador.cpp \
  ../Lenhador.h \
- ../MinaCarvao.h \
- ../MinaFerro.h \
- ../Mineiro.h \
- ../Montanha.h \
- ../Operario.h \
- ../Pantano.h \
- ../Pastagem.h \
- ../Resources.h \
- ../ZonaX.h \
- ../Zones.h
+ ../Workers.h
 CMakeFiles/IslandsCLion.dir/MinaCarvao.cpp.o: \
  ../Buildings.h \
  ../MinaCarvao.cpp \
@@ -97,51 +82,17 @@ CMakeFiles/IslandsCLion.dir/MinaFerro.cpp.o: \
  ../MinaFerro.cpp \
  ../MinaFerro.h
 CMakeFiles/IslandsCLion.dir/Mineiro.cpp.o: \
- ../Bateria.h \
- ../Buildings.h \
- ../CentralEletrica.h \
- ../Deserto.h \
- ../Floresta.h \
- ../Fundicao.h \
- ../Interface.h \
- ../Island.h \
- ../Lenhador.h \
- ../MinaCarvao.h \
- ../MinaFerro.h \
  ../Mineiro.cpp \
  ../Mineiro.h \
- ../Montanha.h \
- ../Operario.h \
- ../Pantano.h \
- ../Pastagem.h \
- ../Resources.h \
- ../ZonaX.h \
- ../Zones.h
+ ../Workers.h
 CMakeFiles/IslandsCLion.dir/Montanha.cpp.o: \
  ../Montanha.cpp \
  ../Montanha.h \
  ../Zones.h
 CMakeFiles/IslandsCLion.dir/Operario.cpp.o: \
- ../Bateria.h \
- ../Buildings.h \
- ../CentralEletrica.h \
- ../Deserto.h \
- ../Floresta.h \
- ../Fundicao.h \
- ../Interface.h \
- ../Island.h \
- ../Lenhador.h \
- ../MinaCarvao.h \
- ../MinaFerro.h \
- ../Mineiro.h \
- ../Montanha.h \
  ../Operario.cpp \
  ../Operario.h \
- ../Pantano.h \
- ../Pastagem.h \
- ../Resources.h \
- ../ZonaX.h \
- ../Zones.h
+ ../Workers.h
 CMakeFiles/IslandsCLion.dir/Pantano.cpp.o: \
  ../Pantano.cpp \
  ../Pantano.h \
@@ -169,8 +120,12 @@ CMakeFiles/IslandsCLion.dir/Resources.cpp.o: \
  ../Pastagem.h \
  ../Resources.cpp \
  ../Resources.h \
+ ../Workers.h \
  ../ZonaX.h \
  ../Zones.h
+CMakeFiles/IslandsCLion.dir/Workers.cpp.o: \
+ ../Workers.cpp \
+ ../Workers.h
 CMakeFiles/IslandsCLion.dir/ZonaX.cpp.o: \
  ../ZonaX.cpp \
  ../ZonaX.h \
@@ -196,6 +151,7 @@ CMakeFiles/IslandsCLion.dir/main.cpp.o: \
  ../Pantano.h \
  ../Pastagem.h \
  ../Resources.h \
+ ../Workers.h \
  ../ZonaX.h \
  ../Zones.h \
  ../main.cpp

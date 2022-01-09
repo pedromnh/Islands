@@ -5,16 +5,22 @@
 #ifndef ISLANDSCLION_OPERARIO_H
 #define ISLANDSCLION_OPERARIO_H
 
-#include "Interface.h"
+#include "Workers.h"
 
-class Operario {
+class Operario : public Workers {
 private:
     std::string name;
+    std::string type = "operario";
 public:
-    Operario(int amountOfOperarios) {
-        name = "operario";
-        std::string amount = std::to_string(amountOfOperarios + 1);
+    Operario(int totalWorkerCount, int day) {
+        setType(type);
+        name = type;
+        std::string amount = std::to_string(getAmountOfOperarios() + 1);
         name.append(amount);
+        incrementOperarios();
+        setDayHired(day);
+        setId(totalWorkerCount);
+        moveWorker();
     }
 
     std::string getName() {

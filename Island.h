@@ -55,12 +55,6 @@ class Island {
     int numOfFun = 0;
 
 
-//    Workers
-    int numOfLenhadores = 0;
-    int numOfOperarios = 0;
-    int numOfMineiros = 0;
-
-
     vector<vector<string>> island;
 //    vector<Territorio> territorios;
     int recursos;
@@ -73,7 +67,7 @@ public:
 
     Island(bool loadedFile, int line, int col) {
         if (loadedFile == true) {
-            loading();
+            loading(0);
         } else {
             inicializeIsland();
             randomizeNaturalZones();
@@ -96,14 +90,14 @@ public:
     }
 
 
-    void loading();
+    void loading(int day);
 
     void morningEffects();
 
 
     void inicializeIsland();
 
-    void afternoonPhase();
+    void afternoonPhase(int day);
 
     void list();
 

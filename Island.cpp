@@ -7,6 +7,8 @@
 
 Zones zone;
 Buildings building;
+Workers worker;
+
 
 void Island::list() {
     for (int i = 0; i < lines; i++) {
@@ -15,10 +17,10 @@ void Island::list() {
         }
         cout << endl << endl << endl << endl;
     }
-    cout << "Total de trabalhadores: " << numOfLenhadores + numOfOperarios + numOfMineiros << endl <<
-    "Numero de lenhadores: " << numOfLenhadores << endl <<
-    "Numero de mineiros: " << numOfMineiros << endl <<
-    "Numero de operarios: " << numOfOperarios << endl;
+    cout << "Total de trabalhadores: " << worker.getTotalWorkerCount() << endl <<
+    "Numero de lenhadores: " << worker.getAmountOfLenhadores() << endl <<
+    "Numero de mineiros: " << worker.getAmountOfMineiros() << endl <<
+    "Numero de operarios: " << worker.getAmountOfOperarios() << endl;
 }
 
 
@@ -85,13 +87,13 @@ void Island::vende(string type, int amount) {
 
 void Island::cont(string type) {
     if (type.find("lenhador") != string::npos) {
-        numOfLenhadores++;
+        worker.incrementLenhadores();
         roundOver = true;
     } else if (type.find("operario") != string::npos) {
-        numOfOperarios++;
+        worker.incrementOperarios();
         roundOver = true;
     } else if (type.find("mineiro") != string::npos) {
-        numOfMineiros++;
+        worker.incrementMineiros();
         roundOver = true;
     }
 }
@@ -179,7 +181,7 @@ void Island::randomizeNaturalZones() {
     }
 }
 
-void Island::afternoonPhase() {
+void Island::afternoonPhase(int day) {
     string cmd, type;
     int line, col;
 
@@ -223,11 +225,14 @@ void Island::afternoonPhase() {
         } else if (cmd == "cont") {
             cin >> type;
             if (type == "lenhador") {
-                cont((new Lenhador(numOfLenhadores))->getName());
+                worker.trabalhadores.emplace_back(new Lenhador(worker.getTotalWorkerCount(), day));
+                cont(worker.trabalhadores.back()->getType());
             } else if (type == "mineiro") {
-                cont((new Mineiro(numOfMineiros))->getName());
+                worker.trabalhadores.emplace_back(new Mineiro(worker.getTotalWorkerCount(), day));
+                cont(worker.trabalhadores.back()->getType());
             } else if (type == "operario") {
-                cont((new Operario(numOfOperarios))->getName());
+                worker.trabalhadores.emplace_back(new Operario(worker.getTotalWorkerCount(), day));
+                cont(worker.trabalhadores.back()->getType());
             }
             roundOver = true;
         } else if (cmd == "list") {
@@ -261,7 +266,7 @@ void Island::changeRoundStatus() {
     }
 }
 
-void Island::loading() {
+void Island::loading(int day) {
     string linesAndCols, commands, cmd, type;
     ifstream configFile("Islands.txt");
     int amountOfWords;
@@ -321,11 +326,14 @@ void Island::loading() {
 //                cout << cmd << " + " << type;
                 if (cmd == "cont") {
                     if (type == "lenhador") {
-                        cont((new Lenhador(numOfLenhadores))->getName());
+                        worker.trabalhadores.emplace_back(new Lenhador(worker.getTotalWorkerCount(), day));
+                        cont(worker.trabalhadores.back()->getType());
                     } else if (type == "mineiro") {
-                        cont((new Mineiro(numOfMineiros))->getName());
+                        worker.trabalhadores.emplace_back(new Mineiro(worker.getTotalWorkerCount(), day));
+                        cont(worker.trabalhadores.back()->getType());
                     } else if (type == "operario") {
-                        cont((new Operario(numOfOperarios))->getName());
+                        worker.trabalhadores.emplace_back(new Operario(worker.getTotalWorkerCount(), day));
+                        cont(worker.trabalhadores.back()->getType());
                     }
                 }
             } else if (amountOfWords == 1) {

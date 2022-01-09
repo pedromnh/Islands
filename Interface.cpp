@@ -88,7 +88,7 @@ void Interface::mainGame() {
                 break;
             case 2: //Afternoon Phase
                 afternoonMessage();
-                island.afternoonPhase();
+                island.afternoonPhase(getDay());
                 setNight();
                 break;
             case 3: //Night Phase
