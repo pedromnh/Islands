@@ -15,6 +15,7 @@ public:
     Lenhador(int totalWorkerCount, int day) {
         setType(type);
         name = type;
+        setCostOfContract(20);
         std::string amount = std::to_string(getAmountOfLenhadores() + 1);
         name.append(amount);
         incrementLenhadores();

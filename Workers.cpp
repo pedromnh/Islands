@@ -49,10 +49,13 @@ int Workers::getAmountOfMineiros() const {
 }
 
 void Workers::moveWorker() {
+    int x, y;
     do {
         std::cout << "Choose coordinates to move \"" << getType() << ", "<< getWorkerId() << "\" to: ";
-        std::cin >> coordinateX >> coordinateY;
+        std::cin >> x >> y;
     } while (!isValidMoveLocation());
+    setCoordinateX(x);
+    setCoordinateY(y);
 }
 
 bool Workers::isValidMoveLocation() {
@@ -73,6 +76,14 @@ int Workers::getTotalWorkerCount() const {
 
 void Workers::setDayHired(int day) {
     dayHired = day;
+}
+
+int Workers::getCostOfContract() const {
+    return costOfContract;
+}
+
+void Workers::setCostOfContract(double custo) {
+    costOfContract = custo;
 }
 
 

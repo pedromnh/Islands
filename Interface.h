@@ -28,31 +28,18 @@ public:
 
     void mainGame();
 
-
     bool getLoadStatus();
-
     static void firstMessage();
-
     bool chooseLoadOrStart();
-
     void load();
-
     void morningMessage() const;
-
     void afternoonMessage() const;
-
     void nightMessage() const;
-
     int getCurrentPhase() const;
-
     void setMorning();
-
     void setAfternoon();
-
     void setNight();
-
     void endGame();
-
     int getDay();
 };
 

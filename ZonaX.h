@@ -10,8 +10,10 @@
 class ZonaX : public Zones {
 private:
     std::string name;
+    std::string type = "zonaX";
 public:
     ZonaX(int amountOfZnZ, int x, int y) {
+        setType(type);
         name = "znZ";
         std::string amount = std::to_string(amountOfZnZ + 1);
         name.append(amount);

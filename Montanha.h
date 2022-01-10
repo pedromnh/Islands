@@ -10,10 +10,10 @@
 class Montanha : public Zones {
 private:
     std::string name;
-    int x;
-    int y;
+    std::string type = "montanha";
 public:
     Montanha(int amountOfMnt, int x, int y) {
+        setType(type);
         name = "mnt";
         std::string amount = std::to_string(amountOfMnt + 1);
         name.append(amount);

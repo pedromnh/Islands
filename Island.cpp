@@ -8,6 +8,7 @@
 Zones zone;
 Buildings building;
 Workers worker;
+Resources resources;
 
 
 void Island::list() {
@@ -373,6 +374,49 @@ void Island::listNaturalZones() {
 
 void Island::updateNaturalZoneCount() {
     numOfNaturalZones = numOfMnt + numOfDsr + numOfPas + numOfFlr + numOfPnt+ numOfZnZ;
+}
+
+void Island::collectResources() {
+    collectNaturalResources();
+//    collectBuildingResources();
+}
+
+void Island::collectNaturalResources() {
+    int naturalX, naturalY, workerX, workerY;
+    for (int i = 0; i < zone.zonasNaturais.size(); ++i) {
+        if (zone.zonasNaturais.at(i)->getType() == "floresta") {
+            naturalY = zone.zonasNaturais.at(i)->getCoordinateX();
+            naturalX = zone.zonasNaturais.at(i)->getCoordinateY();
+
+
+            for (int j = 0; j < worker.trabalhadores.size(); ++j) {
+                if (worker.trabalhadores.at(j)->getType() == "lenhador") {
+                    workerX = worker.trabalhadores.at(j)->getCoordinateX();
+                    workerY = worker.trabalhadores.at(j)->getCoordinateY();
+                }
+                if (naturalX == workerX && naturalY == workerY) {
+//                    cout << "I currently have " << resources.getWood() << endl;
+                    resources.acquireWood(1, 1);
+//                    cout << "I'm rich! I now have " << resources.getWood() << " wood!" << endl;
+                }
+            }
+        }
+    }
+}
+
+void Island::collectBuildingResources() {
+    int naturalX, naturalY, buildingX, buildingY;
+    for (int i = 0; i < zone.zonasNaturais.size(); ++i) {
+        if (zone.zonasNaturais.at(i)->getType() == "deserto") {
+            naturalX = zone.zonasNaturais.at(i)->getCoordinateX();
+            naturalY = zone.zonasNaturais.at(i)->getCoordinateY();
+            if (building.edificios.at(i)->getType() == "deserto") {
+                naturalX = zone.zonasNaturais.at(i)->getCoordinateX();
+                naturalY = zone.zonasNaturais.at(i)->getCoordinateY();
+            }
+        }
+        cout << zone.zonasNaturais.at(i)->getName() << endl;
+    }
 }
 
 

@@ -10,6 +10,7 @@
 class Zones {
 private:
     std::string name;
+    std::string type;
     double productionMultiplier = 1;
 
     int coordinateX;
@@ -19,6 +20,7 @@ public:
 
 //    Getters
     virtual std::string getName() {return name;}
+    std::string getType();
     double getProductionMultipler();
 
     int getCoordinateX() const {return coordinateX;}
@@ -27,6 +29,7 @@ public:
 //    Setters
     int setCoordinateX(int x) {return coordinateX = x;}
     int setCoordinateY(int y) {return coordinateY = y;}
+    void setType(std::string tipo);
 };
 
 

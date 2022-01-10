@@ -15,6 +15,7 @@ public:
     Mineiro(int totalWorkerCount, int day) {
         setType(type);
         name = type;
+        setCostOfContract(10);
         std::string amount = std::to_string(getAmountOfMineiros() + 1);
         name.append(amount);
         incrementMineiros();

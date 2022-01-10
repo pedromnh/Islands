@@ -50,6 +50,7 @@ public:
     virtual int getCoordinateX() const {return coordinateX;}
     virtual int getCoordinateY() const {return coordinateY;}
     virtual std::string getType() const {return  type;}
+    int getCostOfContract() const;
 
 
 //    Setters
@@ -57,6 +58,7 @@ public:
     int setCoordinateY(int y) {return coordinateY = y;}
     void setType(std::string tipo);
     void setDayHired(int day);
+    void setCostOfContract(double custo);
 
     void moveWorker();
     virtual bool isValidMoveLocation();

@@ -12,6 +12,7 @@ private:
     std::string name;
     std::string status;
     std::string requirement;
+    std::string type;
 
     double cost;
     double costOfLevelUp;
@@ -28,6 +29,7 @@ public:
     virtual std::string getName() {return name;}
     virtual std::string getStatus() {return status;}
     virtual std::string getRequirement() {return requirement;}
+    virtual std::string getType() {return type;}
 
     double getCost() const {return cost;}
     double getCostOfLevelUp() const {return  costOfLevelUp;}
@@ -45,6 +47,7 @@ public:
     void setMaxStorage(double storageLimit) {storage = storageLimit;}
     void setMaxLevel(int levelCap) {maxLevel = levelCap;}
     void setChanceOfBreaking(int chance) {chanceOfBreaking = chance;}
+    void setType(std::string tipo) {type = tipo;}
 
     int setCoordinateX(int x) {return coordinateX = x;}
     int setCoordinateY(int y) {return coordinateY = y;}

@@ -10,8 +10,10 @@
 class Bateria :public Buildings {
 private:
     std::string name;
+    std::string type = "bateria";
 public:
     Bateria(int amountOfBat, int x, int y) {
+        setType(type);
         name = "bat";
         std::string amount = std::to_string(amountOfBat + 1);
         name.append(amount);

@@ -7,3 +7,11 @@
 double Zones::getProductionMultipler() {
     return productionMultiplier;
 }
+
+std::string Zones::getType() {
+    return type;
+}
+
+void Zones::setType(std::string tipo) {
+    type = tipo;
+}

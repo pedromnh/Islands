@@ -15,6 +15,7 @@ public:
     Operario(int totalWorkerCount, int day) {
         setType(type);
         name = type;
+        setCostOfContract(15);
         std::string amount = std::to_string(getAmountOfOperarios() + 1);
         name.append(amount);
         incrementOperarios();

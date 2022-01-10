@@ -128,6 +128,12 @@ public:
     void debed(string type, int line, int col);
 
     void debkill(int id);
+
+
+
+    void collectResources();
+    void collectNaturalResources();
+    void collectBuildingResources();
 };
 
 #endif //ISLANDSCLION_ISLAND_H

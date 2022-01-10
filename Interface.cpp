@@ -74,7 +74,6 @@ int Interface::getDay() {
 void Interface::mainGame() {
     srand(time(NULL));
     Island island(getLoadStatus(), island.getLine(), island.getCols());
-    Resources resources;
 
     firstMessage();
     setMorning();
@@ -93,7 +92,7 @@ void Interface::mainGame() {
                 break;
             case 3: //Night Phase
                 nightMessage();
-                resources.acquireWood(1, 1);
+                island.collectResources();
                 if (getDay() == 5)
                     endGame();
                 else
