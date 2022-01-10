@@ -30,6 +30,15 @@ public:
     int setCoordinateX(int x) {return coordinateX = x;}
     int setCoordinateY(int y) {return coordinateY = y;}
     void setType(std::string tipo);
+
+
+
+
+//    Forest Functions
+    int treeCount;
+    virtual int getTreeCount();
+    virtual int growTree(int day);
+//    virtual void killTree();
 };
 
 

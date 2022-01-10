@@ -110,8 +110,9 @@ void Island::save(string saveName) {
     cout << "[PLACEHOLDER]: save" << endl;
 }
 
-void Island::morningEffects() {
+void Island::morningEffects(int day) {
     cout << "[PLACEHOLDER]: Random zone events" << endl;
+    printTree(day);
 }
 
 void Island::randomizeNaturalZones() {
@@ -252,6 +253,8 @@ void Island::afternoonPhase(int day) {
             vende("Ferro", 3);
         } else if (cmd == "listNat") {
             listNaturalZones();
+        } else if (cmd == "printTree") {
+            printTree(day);
         } else {
                 cout << "Invalid command." << endl;
         }
@@ -416,6 +419,18 @@ void Island::collectBuildingResources() {
             }
         }
         cout << zone.zonasNaturais.at(i)->getName() << endl;
+    }
+}
+
+void Island::printTree(int day) {
+    for (int i = 0; i < zone.zonasNaturais.size(); ++i) {
+        if (zone.zonasNaturais.at(i)->getType() == "floresta") {
+            cout << zone.zonasNaturais.at(i)->getName() <<
+            " has " <<
+            zone.zonasNaturais.at(i)->getTreeCount() <<
+            " trees." << endl;
+            zone.zonasNaturais.at(i)->growTree(day);
+        }
     }
 }
 

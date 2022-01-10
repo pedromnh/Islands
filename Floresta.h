@@ -29,7 +29,7 @@ public:
 
     int getTreeCount();
     int generateRandomTrees();
-    void growTree(int day);
+    int growTree(int day);
     void killTree();
 };
 

@@ -82,7 +82,7 @@ void Interface::mainGame() {
             case 1: // Morning Phase
                 cout << endl << endl << endl << endl;
                 morningMessage();
-                island.morningEffects();
+                island.morningEffects(getDay());
                 setAfternoon();
                 break;
             case 2: //Afternoon Phase

@@ -15,3 +15,11 @@ std::string Zones::getType() {
 void Zones::setType(std::string tipo) {
     type = tipo;
 }
+
+int Zones::getTreeCount() {
+    return treeCount;
+}
+
+int Zones::growTree(int day) {
+    return treeCount;
+}

@@ -92,7 +92,7 @@ public:
 
     void loading(int day);
 
-    void morningEffects();
+    void morningEffects(int day);
 
 
     void inicializeIsland();
@@ -132,8 +132,9 @@ public:
 
 
     void collectResources();
-    void collectNaturalResources();
+    static void collectNaturalResources();
     void collectBuildingResources();
+    void printTree(int day);
 };
 
 #endif //ISLANDSCLION_ISLAND_H

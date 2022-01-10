@@ -24,6 +24,10 @@ Buildings.h
 Zones.h
 /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Zones.h
 
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Floresta.cpp
+Floresta.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Floresta.h
+
 /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Floresta.h
 Zones.h
 /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Zones.h
@@ -31,6 +35,10 @@ Zones.h
 /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Fundicao.h
 Bateria.h
 /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Bateria.h
+
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Interface.cpp
+Interface.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Interface.h
 
 /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Interface.h
 Island.h
@@ -132,6 +140,10 @@ Zones.h
 Zones.h
 /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Zones.h
 
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Resources.cpp
+Resources.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Resources.h
+
 /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Resources.h
 Island.h
 /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Island.h
@@ -151,4 +163,8 @@ iostream
 -
 vector
 -
+
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/main.cpp
+Interface.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Interface.h
 
