@@ -119,6 +119,10 @@ public:
     static void collectNaturalResources();
     void collectBuildingResources();
     void printTree(int day);
+    static void printAtCoordinates(int x, int y);
+    static void printZoneAtCoordinates(int x, int y);
+    static void printBuildingAtCoordinates(int x, int y);
+    static void printWorkersAtCoordinates(int x, int y);
 };
 
 #endif //ISLANDSCLION_ISLAND_H

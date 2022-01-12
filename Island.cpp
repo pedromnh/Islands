@@ -253,6 +253,9 @@ void Island::afternoonPhase(int day) {
             listBuildings();
         } else if (cmd == "listWorkers") {
             listWorkers();
+        } else if (cmd == "printAtCoordinates") {
+            cin >> line >> col;
+            printAtCoordinates(line, col);
         } else {
                 cout << "Invalid command." << endl;
         }
@@ -454,6 +457,49 @@ void Island::listWorkers() {
              << " ; y="
              << trabalhador->getCoordinateY() << endl;
     }
+}
+
+void Island::printZoneAtCoordinates(int x, int y) {
+    for (auto & zonasNatural : zone.zonasNaturais) {
+        if (zonasNatural->getCoordinateX() == x && zonasNatural->getCoordinateY() == y) {
+            cout << zonasNatural->getName() << endl;
+        }
+    }
+}
+
+void Island::printBuildingAtCoordinates(int x, int y) {
+    int numOfBuildings = 0;
+    for (auto & edificio : building.edificios) {
+        if (edificio->getCoordinateX() == x && edificio->getCoordinateY() == y) {
+            cout << edificio->getName() << endl;
+            numOfBuildings++;
+        }
+    }
+    if (numOfBuildings == 0) {
+        cout << "There are no buildings built at that position." << endl;
+    }
+}
+
+void Island::printWorkersAtCoordinates(int x, int y) {
+    int numOfWorkers = 0;
+    for (auto & trabalhador : worker.trabalhadores) {
+        if (trabalhador->getCoordinateX() == x && trabalhador->getCoordinateY() == y) {
+            cout << trabalhador->getType() << ", "<< trabalhador->getWorkerId() << endl;
+            numOfWorkers++;
+        }
+    }
+    if (numOfWorkers == 0) {
+        cout << "There are no workers at that position." << endl;
+    }
+}
+
+void Island::printAtCoordinates(int x, int y) {
+    cout << "Printing zones..." << endl;
+    printZoneAtCoordinates(x, y);
+    cout <<  endl << "Printing buildings..." << endl;
+    printBuildingAtCoordinates(x, y);
+    cout << endl << "Printing workers..." << endl;
+    printWorkersAtCoordinates(x, y);
 }
 
 
