@@ -5,7 +5,7 @@
 #include "Floresta.h"
 
 int Floresta::generateRandomTrees() {
-    amountOfTrees = rand() % 40 + 20;
+    amountOfTrees = rand() % 21 + 20;
     return amountOfTrees;
 }
 

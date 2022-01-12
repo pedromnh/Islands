@@ -37,23 +37,6 @@ class Island {
     int cols = rand()%(16-3 + 1) + 3;
     bool roundOver = false;
 
-//    Natural Zones
-    int numOfNaturalZones = 0;
-    int numOfMnt = 0;
-    int numOfDsr = 0;
-    int numOfPas = 0;
-    int numOfFlr = 0;
-    int numOfPnt = 0;
-    int numOfZnZ = 0;
-
-
-//    Buildings
-    int numOfMnF = 0;
-    int numOfMnC = 0;
-    int numOfElec = 0;
-    int numOfBat = 0;
-    int numOfFun = 0;
-
 
     vector<vector<string>> island;
 //    vector<Territorio> territorios;
@@ -78,8 +61,9 @@ public:
 
 
     void randomizeNaturalZones();
-    void updateNaturalZoneCount();
-    void listNaturalZones();
+    static void listNaturalZones();
+    static void listBuildings();
+    static void listWorkers();
 
     int getLine(){
         return lines;

@@ -93,7 +93,7 @@ void Interface::mainGame() {
             case 3: //Night Phase
                 nightMessage();
                 island.collectResources();
-                if (getDay() == 5)
+                if (getDay() == 15)
                     endGame();
                 else
                     setMorning();

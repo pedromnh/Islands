@@ -23,3 +23,51 @@ int Zones::getTreeCount() {
 int Zones::growTree(int day) {
     return treeCount;
 }
+
+void Zones::incrementMnt() {
+    numOfMnt++;
+}
+
+void Zones::incrementDsr() {
+    numOfDsr++;
+}
+
+void Zones::incrementPas() {
+    numOfPas++;
+}
+
+void Zones::incrementFlr() {
+    numOfFlr++;
+}
+
+void Zones::incrementPnt() {
+    numOfPnt++;
+}
+
+void Zones::incrementZnZ() {
+    numOfZnZ++;
+}
+
+int Zones::getAmountOfMnt() const {
+    return numOfMnt;
+}
+
+int Zones::getAmountOfDsr() const {
+    return numOfDsr;
+}
+
+int Zones::getAmountOfPas() const {
+    return numOfPas;
+}
+
+int Zones::getAmountOfFlr() const {
+    return numOfFlr;
+}
+
+int Zones::getAmountOfPnt() const {
+    return numOfPnt;
+}
+
+int Zones::getAmountOfZnZ() const {
+    return numOfZnZ;
+}

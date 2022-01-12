@@ -20,16 +20,45 @@ private:
     int maxLevel;
     int chanceOfBreaking;
 
+    int numOfMnF = 0;
+    int numOfMnC = 0;
+    int numOfElec = 0;
+    int numOfBat = 0;
+    int numOfFun = 0;
+
     int coordinateX;
     int coordinateY;
 public:
     std::vector<Buildings*> edificios;
+
+//    Incrementers
+    void incrementMnF();
+    void incrementMnC();
+    void incrementElec();
+    void incrementBat();
+    void incrementFun();
+
+//    Decrementers
+    void decrementMnF();
+    void decrementMnC();
+    void decrementElec();
+    void decrementBat();
+    void decrementFun();
+
+
 
 //    Getters
     virtual std::string getName() {return name;}
     virtual std::string getStatus() {return status;}
     virtual std::string getRequirement() {return requirement;}
     virtual std::string getType() {return type;}
+
+    int getTotalBuildingCount() const;
+    int getAmountOfMnF() const;
+    int getAmountOfMnC() const;
+    int getAmountOfElec() const;
+    int getAmountOfBat() const;
+    int getAmountOfFun() const;
 
     double getCost() const {return cost;}
     double getCostOfLevelUp() const {return  costOfLevelUp;}
