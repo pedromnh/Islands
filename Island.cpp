@@ -499,6 +499,21 @@ void Island::collectBuildingResources() {
                     resources.acquireBarra(1, 1);
                 }
             }
+        } else if (building.edificios.at(i)->getType() == "centralEletrica") {
+            buildingX = building.edificios.at(i)->getCoordinateX();
+            buildingY = building.edificios.at(i)->getCoordinateY();
+            status = building.edificios.at(i)->getStatus();
+
+
+            for (int j = 0; j < worker.trabalhadores.size(); ++j) {
+                if (worker.trabalhadores.at(j)->getType() == "operario") {
+                    workerX = worker.trabalhadores.at(j)->getCoordinateX();
+                    workerY = worker.trabalhadores.at(j)->getCoordinateY();
+                }
+                if (buildingX == workerX && buildingY == workerY && status == "Enabled") {
+                    resources.acquireEletricidade(1, 1);
+                }
+            }
         }
     }
 }
@@ -723,7 +738,7 @@ void Island::updateBuildingStatuses() {
 
                 if (buildingX == workerX && buildingY == workerY && status == "Disabled" && userStatus == "Enabled") {
                     building.edificios.at(i)->setStatus("Enabled");
-                } else {
+                } else if (userStatus == "Disabled"){
                     building.edificios.at(i)->setStatus("Disabled");
                 }
             }
