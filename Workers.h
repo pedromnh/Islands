@@ -50,7 +50,7 @@ public:
     virtual int getCoordinateX() const {return coordinateX;}
     virtual int getCoordinateY() const {return coordinateY;}
     virtual std::string getType() const {return  type;}
-    int getCostOfContract() const;
+    double getCostOfContract() const;
 
 
 //    Setters

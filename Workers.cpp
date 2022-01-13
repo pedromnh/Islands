@@ -78,7 +78,7 @@ void Workers::setDayHired(int day) {
     dayHired = day;
 }
 
-int Workers::getCostOfContract() const {
+double Workers::getCostOfContract() const {
     return costOfContract;
 }
 

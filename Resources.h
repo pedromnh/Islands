@@ -5,6 +5,7 @@
 #ifndef ISLANDSCLION_RESOURCES_H
 #define ISLANDSCLION_RESOURCES_H
 #include "Island.h"
+#include <iomanip>
 
 class Resources {
 private:
@@ -18,13 +19,13 @@ private:
 
 public:
     Resources() {
-        money = 0.0;
-        madeira = 0.0;
-        ferro = 0.0;
-        barra = 0.0;
-        carvao = 0.0;
-        vigas = 0.0;
-        eletricidade = 0.0;
+        money = 20.0;
+        madeira = 5.0;
+        ferro = 10.0;
+        barra = 20.0;
+        carvao = 30.0;
+        vigas = 40.0;
+        eletricidade = 50.0;
     }
 
     double getWood();
@@ -37,6 +38,7 @@ public:
     void acquireVigas(double acquiredResource, double naturalMultiplier);
     void acquireEletricidade(double acquiredResource, double naturalMultiplier);
 
+    void chooseResourceToSell(std::string type, int amount);
     void sellWood();
     void sellIron();
     void sellCoal();
@@ -44,7 +46,8 @@ public:
     void sellViga();
     void sellEletricidade();
 
-    void updateResources();
+    double getMoney();
+
 
     void listResources();
 };

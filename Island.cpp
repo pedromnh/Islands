@@ -112,7 +112,9 @@ void Island::save(string saveName) {
 
 void Island::morningEffects(int day) {
     cout << "[PLACEHOLDER]: Random zone events" << endl;
-    printTree(day);
+    if (day % 2 == 0) {
+        printTree(day);
+    }
 }
 
 void Island::randomizeNaturalZones() {
@@ -179,7 +181,7 @@ void Island::randomizeNaturalZones() {
 
 void Island::afternoonPhase(int day) {
     string cmd, type;
-    int line, col;
+    int line, col, amount;
 
     do {
         roundOver = false;
@@ -256,6 +258,14 @@ void Island::afternoonPhase(int day) {
         } else if (cmd == "printAtCoordinates") {
             cin >> line >> col;
             printAtCoordinates(line, col);
+        } else if (cmd == "listResources") {
+            resources.listResources();
+        } else if (cmd == "sell") {
+            cin >> type >> amount;
+            resources.chooseResourceToSell(type, amount);
+        } else if (cmd == "skip") {
+            cout << "Skipping turn..." << endl;
+            roundOver = true;
         } else {
                 cout << "Invalid command." << endl;
         }
@@ -389,8 +399,8 @@ void Island::collectNaturalResources() {
     int naturalX, naturalY, workerX, workerY;
     for (int i = 0; i < zone.zonasNaturais.size(); ++i) {
         if (zone.zonasNaturais.at(i)->getType() == "floresta") {
-            naturalY = zone.zonasNaturais.at(i)->getCoordinateX();
-            naturalX = zone.zonasNaturais.at(i)->getCoordinateY();
+            naturalX = zone.zonasNaturais.at(i)->getCoordinateX();
+            naturalY = zone.zonasNaturais.at(i)->getCoordinateY();
 
 
             for (int j = 0; j < worker.trabalhadores.size(); ++j) {
@@ -399,9 +409,7 @@ void Island::collectNaturalResources() {
                     workerY = worker.trabalhadores.at(j)->getCoordinateY();
                 }
                 if (naturalX == workerX && naturalY == workerY) {
-//                    cout << "I currently have " << resources.getWood() << endl;
                     resources.acquireWood(1, 1);
-//                    cout << "I'm rich! I now have " << resources.getWood() << " wood!" << endl;
                 }
             }
         }
@@ -447,7 +455,11 @@ void Island::listBuildings() {
 }
 
 void Island::listWorkers() {
-    cout << "There are " << worker.trabalhadores.size() << " workers." << endl;
+    if (worker.trabalhadores.size() == 1) {
+        cout << "There is " << worker.trabalhadores.size() << " worker." << endl;
+    } else {
+        cout << "There are " << worker.trabalhadores.size() << " workers." << endl;
+    }
     for (auto & trabalhador : worker.trabalhadores) {
         cout << trabalhador->getType()
              << ", "
