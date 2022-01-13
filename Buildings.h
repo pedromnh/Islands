@@ -11,6 +11,7 @@ class Buildings {
 private:
     std::string name;
     std::string status; //Enabled, Disabled, Destroyed
+    std::string userStatus = "Enabled";
     std::string requirement;
     std::string type;
 
@@ -50,6 +51,7 @@ public:
 //    Getters
     virtual std::string getName() {return name;}
     virtual std::string getStatus() {return status;}
+    virtual std::string getUserStatus() {return userStatus;}
     virtual std::string getRequirement() {return requirement;}
     virtual std::string getType() {return type;}
 
@@ -81,6 +83,10 @@ public:
 
     int setCoordinateX(int x) {return coordinateX = x;}
     int setCoordinateY(int y) {return coordinateY = y;}
+
+
+    void disableUserStatus() {userStatus = "Disabled";}
+    void enableUserStatus() {userStatus = "Enabled";}
 };
 
 

@@ -113,7 +113,7 @@ void Island::save(string saveName) {
 void Island::morningEffects(int day) {
     cout << "[PLACEHOLDER]: Random zone events" << endl;
     if (day % 2 == 0) {
-        printTree(day);
+//        printTree(day);
     }
 }
 
@@ -190,35 +190,51 @@ void Island::afternoonPhase(int day) {
         if (cmd == "cons") {
             cin >> type >> line >> col;
             if (type == "mnF") {
-                building.edificios.emplace_back(new MinaFerro(building.getAmountOfMnF(), line, col));
-                cons(building.edificios.back()->getName(),
-                     building.edificios.back()->getCoordinateY(),
-                     building.edificios.back()->getCoordinateX()
-                     );
+                if (resources.getVigas() >= 10) {
+                    building.edificios.emplace_back(new MinaFerro(building.getAmountOfMnF(), line, col));
+                    cons(building.edificios.back()->getName(),
+                         building.edificios.back()->getCoordinateY(),
+                         building.edificios.back()->getCoordinateX()
+                    );
+                    resources.setVigas(resources.getVigas() - 10);
+                }
             } else if (type == "mnC") {
-                building.edificios.emplace_back(new MinaCarvao(building.getAmountOfMnC(), line, col));
-                cons(building.edificios.back()->getName(),
-                     building.edificios.back()->getCoordinateY(),
-                     building.edificios.back()->getCoordinateX()
-                     );
+                if (resources.getVigas() >= 10) {
+                    building.edificios.emplace_back(new MinaCarvao(building.getAmountOfMnC(), line, col));
+                    cons(building.edificios.back()->getName(),
+                         building.edificios.back()->getCoordinateY(),
+                         building.edificios.back()->getCoordinateX()
+                    );
+                    resources.setVigas(resources.getVigas() - 10);
+                }
             } else if (type == "elec") {
-                building.edificios.emplace_back(new CentralEletrica(building.getAmountOfElec(), line, col));
-                cons(building.edificios.back()->getName(),
-                     building.edificios.back()->getCoordinateY(),
-                     building.edificios.back()->getCoordinateX()
-                );
+                if (resources.getMoney() >= 15) {
+                    building.edificios.emplace_back(new CentralEletrica(building.getAmountOfElec(), line, col));
+                    cons(building.edificios.back()->getName(),
+                         building.edificios.back()->getCoordinateY(),
+                         building.edificios.back()->getCoordinateX()
+                    );
+                    resources.setMoney(resources.getMoney() - 15);
+                }
             } else if (type == "bat") {
-                building.edificios.emplace_back(new Bateria(building.getAmountOfBat(), line, col));
-                cons(building.edificios.back()->getName(),
-                     building.edificios.back()->getCoordinateY(),
-                     building.edificios.back()->getCoordinateX()
-                );
+                if (resources.getMoney() >= 10 && resources.getVigas() >= 10) {
+                    building.edificios.emplace_back(new Bateria(building.getAmountOfBat(), line, col));
+                    cons(building.edificios.back()->getName(),
+                         building.edificios.back()->getCoordinateY(),
+                         building.edificios.back()->getCoordinateX()
+                    );
+                    resources.setMoney(resources.getMoney() - 10);
+                    resources.setVigas(resources.getVigas() - 10);
+                }
             } else if (type == "fun") {
-                building.edificios.emplace_back(new Fundicao(building.getAmountOfFun(), line, col));
-                cons(building.edificios.back()->getName(),
-                     building.edificios.back()->getCoordinateY(),
-                     building.edificios.back()->getCoordinateX()
-                );
+                if (resources.getMoney() >= 10) {
+                    building.edificios.emplace_back(new Fundicao(building.getAmountOfFun(), line, col));
+                    cons(building.edificios.back()->getName(),
+                         building.edificios.back()->getCoordinateY(),
+                         building.edificios.back()->getCoordinateX()
+                    );
+                    resources.setMoney(resources.getMoney() - 10);
+                }
             }
         } else if (cmd == "cont") {
             cin >> type;
@@ -227,21 +243,23 @@ void Island::afternoonPhase(int day) {
                     worker.trabalhadores.emplace_back(new Lenhador(worker.getTotalWorkerCount(), day));
                     cont(worker.trabalhadores.back()->getType());
                     resources.setMoney(resources.getMoney() - 20);
+                    roundOver = true;
                 }
             } else if (type == "mineiro") {
                 if (resources.getMoney() >= 10) {
                     worker.trabalhadores.emplace_back(new Mineiro(worker.getTotalWorkerCount(), day));
                     cont(worker.trabalhadores.back()->getType());
                     resources.setMoney(resources.getMoney() - 10);
+                    roundOver = true;
                 }
             } else if (type == "operario") {
                 if (resources.getMoney() >= 15) {
                     worker.trabalhadores.emplace_back(new Operario(worker.getTotalWorkerCount(), day));
                     cont(worker.trabalhadores.back()->getType());
                     resources.setMoney(resources.getMoney() - 15);
+                    roundOver = true;
                 }
             }
-            roundOver = true;
         } else if (cmd == "list") {
             list();
         } else if (cmd == "liga") {
@@ -434,10 +452,12 @@ void Island::collectNaturalResources() {
 
 void Island::collectBuildingResources() {
     int workerX, workerY, buildingX, buildingY;
+    string status;
     for (int i = 0; i < building.edificios.size(); ++i) {
         if (building.edificios.at(i)->getType() == "minaCarvao") {
             buildingX = building.edificios.at(i)->getCoordinateX();
             buildingY = building.edificios.at(i)->getCoordinateY();
+            status = building.edificios.at(i)->getStatus();
 
 
             for (int j = 0; j < worker.trabalhadores.size(); ++j) {
@@ -445,13 +465,14 @@ void Island::collectBuildingResources() {
                     workerX = worker.trabalhadores.at(j)->getCoordinateX();
                     workerY = worker.trabalhadores.at(j)->getCoordinateY();
                 }
-                if (buildingX == workerX && buildingY == workerY) {
+                if (buildingX == workerX && buildingY == workerY && status == "Enabled") {
                     resources.acquireCoal(1, 1);
                 }
             }
         } else if (building.edificios.at(i)->getType() == "minaFerro") {
             buildingX = building.edificios.at(i)->getCoordinateX();
             buildingY = building.edificios.at(i)->getCoordinateY();
+            status = building.edificios.at(i)->getStatus();
 
 
             for (int j = 0; j < worker.trabalhadores.size(); ++j) {
@@ -459,13 +480,14 @@ void Island::collectBuildingResources() {
                     workerX = worker.trabalhadores.at(j)->getCoordinateX();
                     workerY = worker.trabalhadores.at(j)->getCoordinateY();
                 }
-                if (buildingX == workerX && buildingY == workerY) {
+                if (buildingX == workerX && buildingY == workerY && status == "Enabled") {
                     resources.acquireIron(1, 1);
                 }
             }
         } else if (building.edificios.at(i)->getType() == "fundicao") {
             buildingX = building.edificios.at(i)->getCoordinateX();
             buildingY = building.edificios.at(i)->getCoordinateY();
+            status = building.edificios.at(i)->getStatus();
 
 
             for (int j = 0; j < worker.trabalhadores.size(); ++j) {
@@ -473,8 +495,8 @@ void Island::collectBuildingResources() {
                     workerX = worker.trabalhadores.at(j)->getCoordinateX();
                     workerY = worker.trabalhadores.at(j)->getCoordinateY();
                 }
-                if (buildingX == workerX && buildingY == workerY) {
-                    resources.acquireIron(1, 1);
+                if (buildingX == workerX && buildingY == workerY && status == "Enabled") {
+                    resources.acquireBarra(1, 1);
                 }
             }
         }
@@ -534,7 +556,7 @@ void Island::printBuildingAtCoordinates(int x, int y) {
     int numOfBuildings = 0;
     for (auto & edificio : building.edificios) {
         if (edificio->getCoordinateX() == x && edificio->getCoordinateY() == y) {
-            cout << edificio->getName() << endl;
+            cout << edificio->getName() << " -> " << edificio->getStatus() << endl;
             numOfBuildings++;
         }
     }
@@ -593,6 +615,8 @@ void Island::disableBuildingAtCoordinates(int x, int y) {
                 cout << "That building is already disabled." << endl;
             } else {
                 edificio->setStatus("Disabled");
+                edificio->disableUserStatus();
+                cout << "Disabled the building" << endl;
             }
             numOfBuildings++;
         }
@@ -610,12 +634,100 @@ void Island::enableBuildingAtCoordinates(int x, int y) {
                 cout << "That building is already enabled." << endl;
             } else {
                 edificio->setStatus("Enabled");
+                edificio->enableUserStatus();
+                cout << "Enabled the building" << endl;
             }
             numOfBuildings++;
         }
     }
     if (numOfBuildings == 0) {
         cout << "There are no buildings built at that position." << endl;
+    }
+}
+
+void Island::updateBuildingStatuses() {
+    int buildingX, buildingY, workerX, workerY;
+    string status, userStatus;
+    for (int i = 0; i < building.edificios.size(); ++i) {
+        if (building.edificios.at(i)->getType() == "minaCarvao") {
+            buildingX = building.edificios.at(i)->getCoordinateX();
+            buildingY = building.edificios.at(i)->getCoordinateY();
+            status = building.edificios.at(i)->getStatus();
+            userStatus = building.edificios.at(i)->getUserStatus();
+
+            for (int j = 0; j < worker.trabalhadores.size(); ++j) {
+                if (worker.trabalhadores.at(j)->getType() == "mineiro") {
+                    workerX = worker.trabalhadores.at(j)->getCoordinateX();
+                    workerY = worker.trabalhadores.at(j)->getCoordinateY();
+                }
+
+                if (buildingX == workerX && buildingY == workerY && status == "Disabled" && userStatus == "Enabled") {
+                    building.edificios.at(i)->setStatus("Enabled");
+                } else if (userStatus == "Disabled"){
+                    building.edificios.at(i)->setStatus("Disabled");
+                }
+            }
+        }
+
+        else if (building.edificios.at(i)->getType() == "minaFerro") {
+            buildingX = building.edificios.at(i)->getCoordinateX();
+            buildingY = building.edificios.at(i)->getCoordinateY();
+            status = building.edificios.at(i)->getStatus();
+            userStatus = building.edificios.at(i)->getUserStatus();
+
+            for (int j = 0; j < worker.trabalhadores.size(); ++j) {
+                if (worker.trabalhadores.at(j)->getType() == "mineiro") {
+                    workerX = worker.trabalhadores.at(j)->getCoordinateX();
+                    workerY = worker.trabalhadores.at(j)->getCoordinateY();
+                }
+
+                if (buildingX == workerX && buildingY == workerY && status == "Disabled" && userStatus == "Enabled") {
+                    building.edificios.at(i)->setStatus("Enabled");
+                } else if (userStatus == "Disabled"){
+                    building.edificios.at(i)->setStatus("Disabled");
+                }
+            }
+        }
+
+        else if (building.edificios.at(i)->getType() == "fundicao") {
+            buildingX = building.edificios.at(i)->getCoordinateX();
+            buildingY = building.edificios.at(i)->getCoordinateY();
+            status = building.edificios.at(i)->getStatus();
+            userStatus = building.edificios.at(i)->getUserStatus();
+
+            for (int j = 0; j < worker.trabalhadores.size(); ++j) {
+                if (worker.trabalhadores.at(j)->getType() == "operario") {
+                    workerX = worker.trabalhadores.at(j)->getCoordinateX();
+                    workerY = worker.trabalhadores.at(j)->getCoordinateY();
+                }
+
+                if (buildingX == workerX && buildingY == workerY && status == "Disabled" && userStatus == "Enabled") {
+                    building.edificios.at(i)->setStatus("Enabled");
+                } else if (userStatus == "Disabled"){
+                    building.edificios.at(i)->setStatus("Disabled");
+                }
+            }
+        }
+
+        else if (building.edificios.at(i)->getType() == "centralEletrica") {
+            buildingX = building.edificios.at(i)->getCoordinateX();
+            buildingY = building.edificios.at(i)->getCoordinateY();
+            status = building.edificios.at(i)->getStatus();
+            userStatus = building.edificios.at(i)->getUserStatus();
+
+            for (int j = 0; j < worker.trabalhadores.size(); ++j) {
+                if (worker.trabalhadores.at(j)->getType() == "operario") {
+                    workerX = worker.trabalhadores.at(j)->getCoordinateX();
+                    workerY = worker.trabalhadores.at(j)->getCoordinateY();
+                }
+
+                if (buildingX == workerX && buildingY == workerY && status == "Disabled" && userStatus == "Enabled") {
+                    building.edificios.at(i)->setStatus("Enabled");
+                } else {
+                    building.edificios.at(i)->setStatus("Disabled");
+                }
+            }
+        }
     }
 }
 

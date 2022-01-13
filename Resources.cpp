@@ -13,7 +13,11 @@ void Resources::acquireIron(double acquiredResource, double naturalMultiplier) {
 }
 
 void Resources::acquireBarra(double acquiredResource, double naturalMultiplier) {
-    barra += acquiredResource * naturalMultiplier;
+    if (ferro >= 1.5 && carvao >= 0.5) {
+        barra += acquiredResource * naturalMultiplier;
+        ferro -= 1.5;
+        carvao -= 0.5;
+    }
 }
 
 void Resources::acquireCoal(double acquiredResource, double naturalMultiplier) {
@@ -29,7 +33,7 @@ void Resources::acquireEletricidade(double acquiredResource, double naturalMulti
 }
 
 void Resources::listResources() {
-    cout << fixed << setprecision(2) << "Dinheiro: " << money << "€" << endl << setprecision(0) <<
+    cout << fixed << setprecision(2) << "Dinheiro: " << money << "€" << endl << setprecision(1) <<
     "---------------------" << endl <<
     "Madeira: " << madeira << endl <<
     "Ferro: " << ferro << endl <<
@@ -126,4 +130,12 @@ void Resources::buyViga() {
         vigas++;
         money-=10;
     }
+}
+
+double Resources::getVigas() {
+    return vigas;
+}
+
+void Resources::setVigas(double viga) {
+    vigas = viga;
 }

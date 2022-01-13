@@ -126,6 +126,7 @@ public:
     static void printHelp();
     void disableBuildingAtCoordinates(int x, int y);
     void enableBuildingAtCoordinates(int x, int y);
+    void updateBuildingStatuses();
 };
 
 #endif //ISLANDSCLION_ISLAND_H

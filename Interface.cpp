@@ -95,6 +95,7 @@ void Interface::mainGame() {
             case 3: //Night Phase
                 nightMessage();
                 island.collectResources();
+                island.updateBuildingStatuses();
                 if (getDay() == 15)
                     endGame();
                 else

@@ -19,7 +19,7 @@ private:
 
 public:
     Resources() {
-        money = 20.0;
+        money = 500000.0;
         madeira = 5.0;
         ferro = 10.0;
         barra = 20.0;
@@ -29,6 +29,7 @@ public:
     }
 
     double getWood();
+    double getVigas();
 
 
     void acquireWood(double acquiredResource, double naturalMultiplier);
@@ -52,6 +53,7 @@ public:
 
     double getMoney();
     void setMoney(double euro);
+    void setVigas(double viga);
 
 
     void listResources();
