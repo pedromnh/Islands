@@ -10,8 +10,10 @@
 class Pantano : public Zones {
 private:
     std::string name;
+    std::string type = "pantano";
 public:
     Pantano(int amountOfPnt, int x, int y) {
+        setType(type);
         name = "pnt";
         std::string amount = std::to_string(amountOfPnt + 1);
         name.append(amount);

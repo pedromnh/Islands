@@ -6,6 +6,10 @@
 #include "Island.h"
 
 Zones zone;
+Buildings building;
+Workers worker;
+Resources resources;
+
 
 void Island::list() {
     for (int i = 0; i < lines; i++) {
@@ -14,10 +18,10 @@ void Island::list() {
         }
         cout << endl << endl << endl << endl;
     }
-    cout << "Total de trabalhadores: " << numOfLenhadores + numOfOperarios + numOfMineiros << endl <<
-    "Numero de lenhadores: " << numOfLenhadores << endl <<
-    "Numero de mineiros: " << numOfMineiros << endl <<
-    "Numero de operarios: " << numOfOperarios << endl;
+    cout << "Total de trabalhadores: " << worker.getTotalWorkerCount() << endl <<
+    "Numero de lenhadores: " << worker.getAmountOfLenhadores() << endl <<
+    "Numero de mineiros: " << worker.getAmountOfMineiros() << endl <<
+    "Numero de operarios: " << worker.getAmountOfOperarios() << endl;
 }
 
 
@@ -31,24 +35,28 @@ void Island::inicializeIsland(){
 
 
 void Island::cons(string type, int line, int col){
-    if (island.at(line - 1).at(col - 1).find("mnF") != string::npos || island.at(line - 1).at(col - 1).find("mnC") != string::npos || island.at(line - 1).at(col - 1).find("elec") != string::npos || island.at(line - 1).at(col - 1).find("bat") != string::npos || island.at(line - 1).at(col - 1).find("fun") != string::npos) {
+    if (island.at(line - 1).at(col - 1).find("mnF") != string::npos
+    || island.at(line - 1).at(col - 1).find("mnC") != string::npos
+    || island.at(line - 1).at(col - 1).find("elec") != string::npos
+    || island.at(line - 1).at(col - 1).find("bat") != string::npos
+    || island.at(line - 1).at(col - 1).find("fun") != string::npos) {
         cout << "Can't overwrite in that position." << endl;
     } else {
         island.at(line - 1).at(col - 1) = type;
         if (type.find("mnF") != string::npos) {
-            numOfMnF++;
+            building.incrementMnF();
             roundOver = true;
         } else if (type.find("mnC") != string::npos) {
-            numOfMnC++;
+            building.incrementMnC();
             roundOver = true;
         } else if (type.find("elec") != string::npos) {
-            numOfElec++;
+            building.incrementElec();
             roundOver = true;
         } else if (type.find("bat") != string::npos) {
-            numOfBat++;
+            building.incrementBat();
             roundOver = true;
         } else if (type.find("fun") != string::npos) {
-            numOfFun++;
+            building.incrementFun();
             roundOver = true;
         }
     }
@@ -80,13 +88,13 @@ void Island::vende(string type, int amount) {
 
 void Island::cont(string type) {
     if (type.find("lenhador") != string::npos) {
-        numOfLenhadores++;
+        worker.incrementLenhadores();
         roundOver = true;
     } else if (type.find("operario") != string::npos) {
-        numOfOperarios++;
+        worker.incrementOperarios();
         roundOver = true;
     } else if (type.find("mineiro") != string::npos) {
-        numOfMineiros++;
+        worker.incrementMineiros();
         roundOver = true;
     }
 }
@@ -102,8 +110,11 @@ void Island::save(string saveName) {
     cout << "[PLACEHOLDER]: save" << endl;
 }
 
-void Island::morningEffects() {
+void Island::morningEffects(int day) {
     cout << "[PLACEHOLDER]: Random zone events" << endl;
+    if (day % 2 == 0) {
+        printTree(day);
+    }
 }
 
 void Island::randomizeNaturalZones() {
@@ -113,58 +124,52 @@ void Island::randomizeNaturalZones() {
             randomizer = rand()% 6 + 0;
             switch (randomizer) {
                 case 0:
-                    zone.zonasNaturais.emplace_back(new Montanha(numOfMnt, x, y));
+                    zone.zonasNaturais.emplace_back(new Montanha(zone.getAmountOfMnt(), x, y));
                     cons(zone.zonasNaturais.back()->getName(),
                          zone.zonasNaturais.back()->getCoordinateY(),
                          zone.zonasNaturais.back()->getCoordinateX()
                          );
-                    numOfMnt++;
-                    updateNaturalZoneCount();
+                    zone.incrementMnt();
                     break;
                 case 1:
-                    zone.zonasNaturais.emplace_back(new Deserto(numOfDsr, x, y));
+                    zone.zonasNaturais.emplace_back(new Deserto(zone.getAmountOfDsr(), x, y));
                     cons(zone.zonasNaturais.back()->getName(),
                          zone.zonasNaturais.back()->getCoordinateY(),
                          zone.zonasNaturais.back()->getCoordinateX()
                          );
-                    numOfDsr++;
-                    updateNaturalZoneCount();
+                    zone.incrementDsr();
                     break;
                 case 2:
-                    zone.zonasNaturais.emplace_back(new Pastagem(numOfPas, x, y));
+                    zone.zonasNaturais.emplace_back(new Pastagem(zone.getAmountOfPas(), x, y));
                     cons(zone.zonasNaturais.back()->getName(),
                          zone.zonasNaturais.back()->getCoordinateY(),
                          zone.zonasNaturais.back()->getCoordinateX()
                          );
-                    numOfPas++;
-                    updateNaturalZoneCount();
+                    zone.incrementPas();
                     break;
                 case 3:
-                    zone.zonasNaturais.emplace_back(new Floresta(numOfFlr, x, y));
+                    zone.zonasNaturais.emplace_back(new Floresta(zone.getAmountOfFlr(), x, y));
                     cons(zone.zonasNaturais.back()->getName(),
                          zone.zonasNaturais.back()->getCoordinateY(),
                          zone.zonasNaturais.back()->getCoordinateX()
                          );
-                    numOfFlr++;
-                    updateNaturalZoneCount();
+                    zone.incrementFlr();
                     break;
                 case 4:
-                    zone.zonasNaturais.emplace_back(new Pantano(numOfPnt, x, y));
+                    zone.zonasNaturais.emplace_back(new Pantano(zone.getAmountOfPnt(), x, y));
                     cons(zone.zonasNaturais.back()->getName(),
                          zone.zonasNaturais.back()->getCoordinateY(),
                          zone.zonasNaturais.back()->getCoordinateX()
                          );
-                    numOfPnt++;
-                    updateNaturalZoneCount();
+                    zone.incrementPnt();
                     break;
                 case 5:
-                    zone.zonasNaturais.emplace_back(new ZonaX(numOfZnZ, x, y));
+                    zone.zonasNaturais.emplace_back(new ZonaX(zone.getAmountOfZnZ(), x, y));
                     cons(zone.zonasNaturais.back()->getName(),
                          zone.zonasNaturais.back()->getCoordinateY(),
                          zone.zonasNaturais.back()->getCoordinateX()
                          );
-                    numOfZnZ++;
-                    updateNaturalZoneCount();
+                    zone.incrementZnZ();
                     break;
                 default:
                     cout << "How did you get here?";
@@ -174,9 +179,9 @@ void Island::randomizeNaturalZones() {
     }
 }
 
-void Island::afternoonPhase() {
+void Island::afternoonPhase(int day) {
     string cmd, type;
-    int line, col;
+    int line, col, amount;
 
     do {
         roundOver = false;
@@ -185,24 +190,47 @@ void Island::afternoonPhase() {
         if (cmd == "cons") {
             cin >> type >> line >> col;
             if (type == "mnF") {
-                cons((new MinaFerro(numOfMnF))->getName(), line, col);
+                building.edificios.emplace_back(new MinaFerro(building.getAmountOfMnF(), line, col));
+                cons(building.edificios.back()->getName(),
+                     building.edificios.back()->getCoordinateY(),
+                     building.edificios.back()->getCoordinateX()
+                     );
             } else if (type == "mnC") {
-                cons((new MinaCarvao(numOfMnC))->getName(), line, col);
+                building.edificios.emplace_back(new MinaCarvao(building.getAmountOfMnC(), line, col));
+                cons(building.edificios.back()->getName(),
+                     building.edificios.back()->getCoordinateY(),
+                     building.edificios.back()->getCoordinateX()
+                     );
             } else if (type == "elec") {
-                cons((new CentralEletrica(numOfElec))->getName(), line, col);
+                building.edificios.emplace_back(new CentralEletrica(building.getAmountOfElec(), line, col));
+                cons(building.edificios.back()->getName(),
+                     building.edificios.back()->getCoordinateY(),
+                     building.edificios.back()->getCoordinateX()
+                );
             } else if (type == "bat") {
-                cons((new Bateria(numOfBat))->getName(), line, col);
+                building.edificios.emplace_back(new Bateria(building.getAmountOfBat(), line, col));
+                cons(building.edificios.back()->getName(),
+                     building.edificios.back()->getCoordinateY(),
+                     building.edificios.back()->getCoordinateX()
+                );
             } else if (type == "fun") {
-                cons((new Fundicao(numOfFun))->getName(), line, col);
+                building.edificios.emplace_back(new Fundicao(building.getAmountOfFun(), line, col));
+                cons(building.edificios.back()->getName(),
+                     building.edificios.back()->getCoordinateY(),
+                     building.edificios.back()->getCoordinateX()
+                );
             }
         } else if (cmd == "cont") {
             cin >> type;
             if (type == "lenhador") {
-                cont((new Lenhador(numOfLenhadores))->getName());
+                worker.trabalhadores.emplace_back(new Lenhador(worker.getTotalWorkerCount(), day));
+                cont(worker.trabalhadores.back()->getType());
             } else if (type == "mineiro") {
-                cont((new Mineiro(numOfMineiros))->getName());
+                worker.trabalhadores.emplace_back(new Mineiro(worker.getTotalWorkerCount(), day));
+                cont(worker.trabalhadores.back()->getType());
             } else if (type == "operario") {
-                cont((new Operario(numOfOperarios))->getName());
+                worker.trabalhadores.emplace_back(new Operario(worker.getTotalWorkerCount(), day));
+                cont(worker.trabalhadores.back()->getType());
             }
             roundOver = true;
         } else if (cmd == "list") {
@@ -221,6 +249,23 @@ void Island::afternoonPhase() {
             vende("Ferro", 3);
         } else if (cmd == "listNat") {
             listNaturalZones();
+        } else if (cmd == "printTree") {
+            printTree(day);
+        } else if (cmd == "listBuildings") {
+            listBuildings();
+        } else if (cmd == "listWorkers") {
+            listWorkers();
+        } else if (cmd == "printAtCoordinates") {
+            cin >> line >> col;
+            printAtCoordinates(line, col);
+        } else if (cmd == "listResources") {
+            resources.listResources();
+        } else if (cmd == "sell") {
+            cin >> type >> amount;
+            resources.chooseResourceToSell(type, amount);
+        } else if (cmd == "skip") {
+            cout << "Skipping turn..." << endl;
+            roundOver = true;
         } else {
                 cout << "Invalid command." << endl;
         }
@@ -236,7 +281,7 @@ void Island::changeRoundStatus() {
     }
 }
 
-void Island::loading() {
+void Island::loading(int day) {
     string linesAndCols, commands, cmd, type;
     ifstream configFile("Islands.txt");
     int amountOfWords;
@@ -260,15 +305,35 @@ void Island::loading() {
 //                cout << cmd << " + " << type << " + " << linePosition << " + " << colPosition << endl;
                 if (cmd == "cons") {
                     if (type == "mnF") {
-                        cons((new MinaFerro(numOfMnF))->getName(), linePosition, colPosition);
+                        building.edificios.emplace_back(new MinaFerro(building.getAmountOfMnF(), linePosition, colPosition));
+                        cons(building.edificios.back()->getName(),
+                             building.edificios.back()->getCoordinateY(),
+                             building.edificios.back()->getCoordinateX()
+                        );
                     } else if (type == "mnC") {
-                        cons((new MinaCarvao(numOfMnC))->getName(), linePosition, colPosition);
+                        building.edificios.emplace_back(new MinaCarvao(building.getAmountOfMnC(), linePosition, colPosition));
+                        cons(building.edificios.back()->getName(),
+                             building.edificios.back()->getCoordinateY(),
+                             building.edificios.back()->getCoordinateX()
+                        );
                     } else if (type == "elec") {
-                        cons((new CentralEletrica(numOfElec))->getName(), linePosition, colPosition);
+                        building.edificios.emplace_back(new CentralEletrica(building.getAmountOfElec(), linePosition, colPosition));
+                        cons(building.edificios.back()->getName(),
+                             building.edificios.back()->getCoordinateY(),
+                             building.edificios.back()->getCoordinateX()
+                        );
                     } else if (type == "bat") {
-                        cons((new Bateria(numOfBat))->getName(), linePosition, colPosition);
+                        building.edificios.emplace_back(new Bateria(building.getAmountOfBat(), linePosition, colPosition));
+                        cons(building.edificios.back()->getName(),
+                             building.edificios.back()->getCoordinateY(),
+                             building.edificios.back()->getCoordinateX()
+                        );
                     } else if (type == "fun") {
-                        cons((new Fundicao(numOfFun))->getName(), linePosition, colPosition);
+                        building.edificios.emplace_back(new Fundicao(building.getAmountOfFun(), linePosition, colPosition));
+                        cons(building.edificios.back()->getName(),
+                             building.edificios.back()->getCoordinateY(),
+                             building.edificios.back()->getCoordinateX()
+                        );
                     }
                 }
             } else if (amountOfWords == 2) {
@@ -276,11 +341,14 @@ void Island::loading() {
 //                cout << cmd << " + " << type;
                 if (cmd == "cont") {
                     if (type == "lenhador") {
-                        cont((new Lenhador(numOfLenhadores))->getName());
+                        worker.trabalhadores.emplace_back(new Lenhador(worker.getTotalWorkerCount(), day));
+                        cont(worker.trabalhadores.back()->getType());
                     } else if (type == "mineiro") {
-                        cont((new Mineiro(numOfMineiros))->getName());
+                        worker.trabalhadores.emplace_back(new Mineiro(worker.getTotalWorkerCount(), day));
+                        cont(worker.trabalhadores.back()->getType());
                     } else if (type == "operario") {
-                        cont((new Operario(numOfOperarios))->getName());
+                        worker.trabalhadores.emplace_back(new Operario(worker.getTotalWorkerCount(), day));
+                        cont(worker.trabalhadores.back()->getType());
                     }
                 }
             } else if (amountOfWords == 1) {
@@ -312,14 +380,138 @@ void Island::loading() {
 }
 
 void Island::listNaturalZones() {
-    for (int i = 0; i < zone.zonasNaturais.size(); ++i) {
-        cout << zone.zonasNaturais.at(i)->getName() << endl;
-    }
     cout << "There are " << zone.zonasNaturais.size() << " natural zones." << endl;
+    for (auto & zonasNatural : zone.zonasNaturais) {
+        cout << zonasNatural->getName()<< ": "
+             << "x="
+             << zonasNatural->getCoordinateX()
+             << " ; y="
+             << zonasNatural->getCoordinateY() << endl;
+    }
 }
 
-void Island::updateNaturalZoneCount() {
-    numOfNaturalZones = numOfMnt + numOfDsr + numOfPas + numOfFlr + numOfPnt+ numOfZnZ;
+void Island::collectResources() {
+    collectNaturalResources();
+//    collectBuildingResources();
+}
+
+void Island::collectNaturalResources() {
+    int naturalX, naturalY, workerX, workerY;
+    for (int i = 0; i < zone.zonasNaturais.size(); ++i) {
+        if (zone.zonasNaturais.at(i)->getType() == "floresta") {
+            naturalX = zone.zonasNaturais.at(i)->getCoordinateX();
+            naturalY = zone.zonasNaturais.at(i)->getCoordinateY();
+
+
+            for (int j = 0; j < worker.trabalhadores.size(); ++j) {
+                if (worker.trabalhadores.at(j)->getType() == "lenhador") {
+                    workerX = worker.trabalhadores.at(j)->getCoordinateX();
+                    workerY = worker.trabalhadores.at(j)->getCoordinateY();
+                }
+                if (naturalX == workerX && naturalY == workerY) {
+                    resources.acquireWood(1, 1);
+                }
+            }
+        }
+    }
+}
+
+void Island::collectBuildingResources() {
+    int naturalX, naturalY, buildingX, buildingY;
+    for (int i = 0; i < zone.zonasNaturais.size(); ++i) {
+        if (zone.zonasNaturais.at(i)->getType() == "deserto") {
+            naturalX = zone.zonasNaturais.at(i)->getCoordinateX();
+            naturalY = zone.zonasNaturais.at(i)->getCoordinateY();
+            if (building.edificios.at(i)->getType() == "deserto") {
+                naturalX = zone.zonasNaturais.at(i)->getCoordinateX();
+                naturalY = zone.zonasNaturais.at(i)->getCoordinateY();
+            }
+        }
+        cout << zone.zonasNaturais.at(i)->getName() << endl;
+    }
+}
+
+void Island::printTree(int day) {
+    for (int i = 0; i < zone.zonasNaturais.size(); ++i) {
+        if (zone.zonasNaturais.at(i)->getType() == "floresta") {
+            cout << zone.zonasNaturais.at(i)->getName() <<
+            " has " <<
+            zone.zonasNaturais.at(i)->getTreeCount() <<
+            " trees." << endl;
+            zone.zonasNaturais.at(i)->growTree(day);
+        }
+    }
+}
+
+void Island::listBuildings() {
+    cout << "There are " << building.edificios.size() << " buildings." << endl;
+    for (auto & edificio : building.edificios) {
+        cout << edificio->getName()<< ": "
+             << "x="
+             << edificio->getCoordinateX()
+             << " ; y="
+             << edificio->getCoordinateY() << endl;
+    }
+}
+
+void Island::listWorkers() {
+    if (worker.trabalhadores.size() == 1) {
+        cout << "There is " << worker.trabalhadores.size() << " worker." << endl;
+    } else {
+        cout << "There are " << worker.trabalhadores.size() << " workers." << endl;
+    }
+    for (auto & trabalhador : worker.trabalhadores) {
+        cout << trabalhador->getType()
+             << ", "
+             << trabalhador->getWorkerId()
+             << ": x="
+             << trabalhador->getCoordinateX()
+             << " ; y="
+             << trabalhador->getCoordinateY() << endl;
+    }
+}
+
+void Island::printZoneAtCoordinates(int x, int y) {
+    for (auto & zonasNatural : zone.zonasNaturais) {
+        if (zonasNatural->getCoordinateX() == x && zonasNatural->getCoordinateY() == y) {
+            cout << zonasNatural->getName() << endl;
+        }
+    }
+}
+
+void Island::printBuildingAtCoordinates(int x, int y) {
+    int numOfBuildings = 0;
+    for (auto & edificio : building.edificios) {
+        if (edificio->getCoordinateX() == x && edificio->getCoordinateY() == y) {
+            cout << edificio->getName() << endl;
+            numOfBuildings++;
+        }
+    }
+    if (numOfBuildings == 0) {
+        cout << "There are no buildings built at that position." << endl;
+    }
+}
+
+void Island::printWorkersAtCoordinates(int x, int y) {
+    int numOfWorkers = 0;
+    for (auto & trabalhador : worker.trabalhadores) {
+        if (trabalhador->getCoordinateX() == x && trabalhador->getCoordinateY() == y) {
+            cout << trabalhador->getType() << ", "<< trabalhador->getWorkerId() << endl;
+            numOfWorkers++;
+        }
+    }
+    if (numOfWorkers == 0) {
+        cout << "There are no workers at that position." << endl;
+    }
+}
+
+void Island::printAtCoordinates(int x, int y) {
+    cout << "Printing zones..." << endl;
+    printZoneAtCoordinates(x, y);
+    cout <<  endl << "Printing buildings..." << endl;
+    printBuildingAtCoordinates(x, y);
+    cout << endl << "Printing workers..." << endl;
+    printWorkersAtCoordinates(x, y);
 }
 
 

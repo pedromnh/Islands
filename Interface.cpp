@@ -74,7 +74,6 @@ int Interface::getDay() {
 void Interface::mainGame() {
     srand(time(NULL));
     Island island(getLoadStatus(), island.getLine(), island.getCols());
-    Resources resources;
 
     firstMessage();
     setMorning();
@@ -83,18 +82,18 @@ void Interface::mainGame() {
             case 1: // Morning Phase
                 cout << endl << endl << endl << endl;
                 morningMessage();
-                island.morningEffects();
+                island.morningEffects(getDay());
                 setAfternoon();
                 break;
             case 2: //Afternoon Phase
                 afternoonMessage();
-                island.afternoonPhase();
+                island.afternoonPhase(getDay());
                 setNight();
                 break;
             case 3: //Night Phase
                 nightMessage();
-                resources.acquireWood(1, 1);
-                if (getDay() == 5)
+                island.collectResources();
+                if (getDay() == 15)
                     endGame();
                 else
                     setMorning();

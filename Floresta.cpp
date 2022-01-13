@@ -3,3 +3,23 @@
 //
 
 #include "Floresta.h"
+
+int Floresta::generateRandomTrees() {
+    amountOfTrees = rand() % 21 + 20;
+    return amountOfTrees;
+}
+
+int Floresta::getTreeCount() {
+    return amountOfTrees;
+}
+
+int Floresta::growTree(int day) {
+    if ((day % 2) == 0 && amountOfTrees <= 100) {
+        amountOfTrees++;
+    }
+    return amountOfTrees;
+}
+
+void Floresta::killTree() {
+    amountOfTrees--;
+}

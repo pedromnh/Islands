@@ -37,29 +37,6 @@ class Island {
     int cols = rand()%(16-3 + 1) + 3;
     bool roundOver = false;
 
-//    Natural Zones
-    int numOfNaturalZones = 0;
-    int numOfMnt = 0;
-    int numOfDsr = 0;
-    int numOfPas = 0;
-    int numOfFlr = 0;
-    int numOfPnt = 0;
-    int numOfZnZ = 0;
-
-
-//    Buildings
-    int numOfMnF = 0;
-    int numOfMnC = 0;
-    int numOfElec = 0;
-    int numOfBat = 0;
-    int numOfFun = 0;
-
-
-//    Workers
-    int numOfLenhadores = 0;
-    int numOfOperarios = 0;
-    int numOfMineiros = 0;
-
 
     vector<vector<string>> island;
 //    vector<Territorio> territorios;
@@ -73,7 +50,7 @@ public:
 
     Island(bool loadedFile, int line, int col) {
         if (loadedFile == true) {
-            loading();
+            loading(0);
         } else {
             inicializeIsland();
             randomizeNaturalZones();
@@ -84,8 +61,9 @@ public:
 
 
     void randomizeNaturalZones();
-    void updateNaturalZoneCount();
-    void listNaturalZones();
+    static void listNaturalZones();
+    static void listBuildings();
+    static void listWorkers();
 
     int getLine(){
         return lines;
@@ -96,14 +74,14 @@ public:
     }
 
 
-    void loading();
+    void loading(int day);
 
-    void morningEffects();
+    void morningEffects(int day);
 
 
     void inicializeIsland();
 
-    void afternoonPhase();
+    void afternoonPhase(int day);
 
     void list();
 
@@ -134,6 +112,17 @@ public:
     void debed(string type, int line, int col);
 
     void debkill(int id);
+
+
+
+    void collectResources();
+    static void collectNaturalResources();
+    void collectBuildingResources();
+    void printTree(int day);
+    static void printAtCoordinates(int x, int y);
+    static void printZoneAtCoordinates(int x, int y);
+    static void printBuildingAtCoordinates(int x, int y);
+    static void printWorkersAtCoordinates(int x, int y);
 };
 
 #endif //ISLANDSCLION_ISLAND_H

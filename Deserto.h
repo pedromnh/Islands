@@ -10,8 +10,10 @@
 class Deserto : public Zones {
 private:
     std::string name;
+    std::string type = "deserto";
 public:
     Deserto(int amountOfDsr, int x, int y) {
+        setType(type);
         name = "dsr";
         std::string amount = std::to_string(amountOfDsr + 1);
         name.append(amount);

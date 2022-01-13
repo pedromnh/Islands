@@ -29,7 +29,9 @@ void Resources::acquireEletricidade(double acquiredResource, double naturalMulti
 }
 
 void Resources::listResources() {
-    cout << "Madeira: " << madeira << endl <<
+    cout << fixed << setprecision(2) << "Dinheiro: " << money << "€" << endl << setprecision(0) <<
+    "---------------------" << endl <<
+    "Madeira: " << madeira << endl <<
     "Ferro: " << ferro << endl <<
     "Barra: " << barra << endl <<
     "Carvao: " << carvao << endl <<
@@ -38,45 +40,69 @@ void Resources::listResources() {
 }
 
 void Resources::sellWood() {
-    if (money >= 1) {
-        madeira++;
-        money--;
-    } else { cout << money << " is not enough money." << endl; }
+    if (madeira >= 1) {
+        money++;
+        madeira--;
+    }
 }
 
 double Resources::getWood() {return madeira;}
 
 void Resources::sellIron() {
-    if (money >= 1) {
+    if (ferro >= 1) {
         ferro--;
         money++;
-    } else { cout << money << " is not enough money." << endl; }
+    }
 }
 
 void Resources::sellCoal() {
-    if (money >= 1) {
+    if (carvao >= 1) {
         carvao--;
         money++;
-    } else { cout << money << " is not enough money." << endl; }
+    }
 }
 
 void Resources::sellBarra() {
-    if (money >= 2) {
+    if (eletricidade >= 1) {
         barra--;
         money += 2;
-    } else { cout << money << " is not enough money." << endl; }
+    }
 }
 
 void Resources::sellViga() {
-    if (money >= 2) {
+    if (vigas >= 1) {
         vigas--;
         money += 2;
-    } else { cout << money << " is not enough money." << endl; }
+    }
 }
 
 void Resources::sellEletricidade() {
-    if (money >= 1.5) {
+    if (eletricidade >= 1) {
         eletricidade--;
         money += 1.5;
-    } else { cout << money << " is not enough money." << endl; }
+    }
+}
+
+double Resources::getMoney() {
+    return money;
+}
+
+void Resources::chooseResourceToSell(string type, int amount) {
+    double startingMoney = getMoney();
+    for (int i = 0; i < amount; ++i) {
+        if (type == "madeira") {
+            sellWood();
+        } else if (type == "ferro") {
+            sellIron();
+        } else if (type == "barra") {
+            sellBarra();
+        } else if (type == "carvao") {
+            sellCoal();
+        } else if (type == "viga") {
+            sellViga();
+        } else if (type == "eletricidade") {
+            sellEletricidade();
+        }
+    }
+    cout << fixed << setprecision(2) << "You've earned +" << getMoney() - startingMoney << "€!" << endl;
 }

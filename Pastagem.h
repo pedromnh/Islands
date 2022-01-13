@@ -10,8 +10,10 @@
 class Pastagem : public Zones {
 private:
     std::string name;
+    std::string type = "pastagem";
 public:
     Pastagem(int amountOfPas, int x, int y) {
+        setType(type);
         name = "pas";
         std::string amount = std::to_string(amountOfPas + 1);
         name.append(amount);

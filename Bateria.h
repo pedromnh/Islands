@@ -5,19 +5,23 @@
 #ifndef ISLANDSCLION_BATERIA_H
 #define ISLANDSCLION_BATERIA_H
 
-#include "Interface.h"
+#include "Buildings.h"
 
-class Bateria {
+class Bateria :public Buildings {
 private:
     std::string name;
+    std::string type = "bateria";
 public:
-    Bateria(int amountOfBat) {
+    Bateria(int amountOfBat, int x, int y) {
+        setType(type);
         name = "bat";
         std::string amount = std::to_string(amountOfBat + 1);
         name.append(amount);
+        setCoordinateX(x);
+        setCoordinateY(y);
     }
 
-    std::string getName() {
+    std::string getName() override {
         return name;
     }
 };
