@@ -223,14 +223,23 @@ void Island::afternoonPhase(int day) {
         } else if (cmd == "cont") {
             cin >> type;
             if (type == "lenhador") {
-                worker.trabalhadores.emplace_back(new Lenhador(worker.getTotalWorkerCount(), day));
-                cont(worker.trabalhadores.back()->getType());
+                if (resources.getMoney() >= 20) {
+                    worker.trabalhadores.emplace_back(new Lenhador(worker.getTotalWorkerCount(), day));
+                    cont(worker.trabalhadores.back()->getType());
+                    resources.setMoney(resources.getMoney() - 20);
+                }
             } else if (type == "mineiro") {
-                worker.trabalhadores.emplace_back(new Mineiro(worker.getTotalWorkerCount(), day));
-                cont(worker.trabalhadores.back()->getType());
+                if (resources.getMoney() >= 10) {
+                    worker.trabalhadores.emplace_back(new Mineiro(worker.getTotalWorkerCount(), day));
+                    cont(worker.trabalhadores.back()->getType());
+                    resources.setMoney(resources.getMoney() - 10);
+                }
             } else if (type == "operario") {
-                worker.trabalhadores.emplace_back(new Operario(worker.getTotalWorkerCount(), day));
-                cont(worker.trabalhadores.back()->getType());
+                if (resources.getMoney() >= 15) {
+                    worker.trabalhadores.emplace_back(new Operario(worker.getTotalWorkerCount(), day));
+                    cont(worker.trabalhadores.back()->getType());
+                    resources.setMoney(resources.getMoney() - 15);
+                }
             }
             roundOver = true;
         } else if (cmd == "list") {
@@ -255,7 +264,7 @@ void Island::afternoonPhase(int day) {
             listBuildings();
         } else if (cmd == "listWorkers") {
             listWorkers();
-        } else if (cmd == "printAtCoordinates") {
+        } else if (cmd == "atCoords") {
             cin >> line >> col;
             printAtCoordinates(line, col);
         } else if (cmd == "listResources") {
@@ -266,6 +275,11 @@ void Island::afternoonPhase(int day) {
         } else if (cmd == "skip") {
             cout << "Skipping turn..." << endl;
             roundOver = true;
+        } else if (cmd == "help") {
+            printHelp();
+        } else if (cmd == "buy") {
+            cin >> type >> amount;
+            resources.chooseResourceToBuy(type, amount);
         } else {
                 cout << "Invalid command." << endl;
         }
@@ -392,7 +406,7 @@ void Island::listNaturalZones() {
 
 void Island::collectResources() {
     collectNaturalResources();
-//    collectBuildingResources();
+    collectBuildingResources();
 }
 
 void Island::collectNaturalResources() {
@@ -417,17 +431,51 @@ void Island::collectNaturalResources() {
 }
 
 void Island::collectBuildingResources() {
-    int naturalX, naturalY, buildingX, buildingY;
-    for (int i = 0; i < zone.zonasNaturais.size(); ++i) {
-        if (zone.zonasNaturais.at(i)->getType() == "deserto") {
-            naturalX = zone.zonasNaturais.at(i)->getCoordinateX();
-            naturalY = zone.zonasNaturais.at(i)->getCoordinateY();
-            if (building.edificios.at(i)->getType() == "deserto") {
-                naturalX = zone.zonasNaturais.at(i)->getCoordinateX();
-                naturalY = zone.zonasNaturais.at(i)->getCoordinateY();
+    int workerX, workerY, buildingX, buildingY;
+    for (int i = 0; i < building.edificios.size(); ++i) {
+        if (building.edificios.at(i)->getType() == "minaCarvao") {
+            buildingX = building.edificios.at(i)->getCoordinateX();
+            buildingY = building.edificios.at(i)->getCoordinateY();
+
+
+            for (int j = 0; j < worker.trabalhadores.size(); ++j) {
+                if (worker.trabalhadores.at(j)->getType() == "mineiro") {
+                    workerX = worker.trabalhadores.at(j)->getCoordinateX();
+                    workerY = worker.trabalhadores.at(j)->getCoordinateY();
+                }
+                if (buildingX == workerX && buildingY == workerY) {
+                    resources.acquireCoal(1, 1);
+                }
+            }
+        } else if (building.edificios.at(i)->getType() == "minaFerro") {
+            buildingX = building.edificios.at(i)->getCoordinateX();
+            buildingY = building.edificios.at(i)->getCoordinateY();
+
+
+            for (int j = 0; j < worker.trabalhadores.size(); ++j) {
+                if (worker.trabalhadores.at(j)->getType() == "mineiro") {
+                    workerX = worker.trabalhadores.at(j)->getCoordinateX();
+                    workerY = worker.trabalhadores.at(j)->getCoordinateY();
+                }
+                if (buildingX == workerX && buildingY == workerY) {
+                    resources.acquireIron(1, 1);
+                }
+            }
+        } else if (building.edificios.at(i)->getType() == "fundicao") {
+            buildingX = building.edificios.at(i)->getCoordinateX();
+            buildingY = building.edificios.at(i)->getCoordinateY();
+
+
+            for (int j = 0; j < worker.trabalhadores.size(); ++j) {
+                if (worker.trabalhadores.at(j)->getType() == "operario") {
+                    workerX = worker.trabalhadores.at(j)->getCoordinateX();
+                    workerY = worker.trabalhadores.at(j)->getCoordinateY();
+                }
+                if (buildingX == workerX && buildingY == workerY) {
+                    resources.acquireIron(1, 1);
+                }
             }
         }
-        cout << zone.zonasNaturais.at(i)->getName() << endl;
     }
 }
 
@@ -512,6 +560,25 @@ void Island::printAtCoordinates(int x, int y) {
     printBuildingAtCoordinates(x, y);
     cout << endl << "Printing workers..." << endl;
     printWorkersAtCoordinates(x, y);
+}
+
+void Island::printHelp() {
+    cout << "cons <building> <line> <col>\n"
+            "cont <type> <line> <col>\n"
+            "list\n"
+            "liga <line> <col>\n"
+            "des <line> <col>\n"
+            "next\n"
+            "save <saveName>\n"
+            "listNat\n"
+            "printTree\n"
+            "listBuildings\n"
+            "listWorkers\n"
+            "atCoords <line> <col>\n"
+            "listResources\n"
+            "sell <type> <amount>\n"
+            "skip\n"
+            "buy <type> <amount>\n"<< endl;
 }
 
 

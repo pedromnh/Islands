@@ -123,6 +123,7 @@ public:
     static void printZoneAtCoordinates(int x, int y);
     static void printBuildingAtCoordinates(int x, int y);
     static void printWorkersAtCoordinates(int x, int y);
+    static void printHelp();
 };
 
 #endif //ISLANDSCLION_ISLAND_H

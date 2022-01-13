@@ -46,7 +46,12 @@ public:
     void sellViga();
     void sellEletricidade();
 
+    void chooseResourceToBuy(std::string type, int amount);
+    void buyViga();
+
+
     double getMoney();
+    void setMoney(double euro);
 
 
     void listResources();

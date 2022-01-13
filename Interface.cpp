@@ -54,7 +54,9 @@ bool Interface::chooseLoadOrStart() {
         "New Game: new_game" << endl <<
         "Load game: load_game" << endl <<
         "Your input: ";
-        cin >> userInput;
+//        cin >> userInput;
+        userInput = "new_game";
+        cout << userInput << endl;
 
         if (userInput == "load_game") {
             loaded = true;

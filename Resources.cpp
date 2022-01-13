@@ -63,7 +63,7 @@ void Resources::sellCoal() {
 }
 
 void Resources::sellBarra() {
-    if (eletricidade >= 1) {
+    if (barra >= 1) {
         barra--;
         money += 2;
     }
@@ -105,4 +105,25 @@ void Resources::chooseResourceToSell(string type, int amount) {
         }
     }
     cout << fixed << setprecision(2) << "You've earned +" << getMoney() - startingMoney << "€!" << endl;
+}
+
+void Resources::setMoney(double euro) {
+    money = euro;
+}
+
+void Resources::chooseResourceToBuy(std::string type, int amount) {
+    double startingMoney = getMoney();
+    for (int i = 0; i < amount; ++i) {
+        if (type == "viga") {
+            buyViga();
+        }
+    }
+    cout << fixed << setprecision(2) << "You've spent -" << startingMoney - getMoney() << "€!" << endl;
+}
+
+void Resources::buyViga() {
+    if (money >= 10) {
+        vigas++;
+        money-=10;
+    }
 }
