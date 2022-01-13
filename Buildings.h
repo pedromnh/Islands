@@ -10,7 +10,7 @@
 class Buildings {
 private:
     std::string name;
-    std::string status;
+    std::string status; //Enabled, Disabled, Destroyed
     std::string requirement;
     std::string type;
 
@@ -77,6 +77,7 @@ public:
     void setMaxLevel(int levelCap) {maxLevel = levelCap;}
     void setChanceOfBreaking(int chance) {chanceOfBreaking = chance;}
     void setType(std::string tipo) {type = tipo;}
+    void setStatus(std::string state) {status = state;}
 
     int setCoordinateX(int x) {return coordinateX = x;}
     int setCoordinateY(int y) {return coordinateY = y;}

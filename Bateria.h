@@ -19,6 +19,7 @@ public:
         name.append(amount);
         setCoordinateX(x);
         setCoordinateY(y);
+        setStatus("Enabled");
     }
 
     std::string getName() override {

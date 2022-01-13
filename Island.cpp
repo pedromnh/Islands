@@ -245,9 +245,11 @@ void Island::afternoonPhase(int day) {
         } else if (cmd == "list") {
             list();
         } else if (cmd == "liga") {
-            liga(line, col);
+            cin >> line >> col;
+            enableBuildingAtCoordinates(line, col);
         } else if (cmd == "des") {
-            des(line, col);
+            cin >> line >> col;
+            disableBuildingAtCoordinates(line, col);
         } else if (cmd == "move") {
             move(1, line, col);
         } else if (cmd == "next") {
@@ -498,7 +500,8 @@ void Island::listBuildings() {
              << "x="
              << edificio->getCoordinateX()
              << " ; y="
-             << edificio->getCoordinateY() << endl;
+             << edificio->getCoordinateY()
+             << " -> " << edificio->getStatus() <<endl;
     }
 }
 
@@ -581,5 +584,39 @@ void Island::printHelp() {
             "buy <type> <amount>\n"<< endl;
 }
 
+
+void Island::disableBuildingAtCoordinates(int x, int y) {
+    int numOfBuildings = 0;
+    for (auto & edificio : building.edificios) {
+        if (edificio->getCoordinateX() == x && edificio->getCoordinateY() == y) {
+            if (edificio->getStatus() == "Disabled") {
+                cout << "That building is already disabled." << endl;
+            } else {
+                edificio->setStatus("Disabled");
+            }
+            numOfBuildings++;
+        }
+    }
+    if (numOfBuildings == 0) {
+        cout << "There are no buildings built at that position." << endl;
+    }
+}
+
+void Island::enableBuildingAtCoordinates(int x, int y) {
+    int numOfBuildings = 0;
+    for (auto & edificio : building.edificios) {
+        if (edificio->getCoordinateX() == x && edificio->getCoordinateY() == y) {
+            if (edificio->getStatus() == "Enabled") {
+                cout << "That building is already enabled." << endl;
+            } else {
+                edificio->setStatus("Enabled");
+            }
+            numOfBuildings++;
+        }
+    }
+    if (numOfBuildings == 0) {
+        cout << "There are no buildings built at that position." << endl;
+    }
+}
 
 #include "Island.h"
