@@ -63,6 +63,33 @@ void Island::cons(string type, int line, int col){
 }
 
 
+//void Island::cons(string type, int line, int col){
+//    for (auto & edificio : building.edificios) {
+//        if (edificio->getCoordinateX() == (line - 1) && edificio->getCoordinateY() == (col - 1)) {
+//            cout << "Can't overwrite in that position." << endl;
+//        } else {
+//            island.at(line - 1).at(col - 1) = edificio->getName();
+//            if (edificio->getType() == "minaFerro") {
+//                building.incrementMnF();
+//                roundOver = true;
+//            } else if (edificio->getType() == "minaCarvao") {
+//                building.incrementMnC();
+//                roundOver = true;
+//            } else if (edificio->getType() == "centralEletrica") {
+//                building.incrementElec();
+//                roundOver = true;
+//            } else if (edificio->getType() == "bateria") {
+//                building.incrementBat();
+//                roundOver = true;
+//            } else if (edificio->getType() == "fundicao") {
+//                building.incrementFun();
+//                roundOver = true;
+//            }
+//        }
+//    }
+//}
+
+
 void Island::liga(int line, int col) {
     //island.at(line - 1).at(col - 1);
     cout << "[PLACEHOLDER]: ligado" << endl;
@@ -111,10 +138,9 @@ void Island::save(string saveName) {
 }
 
 void Island::morningEffects(int day) {
-    cout << "[PLACEHOLDER]: Random zone events" << endl;
-    if (day % 2 == 0) {
-//        printTree(day);
-    }
+    cout << "Occurring zone events..." << endl;
+    updateChanceOfQuitting(day);
+    updateChanceOfDestroyingBuilding(day);
 }
 
 void Island::randomizeNaturalZones() {
@@ -191,7 +217,7 @@ void Island::afternoonPhase(int day) {
             cin >> type >> line >> col;
             if (type == "mnF") {
                 if (resources.getVigas() >= 10) {
-                    building.edificios.emplace_back(new MinaFerro(building.getAmountOfMnF(), line, col));
+                    building.edificios.emplace_back(new MinaFerro(building.getAmountOfMnF(), line, col, day));
                     cons(building.edificios.back()->getName(),
                          building.edificios.back()->getCoordinateY(),
                          building.edificios.back()->getCoordinateX()
@@ -200,7 +226,7 @@ void Island::afternoonPhase(int day) {
                 }
             } else if (type == "mnC") {
                 if (resources.getVigas() >= 10) {
-                    building.edificios.emplace_back(new MinaCarvao(building.getAmountOfMnC(), line, col));
+                    building.edificios.emplace_back(new MinaCarvao(building.getAmountOfMnC(), line, col, day));
                     cons(building.edificios.back()->getName(),
                          building.edificios.back()->getCoordinateY(),
                          building.edificios.back()->getCoordinateX()
@@ -209,7 +235,7 @@ void Island::afternoonPhase(int day) {
                 }
             } else if (type == "elec") {
                 if (resources.getMoney() >= 15) {
-                    building.edificios.emplace_back(new CentralEletrica(building.getAmountOfElec(), line, col));
+                    building.edificios.emplace_back(new CentralEletrica(building.getAmountOfElec(), line, col, day));
                     cons(building.edificios.back()->getName(),
                          building.edificios.back()->getCoordinateY(),
                          building.edificios.back()->getCoordinateX()
@@ -218,7 +244,7 @@ void Island::afternoonPhase(int day) {
                 }
             } else if (type == "bat") {
                 if (resources.getMoney() >= 10 && resources.getVigas() >= 10) {
-                    building.edificios.emplace_back(new Bateria(building.getAmountOfBat(), line, col));
+                    building.edificios.emplace_back(new Bateria(building.getAmountOfBat(), line, col, day));
                     cons(building.edificios.back()->getName(),
                          building.edificios.back()->getCoordinateY(),
                          building.edificios.back()->getCoordinateX()
@@ -228,7 +254,7 @@ void Island::afternoonPhase(int day) {
                 }
             } else if (type == "fun") {
                 if (resources.getMoney() >= 10) {
-                    building.edificios.emplace_back(new Fundicao(building.getAmountOfFun(), line, col));
+                    building.edificios.emplace_back(new Fundicao(building.getAmountOfFun(), line, col, day));
                     cons(building.edificios.back()->getName(),
                          building.edificios.back()->getCoordinateY(),
                          building.edificios.back()->getCoordinateX()
@@ -339,31 +365,31 @@ void Island::loading(int day) {
 //                cout << cmd << " + " << type << " + " << linePosition << " + " << colPosition << endl;
                 if (cmd == "cons") {
                     if (type == "mnF") {
-                        building.edificios.emplace_back(new MinaFerro(building.getAmountOfMnF(), linePosition, colPosition));
+                        building.edificios.emplace_back(new MinaFerro(building.getAmountOfMnF(), linePosition, colPosition, day));
                         cons(building.edificios.back()->getName(),
                              building.edificios.back()->getCoordinateY(),
                              building.edificios.back()->getCoordinateX()
                         );
                     } else if (type == "mnC") {
-                        building.edificios.emplace_back(new MinaCarvao(building.getAmountOfMnC(), linePosition, colPosition));
+                        building.edificios.emplace_back(new MinaCarvao(building.getAmountOfMnC(), linePosition, colPosition, day));
                         cons(building.edificios.back()->getName(),
                              building.edificios.back()->getCoordinateY(),
                              building.edificios.back()->getCoordinateX()
                         );
                     } else if (type == "elec") {
-                        building.edificios.emplace_back(new CentralEletrica(building.getAmountOfElec(), linePosition, colPosition));
+                        building.edificios.emplace_back(new CentralEletrica(building.getAmountOfElec(), linePosition, colPosition, day));
                         cons(building.edificios.back()->getName(),
                              building.edificios.back()->getCoordinateY(),
                              building.edificios.back()->getCoordinateX()
                         );
                     } else if (type == "bat") {
-                        building.edificios.emplace_back(new Bateria(building.getAmountOfBat(), linePosition, colPosition));
+                        building.edificios.emplace_back(new Bateria(building.getAmountOfBat(), linePosition, colPosition, day));
                         cons(building.edificios.back()->getName(),
                              building.edificios.back()->getCoordinateY(),
                              building.edificios.back()->getCoordinateX()
                         );
                     } else if (type == "fun") {
-                        building.edificios.emplace_back(new Fundicao(building.getAmountOfFun(), linePosition, colPosition));
+                        building.edificios.emplace_back(new Fundicao(building.getAmountOfFun(), linePosition, colPosition, day));
                         cons(building.edificios.back()->getName(),
                              building.edificios.back()->getCoordinateY(),
                              building.edificios.back()->getCoordinateX()
@@ -427,6 +453,7 @@ void Island::listNaturalZones() {
 void Island::collectResources() {
     collectNaturalResources();
     collectBuildingResources();
+    resources.listResources();
 }
 
 void Island::collectNaturalResources() {
@@ -749,10 +776,9 @@ void Island::updateBuildingStatuses() {
 #include "Island.h"
 
 void Island::updateChanceOfQuitting(int currentDay) {
-    int chanceOfQuitting = rand() % (101) + 0;
+    int chanceOfQuitting;
     int naturalX, naturalY, workerX, workerY;
     for (auto & zonaNatural : zone.zonasNaturais) {
-        chanceOfQuitting = rand() % (101) + 0;
         if (zonaNatural->getType() == "pastagem") {  //Chance of quitting in "Pastagem"
             naturalX = zonaNatural->getCoordinateX();
             naturalY = zonaNatural->getCoordinateY();
@@ -771,26 +797,21 @@ void Island::updateChanceOfQuitting(int currentDay) {
                 workerX = trabalhador->getCoordinateX();
                 workerY = trabalhador->getCoordinateY();
 
-                if (trabalhador->getType() == "mineiro" && trabalhador->getDaysWorking(currentDay) >= 2) {
+                if (trabalhador->getType() == "mineiro" && trabalhador->getDaysWorking(currentDay) > 2) {
                     if (naturalX == workerX && naturalY == workerY) {
                         trabalhador->setChanceOfQuitting(15);
-
+                        chanceOfQuitting = rand() % (101) + 0;
                         if (trabalhador->getChanceOfQuitting() >= chanceOfQuitting) {
-                            cout << "A \"" << trabalhador->getType() <<
-                            "\", id: \"" << trabalhador->getWorkerId() <<
-                            "\" has quit!" << endl;
-                            workerQuits(workerX, workerY);
+                            workerQuits(workerX, workerY, false);
                         }
                     }
-                } else if (trabalhador->getType() == "operario" && trabalhador->getDaysWorking(currentDay) >= 10) {
+                } else if (trabalhador->getType() == "operario" && trabalhador->getDaysWorking(currentDay) > 10) {
                     if (naturalX == workerX && naturalY == workerY) {
                         trabalhador->setChanceOfQuitting(10);
+                        chanceOfQuitting = rand() % (101) + 0;
 
                         if (trabalhador->getChanceOfQuitting() >= chanceOfQuitting) {
-                            cout << "A \"" << trabalhador->getType() <<
-                                 "\", id: \"" << trabalhador->getWorkerId() <<
-                                 "\" has quit!" << endl;
-                            workerQuits(workerX, workerY);
+                            workerQuits(workerX, workerY, false);
                         }
                     }
                 }
@@ -805,22 +826,18 @@ void Island::updateChanceOfQuitting(int currentDay) {
                 if (trabalhador->getType() == "mineiro" && trabalhador->getDaysWorking(currentDay) >= 2) {
                     if (naturalX == workerX && naturalY == workerY) {
                         trabalhador->setChanceOfQuitting(10);
+                        chanceOfQuitting = rand() % (101) + 0;
                     }
                     if (trabalhador->getChanceOfQuitting() >= chanceOfQuitting) {
-                        cout << "A \"" << trabalhador->getType() <<
-                             "\", id: \"" << trabalhador->getWorkerId() <<
-                             "\" has quit!" << endl;
-                        workerQuits(workerX, workerY);
+                        workerQuits(workerX, workerY, false);
                     }
                 } else if (trabalhador->getType() == "operario" && trabalhador->getDaysWorking(currentDay) >= 10) {
                     if (naturalX == workerX && naturalY == workerY) {
                         trabalhador->setChanceOfQuitting(5);
+                        chanceOfQuitting = rand() % (101) + 0;
                     }
                     if (trabalhador->getChanceOfQuitting() >= chanceOfQuitting) {
-                        cout << "A \"" << trabalhador->getType() <<
-                             "\", id: \"" << trabalhador->getWorkerId() <<
-                             "\" has quit!" << endl;
-                        workerQuits(workerX, workerY);
+                        workerQuits(workerX, workerY, false);
                     }
                 }
             }
@@ -828,20 +845,40 @@ void Island::updateChanceOfQuitting(int currentDay) {
     }
 }
 
-void Island::workerQuits(int x, int y) {
+void Island::workerQuits(int x, int y, bool pantano) {
+    int amountOfRemoved = 0;
     for (auto it = worker.trabalhadores.begin(); it != worker.trabalhadores.end();) {
-        if ((*it)->getCoordinateX() == x && (*it)->getCoordinateY() == y) {
+        if ((*it)->getCoordinateX() == x && (*it)->getCoordinateY() == y && pantano) {
             delete * it;
             it = worker.trabalhadores.erase(it);
         } else {
             ++it;
         }
     }
+
+    for (auto it = worker.trabalhadores.begin(); it != worker.trabalhadores.end();) {
+        if ((*it)->getCoordinateX() == x && (*it)->getCoordinateY() == y && !pantano && (*it)->getType() != "lenhador" && amountOfRemoved == 0) {
+            cout << "A \"" << (*it)->getType() <<
+                 "\", id: \"" << (*it)->getWorkerId() <<
+                 "\" has quit!" << endl;
+            delete * it;
+            it = worker.trabalhadores.erase(it);
+            amountOfRemoved++;
+        } else {
+            ++it;
+        }
+    }
+
 }
 
 void Island::buildingIsDestroyed(int x, int y) {
     for (auto it = building.edificios.begin(); it != building.edificios.end();) {
         if ((*it)->getCoordinateX() == x && (*it)->getCoordinateY() == y) {
+            for (auto & zonaNatural : zone.zonasNaturais) {
+                if (zonaNatural->getCoordinateX() == x && zonaNatural->getCoordinateY() == y) {
+                    island.at(y - 1).at(x - 1) = zonaNatural->getName();
+                }
+            }
             delete * it;
             it = building.edificios.erase(it);
         } else {
@@ -849,3 +886,53 @@ void Island::buildingIsDestroyed(int x, int y) {
         }
     }
 }
+
+void Island::updateChanceOfDestroyingBuilding(int currentDay) {
+    int chanceOfDestroying;
+    int naturalX, naturalY, buildingX, buildingY, workerX, workerY;
+
+    for (auto & zonaNatural : zone.zonasNaturais) {
+        if (zonaNatural->getType() == "pantano") {
+            naturalX = zonaNatural->getCoordinateX();
+            naturalY = zonaNatural->getCoordinateY();
+
+            for (auto & edificio : building.edificios) {
+                buildingX = edificio->getCoordinateX();
+                buildingY = edificio->getCoordinateY();
+
+
+                if (buildingX == naturalX && buildingY == naturalY && (currentDay - edificio->getDayBuilt()) == 10) {
+                    cout << "A \"" << edificio->getType() <<
+                         "\", \"" <<  edificio->getName() << "\" has been destroyed!!" << endl;
+                    cout << "Firing everyone who was working at that location..." << endl;
+                    workerQuits(buildingX, buildingY, true);
+                    buildingIsDestroyed(buildingX, buildingY);
+                }
+            }
+        } else {
+            for (auto & edificio : building.edificios) {
+                buildingX = edificio->getCoordinateX();
+                buildingY = edificio->getCoordinateY();
+
+                
+                cout << edificio->getChanceOfBreaking() << " >= " << chanceOfDestroying << endl;
+                if (edificio->getChanceOfBreaking() >= chanceOfDestroying && naturalX == buildingX && naturalY == buildingY) {
+                    cout << "A \"" << edificio->getType() <<
+                    "\", \"" <<  edificio->getName() << "\" has been destroyed!!" << endl;
+                    buildingIsDestroyed(buildingX, buildingY);
+                }
+            }
+        }
+    }
+}
+
+
+//void Island::updateChanceOfDestroyingBuilding(int currentDay) {
+//    int chanceOfDestroying;
+//    int naturalX, naturalY, buildingX, buildingY, workerX, workerY;
+//
+//    for (auto & zonaNatural : zone.zonasNaturais) {
+//        chanceOfDestroying = rand() % 101-0;
+//
+//    }
+//}

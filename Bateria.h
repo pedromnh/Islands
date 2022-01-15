@@ -12,8 +12,10 @@ private:
     std::string name;
     std::string type = "bateria";
 public:
-    Bateria(int amountOfBat, int x, int y) {
+    Bateria(int amountOfBat, int x, int y, int currentDay) {
         setType(type);
+        setChanceOfBreaking(0);
+        setDayBuilt(currentDay);
         name = "bat";
         std::string amount = std::to_string(amountOfBat + 1);
         name.append(amount);

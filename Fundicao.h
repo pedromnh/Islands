@@ -12,8 +12,10 @@ private:
     std::string name;
     std::string type = "fundicao";
 public:
-    Fundicao(int amountOfFun, int x, int y) {
+    Fundicao(int amountOfFun, int x, int y, int currentDay) {
         setType(type);
+        setChanceOfBreaking(0);
+        setDayBuilt(currentDay);
         name = "fun";
         std::string amount = std::to_string(amountOfFun + 1);
         name.append(amount);

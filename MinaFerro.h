@@ -12,8 +12,10 @@ private:
     std::string name;
     std::string type = "minaFerro";
 public:
-    MinaFerro(int amountOfMnf, int x, int y) {
+    MinaFerro(int amountOfMnf, int x, int y, int currentDay) {
         setType(type);
+        setChanceOfBreaking(15);
+        setDayBuilt(currentDay);
         name = "mnF";
         std::string amount = std::to_string(amountOfMnf + 1);
         name.append(amount);

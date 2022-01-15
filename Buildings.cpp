@@ -47,3 +47,7 @@ int Buildings::getAmountOfBat() const {
 int Buildings::getAmountOfFun() const {
     return numOfFun;
 }
+
+int Buildings::getDayBuilt() const {
+    return dayBuilt;
+}

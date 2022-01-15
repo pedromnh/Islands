@@ -39,7 +39,8 @@ void Interface::afternoonMessage() const {
 }
 
 void Interface::nightMessage() const {
-    cout << "Night phase of day #" << day << endl;
+    cout << "Night phase of day #" << day << endl <<
+    "Collecting resources... " << endl;
 }
 
 void Interface::load() {
@@ -91,11 +92,11 @@ void Interface::mainGame() {
                 afternoonMessage();
                 island.afternoonPhase(getDay());
                 setNight();
-                island.updateChanceOfQuitting(getDay());
                 break;
             case 3: //Night Phase
                 nightMessage();
                 island.collectResources();
+
                 island.updateBuildingStatuses();
                 if (getDay() == 31)
                     endGame();

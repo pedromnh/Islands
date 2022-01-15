@@ -32,10 +32,6 @@ Zones.h
 Bateria.h
 /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Bateria.h
 
-/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Interface.cpp
-Interface.h
-/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Interface.h
-
 /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Interface.h
 Island.h
 /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Island.h
@@ -49,6 +45,14 @@ sstream
 -
 fstream
 -
+
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Island.cpp
+fstream
+-
+Island.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Island.h
+Island.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Island.h
 
 /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Island.h
 iostream

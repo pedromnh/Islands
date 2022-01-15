@@ -128,7 +128,8 @@ public:
     void enableBuildingAtCoordinates(int x, int y);
     void updateBuildingStatuses();
     void updateChanceOfQuitting(int currentDay);
-    static void workerQuits(int x, int y);
+    static void workerQuits(int x, int y, bool pantano);
+    void updateChanceOfDestroyingBuilding(int currentDay);
     void buildingIsDestroyed(int x, int y);
 };
 

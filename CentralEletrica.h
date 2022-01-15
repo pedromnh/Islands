@@ -12,8 +12,10 @@ private:
     std::string name;
     std::string type = "centralEletrica";
 public:
-    CentralEletrica(int amountOfElec, int x, int y) {
+    CentralEletrica(int amountOfElec, int x, int y, int currentDay) {
         setType(type);
+        setChanceOfBreaking(0);
+        setDayBuilt(currentDay);
         name = "elec";
         std::string amount = std::to_string(amountOfElec + 1);
         name.append(amount);

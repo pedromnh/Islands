@@ -18,6 +18,7 @@ private:
     double cost;
     double costOfLevelUp;
     double storage;
+    int dayBuilt;
     int maxLevel;
     int chanceOfBreaking;
 
@@ -61,6 +62,7 @@ public:
     int getAmountOfElec() const;
     int getAmountOfBat() const;
     int getAmountOfFun() const;
+    int getDayBuilt() const;
 
     double getCost() const {return cost;}
     double getCostOfLevelUp() const {return  costOfLevelUp;}
@@ -80,6 +82,7 @@ public:
     void setChanceOfBreaking(int chance) {chanceOfBreaking = chance;}
     void setType(std::string tipo) {type = tipo;}
     void setStatus(std::string state) {status = state;}
+    void setDayBuilt(int currentDay) {dayBuilt = currentDay;}
 
     int setCoordinateX(int x) {return coordinateX = x;}
     int setCoordinateY(int y) {return coordinateY = y;}
