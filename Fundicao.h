@@ -22,6 +22,11 @@ public:
         setStatus("Disabled");
     }
 
+    ~Fundicao(){
+        decrementFun();
+    }
+
+
     std::string getName() override {
         return name;
     }

@@ -838,3 +838,14 @@ void Island::workerQuits(int x, int y) {
         }
     }
 }
+
+void Island::buildingIsDestroyed(int x, int y) {
+    for (auto it = building.edificios.begin(); it != building.edificios.end();) {
+        if ((*it)->getCoordinateX() == x && (*it)->getCoordinateY() == y) {
+            delete * it;
+            it = building.edificios.erase(it);
+        } else {
+            ++it;
+        }
+    }
+}

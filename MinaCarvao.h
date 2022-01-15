@@ -22,6 +22,11 @@ public:
         setStatus("Disabled");
     }
 
+    ~MinaCarvao() {
+        decrementMnC();
+    }
+
+
     std::string getName() override {
         return name;
     }

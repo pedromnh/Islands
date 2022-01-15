@@ -22,6 +22,11 @@ public:
         setStatus("Disabled");
     }
 
+    ~Bateria() {
+        decrementBat();
+    }
+
+
     std::string getName() override {
         return name;
     }

@@ -22,6 +22,10 @@ public:
         setStatus("Disabled");
     }
 
+    ~MinaFerro() {
+        decrementMnF();
+    }
+
     std::string getName() override {
         return name;
     }

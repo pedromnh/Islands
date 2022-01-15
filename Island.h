@@ -128,7 +128,8 @@ public:
     void enableBuildingAtCoordinates(int x, int y);
     void updateBuildingStatuses();
     void updateChanceOfQuitting(int currentDay);
-    void workerQuits(int x, int y);
+    static void workerQuits(int x, int y);
+    void buildingIsDestroyed(int x, int y);
 };
 
 #endif //ISLANDSCLION_ISLAND_H

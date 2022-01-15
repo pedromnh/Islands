@@ -22,6 +22,11 @@ public:
         setStatus("Disabled");
     }
 
+    ~CentralEletrica() {
+        decrementElec();
+    }
+
+
     std::string getName() override {
         return name;
     }
