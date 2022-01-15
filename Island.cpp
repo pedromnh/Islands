@@ -747,3 +747,94 @@ void Island::updateBuildingStatuses() {
 }
 
 #include "Island.h"
+
+void Island::updateChanceOfQuitting(int currentDay) {
+    int chanceOfQuitting = rand() % (101) + 0;
+    int naturalX, naturalY, workerX, workerY;
+    for (auto & zonaNatural : zone.zonasNaturais) {
+        chanceOfQuitting = rand() % (101) + 0;
+        if (zonaNatural->getType() == "pastagem") {  //Chance of quitting in "Pastagem"
+            naturalX = zonaNatural->getCoordinateX();
+            naturalY = zonaNatural->getCoordinateY();
+            for (auto & trabalhador : worker.trabalhadores) {
+                workerX = trabalhador->getCoordinateX();
+                workerY = trabalhador->getCoordinateY();
+
+                if (naturalX == workerX && naturalY == workerY) {
+                    trabalhador->setChanceOfQuitting(0);
+                }
+            }
+        } else if (zonaNatural->getType() == "montanha") { //Chance of quitting in "Montanha"
+            naturalX = zonaNatural->getCoordinateX();
+            naturalY = zonaNatural->getCoordinateY();
+            for (auto & trabalhador : worker.trabalhadores) {
+                workerX = trabalhador->getCoordinateX();
+                workerY = trabalhador->getCoordinateY();
+
+                if (trabalhador->getType() == "mineiro" && trabalhador->getDaysWorking(currentDay) >= 2) {
+                    if (naturalX == workerX && naturalY == workerY) {
+                        trabalhador->setChanceOfQuitting(15);
+
+                        if (trabalhador->getChanceOfQuitting() >= chanceOfQuitting) {
+                            cout << "A \"" << trabalhador->getType() <<
+                            "\", id: \"" << trabalhador->getWorkerId() <<
+                            "\" has quit!" << endl;
+                            workerQuits(workerX, workerY);
+                        }
+                    }
+                } else if (trabalhador->getType() == "operario" && trabalhador->getDaysWorking(currentDay) >= 10) {
+                    if (naturalX == workerX && naturalY == workerY) {
+                        trabalhador->setChanceOfQuitting(10);
+
+                        if (trabalhador->getChanceOfQuitting() >= chanceOfQuitting) {
+                            cout << "A \"" << trabalhador->getType() <<
+                                 "\", id: \"" << trabalhador->getWorkerId() <<
+                                 "\" has quit!" << endl;
+                            workerQuits(workerX, workerY);
+                        }
+                    }
+                }
+            }
+        } else { //Chance of quitting in all other zones
+            naturalX = zonaNatural->getCoordinateX();
+            naturalY = zonaNatural->getCoordinateY();
+            for (auto & trabalhador : worker.trabalhadores) {
+                workerX = trabalhador->getCoordinateX();
+                workerY = trabalhador->getCoordinateY();
+
+                if (trabalhador->getType() == "mineiro" && trabalhador->getDaysWorking(currentDay) >= 2) {
+                    if (naturalX == workerX && naturalY == workerY) {
+                        trabalhador->setChanceOfQuitting(10);
+                    }
+                    if (trabalhador->getChanceOfQuitting() >= chanceOfQuitting) {
+                        cout << "A \"" << trabalhador->getType() <<
+                             "\", id: \"" << trabalhador->getWorkerId() <<
+                             "\" has quit!" << endl;
+                        workerQuits(workerX, workerY);
+                    }
+                } else if (trabalhador->getType() == "operario" && trabalhador->getDaysWorking(currentDay) >= 10) {
+                    if (naturalX == workerX && naturalY == workerY) {
+                        trabalhador->setChanceOfQuitting(5);
+                    }
+                    if (trabalhador->getChanceOfQuitting() >= chanceOfQuitting) {
+                        cout << "A \"" << trabalhador->getType() <<
+                             "\", id: \"" << trabalhador->getWorkerId() <<
+                             "\" has quit!" << endl;
+                        workerQuits(workerX, workerY);
+                    }
+                }
+            }
+        }
+    }
+}
+
+void Island::workerQuits(int x, int y) {
+    for (auto it = worker.trabalhadores.begin(); it != worker.trabalhadores.end();) {
+        if ((*it)->getCoordinateX() == x && (*it)->getCoordinateY() == y) {
+            delete * it;
+            it = worker.trabalhadores.erase(it);
+        } else {
+            ++it;
+        }
+    }
+}

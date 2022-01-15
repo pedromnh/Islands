@@ -51,6 +51,8 @@ public:
     virtual int getCoordinateY() const {return coordinateY;}
     virtual std::string getType() const {return  type;}
     double getCostOfContract() const;
+    int getChanceOfQuitting() const {return chanceOfQuitting;}
+    int getDaysWorking(int currentDay) const {return currentDay - dayHired;}
 
 
 //    Setters
@@ -59,6 +61,7 @@ public:
     void setType(std::string tipo);
     void setDayHired(int day);
     void setCostOfContract(double custo);
+    void setChanceOfQuitting(int chance) {chanceOfQuitting = chance;}
 
     void moveWorker();
     virtual bool isValidMoveLocation();

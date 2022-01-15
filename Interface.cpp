@@ -91,12 +91,13 @@ void Interface::mainGame() {
                 afternoonMessage();
                 island.afternoonPhase(getDay());
                 setNight();
+                island.updateChanceOfQuitting(getDay());
                 break;
             case 3: //Night Phase
                 nightMessage();
                 island.collectResources();
                 island.updateBuildingStatuses();
-                if (getDay() == 15)
+                if (getDay() == 31)
                     endGame();
                 else
                     setMorning();
