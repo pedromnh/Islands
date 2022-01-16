@@ -452,17 +452,14 @@ void Island::loading(int day) {
                              building.edificios.back()->getCoordinateX()
                         );
                     }
-                }
-            } else if (amountOfWords == 2) {
-                cs >> cmd >> type;
-//                cout << cmd << " + " << type;
-                if (cmd == "cont") {
+                } else if (cmd == "cont") {
                     if (type == "lenhador") {
                         worker.trabalhadores.emplace_back(new Lenhador(worker.getTotalWorkerCount(), day));
                         cont(worker.trabalhadores.back()->getType());
                     } else if (type == "mineiro") {
                         worker.trabalhadores.emplace_back(new Mineiro(worker.getTotalWorkerCount(), day));
                         cont(worker.trabalhadores.back()->getType());
+
                     } else if (type == "operario") {
                         worker.trabalhadores.emplace_back(new Operario(worker.getTotalWorkerCount(), day));
                         cont(worker.trabalhadores.back()->getType());
@@ -1235,27 +1232,27 @@ bool Island::checkIfOnMountain(int x, int y) {
 }
 
 void Island::checkIfOverResourceLimit() {
-    if (resources.getWood() >= resources.getMaxMadeira()) {
+    if (resources.getWood() > resources.getMaxMadeira()) {
         cout << "Limited your amount of wood." << endl;
         resources.setWood(resources.getMaxMadeira());
     }
-    if (resources.getIron() >= resources.getMaxFerro()) {
+    if (resources.getIron() > resources.getMaxFerro()) {
         cout << "Limited your amount of iron." << endl;
         resources.setIron(resources.getMaxFerro());
     }
-    if (resources.getBarra() >= resources.getMaxBarra()) {
+    if (resources.getBarra() > resources.getMaxBarra()) {
         cout << "Limited your amount of steel bars." << endl;
         resources.setBarra(resources.getMaxBarra());
     }
-    if (resources.getCoal() >= resources.getMaxCarvao()) {
+    if (resources.getCoal() > resources.getMaxCarvao()) {
         cout << "Limited your amount of coal." << endl;
         resources.setCoal(resources.getMaxCarvao());
     }
-    if (resources.getVigas() >= resources.getMaxVigas()) {
+    if (resources.getVigas() > resources.getMaxVigas()) {
         cout << "Limited your amount of vigas" << endl;
         resources.setVigas(resources.getMaxVigas());
     }
-    if (resources.getEletricidade() >= resources.getMaxEletricidade()) {
+    if (resources.getEletricidade() > resources.getMaxEletricidade()) {
         cout << "Limited your amount of electro." << endl;
         resources.setEletricidade(resources.getMaxEletricidade());
     }
