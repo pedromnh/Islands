@@ -51,3 +51,35 @@ int Buildings::getAmountOfFun() const {
 int Buildings::getDayBuilt() const {
     return dayBuilt;
 }
+
+int Buildings::getLevel() const {
+    return level;
+}
+
+void Buildings::levelUp() {
+    level++;
+}
+
+void Buildings::decrementMnF() {
+    numOfMnF--;
+}
+
+void Buildings::decrementMnC() {
+    numOfMnC--;
+}
+
+void Buildings::decrementElec() {
+    numOfElec--;
+}
+
+void Buildings::decrementBat() {
+    numOfBat--;
+}
+
+void Buildings::decrementFun() {
+    numOfFun--;
+}
+
+void Buildings::setMaxLevel(int nivel) {
+    maxLevel = nivel;
+}

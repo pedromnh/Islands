@@ -78,7 +78,6 @@ public:
 
     void morningEffects(int day);
 
-
     void inicializeIsland();
 
     void afternoonPhase(int day);
@@ -131,6 +130,9 @@ public:
     static void workerQuits(int x, int y, bool pantano);
     void updateChanceOfDestroyingBuilding(int currentDay);
     void buildingIsDestroyed(int x, int y);
+    bool checkForAdjacentForest(int x, int y);
+    bool checkForAdjacentBuilding(string type, int x, int y);
+    void levelUpBuilding(string nameOfBuilding);
 };
 
 #endif //ISLANDSCLION_ISLAND_H

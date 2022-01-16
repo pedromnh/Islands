@@ -234,32 +234,44 @@ void Island::afternoonPhase(int day) {
                     resources.setVigas(resources.getVigas() - 10);
                 }
             } else if (type == "elec") {
-                if (resources.getMoney() >= 15) {
-                    building.edificios.emplace_back(new CentralEletrica(building.getAmountOfElec(), line, col, day));
-                    cons(building.edificios.back()->getName(),
-                         building.edificios.back()->getCoordinateY(),
-                         building.edificios.back()->getCoordinateX()
-                    );
-                    resources.setMoney(resources.getMoney() - 15);
+                if (checkForAdjacentForest(line, col)) {
+                    if (resources.getMoney() >= 15) {
+                        building.edificios.emplace_back(new CentralEletrica(building.getAmountOfElec(), line, col, day));
+                        cons(building.edificios.back()->getName(),
+                             building.edificios.back()->getCoordinateY(),
+                             building.edificios.back()->getCoordinateX()
+                        );
+                        resources.setMoney(resources.getMoney() - 15);
+                    }
+                } else {
+                    cout << "Didn't find an adjacent forest" << endl;
                 }
             } else if (type == "bat") {
-                if (resources.getMoney() >= 10 && resources.getVigas() >= 10) {
-                    building.edificios.emplace_back(new Bateria(building.getAmountOfBat(), line, col, day));
-                    cons(building.edificios.back()->getName(),
-                         building.edificios.back()->getCoordinateY(),
-                         building.edificios.back()->getCoordinateX()
-                    );
-                    resources.setMoney(resources.getMoney() - 10);
-                    resources.setVigas(resources.getVigas() - 10);
+                if (checkForAdjacentBuilding("bateria", line, col)) {
+                    if (resources.getMoney() >= 10 && resources.getVigas() >= 10) {
+                        building.edificios.emplace_back(new Bateria(building.getAmountOfBat(), line, col, day));
+                        cons(building.edificios.back()->getName(),
+                             building.edificios.back()->getCoordinateY(),
+                             building.edificios.back()->getCoordinateX()
+                        );
+                        resources.setMoney(resources.getMoney() - 10);
+                        resources.setVigas(resources.getVigas() - 10);
+                    }
+                } else {
+                    cout << "Didn't find any adjacent electrical centers." << endl;
                 }
             } else if (type == "fun") {
-                if (resources.getMoney() >= 10) {
-                    building.edificios.emplace_back(new Fundicao(building.getAmountOfFun(), line, col, day));
-                    cons(building.edificios.back()->getName(),
-                         building.edificios.back()->getCoordinateY(),
-                         building.edificios.back()->getCoordinateX()
-                    );
-                    resources.setMoney(resources.getMoney() - 10);
+                if (checkForAdjacentBuilding("fundicao", line, col)) {
+                    if (resources.getMoney() >= 10) {
+                        building.edificios.emplace_back(new Fundicao(building.getAmountOfFun(), line, col, day));
+                        cons(building.edificios.back()->getName(),
+                             building.edificios.back()->getCoordinateY(),
+                             building.edificios.back()->getCoordinateX()
+                        );
+                        resources.setMoney(resources.getMoney() - 10);
+                    }
+                } else {
+                    cout << "Didn't find any adjacent mines or electrical centers" << endl;
                 }
             }
         } else if (cmd == "cont") {
@@ -326,6 +338,9 @@ void Island::afternoonPhase(int day) {
         } else if (cmd == "buy") {
             cin >> type >> amount;
             resources.chooseResourceToBuy(type, amount);
+        } else if (cmd == "levelUp") {
+            cin >> type;
+            levelUpBuilding(type);
         } else {
                 cout << "Invalid command." << endl;
         }
@@ -458,19 +473,20 @@ void Island::collectResources() {
 
 void Island::collectNaturalResources() {
     int naturalX, naturalY, workerX, workerY;
-    for (int i = 0; i < zone.zonasNaturais.size(); ++i) {
-        if (zone.zonasNaturais.at(i)->getType() == "floresta") {
-            naturalX = zone.zonasNaturais.at(i)->getCoordinateX();
-            naturalY = zone.zonasNaturais.at(i)->getCoordinateY();
+    for (auto & zonaNat : zone.zonasNaturais) {
+        if (zonaNat->getType() == "floresta" && zonaNat->getTreeCount() > 0) {
+            naturalX = zonaNat->getCoordinateX();
+            naturalY = zonaNat->getCoordinateY();
 
 
-            for (int j = 0; j < worker.trabalhadores.size(); ++j) {
-                if (worker.trabalhadores.at(j)->getType() == "lenhador") {
-                    workerX = worker.trabalhadores.at(j)->getCoordinateX();
-                    workerY = worker.trabalhadores.at(j)->getCoordinateY();
-                }
-                if (naturalX == workerX && naturalY == workerY) {
-                    resources.acquireWood(1, 1);
+            for (auto & trabalhador : worker.trabalhadores) {
+                if (trabalhador->getType() == "lenhador") {
+                    workerX = trabalhador->getCoordinateX();
+                    workerY = trabalhador->getCoordinateY();
+
+                    if (naturalX == workerX && naturalY == workerY) {
+                        resources.acquireWood(1, 1);
+                    }
                 }
             }
         }
@@ -538,7 +554,7 @@ void Island::collectBuildingResources() {
                     workerY = worker.trabalhadores.at(j)->getCoordinateY();
                 }
                 if (buildingX == workerX && buildingY == workerY && status == "Enabled") {
-                    resources.acquireEletricidade(1, 1);
+                    resources.acquireCoal(1,1);
                 }
             }
         }
@@ -560,7 +576,7 @@ void Island::printTree(int day) {
 void Island::listBuildings() {
     cout << "There are " << building.edificios.size() << " buildings." << endl;
     for (auto & edificio : building.edificios) {
-        cout << edificio->getName()<< ": "
+        cout << edificio->getName()<< "(" << edificio->getLevel() << "): "
              << "x="
              << edificio->getCoordinateX()
              << " ; y="
@@ -773,7 +789,6 @@ void Island::updateBuildingStatuses() {
     }
 }
 
-#include "Island.h"
 
 void Island::updateChanceOfQuitting(int currentDay) {
     int chanceOfQuitting;
@@ -910,12 +925,15 @@ void Island::updateChanceOfDestroyingBuilding(int currentDay) {
                 }
             }
         } else {
+            naturalX = zonaNatural->getCoordinateX();
+            naturalY = zonaNatural->getCoordinateY();
+
             for (auto & edificio : building.edificios) {
                 buildingX = edificio->getCoordinateX();
                 buildingY = edificio->getCoordinateY();
 
-                
-                cout << edificio->getChanceOfBreaking() << " >= " << chanceOfDestroying << endl;
+                chanceOfDestroying = rand() % (101) + 0;
+//                cout << edificio->getChanceOfBreaking() << " >= " << chanceOfDestroying << endl;
                 if (edificio->getChanceOfBreaking() >= chanceOfDestroying && naturalX == buildingX && naturalY == buildingY) {
                     cout << "A \"" << edificio->getType() <<
                     "\", \"" <<  edificio->getName() << "\" has been destroyed!!" << endl;
@@ -926,13 +944,59 @@ void Island::updateChanceOfDestroyingBuilding(int currentDay) {
     }
 }
 
+bool Island::checkForAdjacentForest(int x, int y) {
+    for (auto & zonaNatural : zone.zonasNaturais) {
+        if (zonaNatural->getCoordinateX() == (x - 1) && zonaNatural->getCoordinateY() == (y - 1)
+        || zonaNatural->getCoordinateX() == (x - 1) && zonaNatural->getCoordinateY() == y
+        || zonaNatural->getCoordinateX() == (x - 1) && zonaNatural->getCoordinateY() == (y + 1)
+        || zonaNatural->getCoordinateX() == (x) && zonaNatural->getCoordinateY() == (y - 1)
+        || zonaNatural->getCoordinateX() == (x) && zonaNatural->getCoordinateY() == (y + 1)
+        || zonaNatural->getCoordinateX() == (x + 1) && zonaNatural->getCoordinateY() == (y - 1)
+        || zonaNatural->getCoordinateX() == (x + 1) && zonaNatural->getCoordinateY() == y
+        || zonaNatural->getCoordinateX() == (x +1) && zonaNatural->getCoordinateY() == (y + 1)) {
+            if (zonaNatural->getType() == "floresta") {
+                cout << "Found an adjacent forest! \n";
+                return true;
+            }
+        }
+    }
+    return false;
+}
 
-//void Island::updateChanceOfDestroyingBuilding(int currentDay) {
-//    int chanceOfDestroying;
-//    int naturalX, naturalY, buildingX, buildingY, workerX, workerY;
-//
-//    for (auto & zonaNatural : zone.zonasNaturais) {
-//        chanceOfDestroying = rand() % 101-0;
-//
-//    }
-//}
+bool Island::checkForAdjacentBuilding(string type, int x, int y) {
+    for (auto & edificio : building.edificios) {
+        if (edificio->getCoordinateX() == (x - 1) && edificio->getCoordinateY() == (y - 1)
+            || edificio->getCoordinateX() == (x - 1) && edificio->getCoordinateY() == y
+            || edificio->getCoordinateX() == (x - 1) && edificio->getCoordinateY() == (y + 1)
+            || edificio->getCoordinateX() == (x) && edificio->getCoordinateY() == (y - 1)
+            || edificio->getCoordinateX() == (x) && edificio->getCoordinateY() == (y + 1)
+            || edificio->getCoordinateX() == (x + 1) && edificio->getCoordinateY() == (y - 1)
+            || edificio->getCoordinateX() == (x + 1) && edificio->getCoordinateY() == y
+            || edificio->getCoordinateX() == (x + 1) && edificio->getCoordinateY() == (y + 1)) {
+            if (type == "bateria") {
+                if (edificio->getType() == "centralEletrica") {
+                    return true;
+                }
+            } else if (type == "fundicao") {
+                if (edificio->getType() == "minaCarvao" || edificio->getType() == "minaFerro" || edificio->getType() == "centralEletrica") {
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}
+
+void Island::levelUpBuilding(string nameOfBuilding) {
+    for (auto & edificio : building.edificios) {
+        if (edificio->getName() == nameOfBuilding) {
+            if (edificio->getLevel() >= edificio->getMaxLevel()) {
+                cout << "This building's already level cap." << endl;
+            } else {
+                if (resources.getMoney() >= edificio->getCostOfLevelUp()) {
+                    edificio->levelUp();
+                }
+            }
+        }
+    }
+}

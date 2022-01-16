@@ -19,8 +19,9 @@ private:
     double costOfLevelUp;
     double storage;
     int dayBuilt;
-    int maxLevel;
+    int maxLevel = 5;
     int chanceOfBreaking;
+    int level = 1;
 
     int numOfMnF = 0;
     int numOfMnC = 0;
@@ -57,6 +58,7 @@ public:
     virtual std::string getType() {return type;}
 
     int getTotalBuildingCount() const;
+    int getLevel() const;
     int getAmountOfMnF() const;
     int getAmountOfMnC() const;
     int getAmountOfElec() const;
@@ -78,11 +80,12 @@ public:
     void setCost(double custo) {cost = custo;}
     void setCostOfLevelUp(double custo) {costOfLevelUp = custo;}
     void setMaxStorage(double storageLimit) {storage = storageLimit;}
-    void setMaxLevel(int levelCap) {maxLevel = levelCap;}
     void setChanceOfBreaking(int chance) {chanceOfBreaking = chance;}
     void setType(std::string tipo) {type = tipo;}
     void setStatus(std::string state) {status = state;}
     void setDayBuilt(int currentDay) {dayBuilt = currentDay;}
+    void setMaxLevel(int nivel);
+    void levelUp();
 
     int setCoordinateX(int x) {return coordinateX = x;}
     int setCoordinateY(int y) {return coordinateY = y;}

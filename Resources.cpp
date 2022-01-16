@@ -29,9 +29,9 @@ void Resources::acquireVigas(double acquiredResource, double naturalMultiplier) 
 }
 
 void Resources::acquireEletricidade(double acquiredResource, double naturalMultiplier) {
-    if (carvao >= 2) {
+    if (carvao >= 1) {
         eletricidade += acquiredResource * naturalMultiplier;
-        carvao -= 2;
+        carvao --;
     }
 }
 

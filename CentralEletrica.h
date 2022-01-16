@@ -16,6 +16,7 @@ public:
         setType(type);
         setChanceOfBreaking(0);
         setDayBuilt(currentDay);
+        setMaxLevel(1);
         name = "elec";
         std::string amount = std::to_string(amountOfElec + 1);
         name.append(amount);
