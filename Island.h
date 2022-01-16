@@ -141,6 +141,8 @@ public:
     void killTreeFromForestAtCoords(int x, int y);
     bool checkIfBuildingExistsAtLocation(int x, int y);
     bool checkIfOnMountain(int x, int y);
+    void checkIfOverResourceLimit();
+    void updateMaxStorage();
 };
 
 #endif //ISLANDSCLION_ISLAND_H

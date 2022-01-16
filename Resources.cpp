@@ -43,12 +43,12 @@ void Resources::acquireEletricidade(double acquiredResource, double naturalMulti
 void Resources::listResources() {
     cout << fixed << setprecision(2) << "Dinheiro: " << money << "€" << endl << setprecision(1) <<
     "---------------------" << endl <<
-    "Madeira: " << madeira << endl <<
-    "Ferro: " << ferro << endl <<
-    "Barra: " << barra << endl <<
-    "Carvao: " << carvao << endl <<
-    "Vigas: " << vigas << endl <<
-    "Eletricidade: " << eletricidade << endl;
+    "Madeira: " << madeira << "/" << maxMadeira << endl <<
+    "Ferro: " << ferro << "/" << maxFerro << endl <<
+    "Barra: " << barra << "/" << maxBarra << endl <<
+    "Carvao: " << carvao << "/" << maxCarvao << endl <<
+    "Vigas: " << vigas << "/" << maxVigas << endl <<
+    "Eletricidade: " << eletricidade << "/" << maxEletricidade << endl;
 }
 
 void Resources::sellWood() {
@@ -158,4 +158,76 @@ void Resources::setCoal(double coal) {
 
 double Resources::getCoal() {
     return carvao;
+}
+
+double Resources::getMaxFerro() const {
+    return maxFerro;
+}
+
+double Resources::getMaxBarra() const {
+    return maxBarra;
+}
+
+double Resources::getMaxCarvao() const {
+    return maxCarvao;
+}
+
+double Resources::getMaxMadeira() const {
+    return maxMadeira;
+}
+
+double Resources::getMaxVigas() const {
+    return maxVigas;
+}
+
+double Resources::getMaxEletricidade() const {
+    return maxEletricidade;
+}
+
+double Resources::getIron() {
+    return ferro;
+}
+
+void Resources::setIron(double iron) {
+    ferro = iron;
+}
+
+double Resources::getBarra() const {
+    return barra;
+}
+
+void Resources::setBarra(double steel) {
+    barra = steel;
+}
+
+double Resources::getEletricidade() {
+    return eletricidade;
+}
+
+void Resources::setEletricidade(double electro) {
+    eletricidade = electro;
+}
+
+void Resources::setMaxWood(double wood) {
+    maxMadeira = wood;
+}
+
+void Resources::setMaxIron(double iron) {
+    maxFerro = iron;
+}
+
+void Resources::setMaxVigas(double viga) {
+    maxVigas = viga;
+}
+
+void Resources::setMaxEletricidade(double electro) {
+    maxEletricidade = electro;
+}
+
+void Resources::setMaxBarra(double steel) {
+    maxBarra = steel;
+}
+
+void Resources::setMaxCoal(double coal) {
+    maxCarvao = coal;
 }

@@ -17,6 +17,13 @@ private:
     double vigas;
     double eletricidade;
 
+    double maxFerro;
+    double maxBarra;
+    double maxCarvao;
+    double maxMadeira;
+    double maxVigas;
+    double maxEletricidade;
+
 public:
     Resources() {
         money = 500000.0;
@@ -26,11 +33,23 @@ public:
         carvao = 30.0;
         vigas = 40.0;
         eletricidade = 50.0;
+        maxMadeira = 100.0;
     }
 
     double getWood();
     double getVigas();
     double getCoal();
+    double getIron();
+    double getBarra() const;
+    double getEletricidade();
+    double getMaxFerro() const;
+    double getMaxBarra() const;
+    double getMaxCarvao() const;
+    double getMaxMadeira() const;
+    double getMaxVigas() const;
+    double getMaxEletricidade() const;
+
+
 
 
     void acquireWood(double acquiredResource, double naturalMultiplier);
@@ -56,7 +75,17 @@ public:
     void setMoney(double euro);
     void setVigas(double viga);
     void setWood(double wood);
+    void setIron(double iron);
+    void setEletricidade(double electro);
+    void setBarra(double steel);
     void setCoal(double coal);
+
+    void setMaxWood(double wood);
+    void setMaxIron(double iron);
+    void setMaxVigas(double viga);
+    void setMaxEletricidade(double electro);
+    void setMaxBarra(double steel);
+    void setMaxCoal(double coal);
 
 
     void listResources();

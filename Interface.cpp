@@ -101,7 +101,6 @@ void Interface::mainGame() {
                 spacePhasesOut();
                 nightMessage();
                 island.collectResources(getDay());
-
                 island.updateBuildingStatuses();
                 if (getDay() == 31)
                     endGame();

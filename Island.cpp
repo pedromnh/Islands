@@ -356,6 +356,7 @@ void Island::afternoonPhase(int day) {
             cin >> line >> col;
             printAtCoordinates(line, col);
         } else if (cmd == "listResources") {
+            updateMaxStorage();
             resources.listResources();
         } else if (cmd == "sell") {
             cin >> type >> amount;
@@ -501,6 +502,8 @@ void Island::listNaturalZones() {
 void Island::collectResources(int currentDay) {
     collectNaturalResources(currentDay);
     collectBuildingResources(currentDay);
+    updateMaxStorage();
+    checkIfOverResourceLimit();
     resources.listResources();
 }
 
@@ -1203,4 +1206,58 @@ bool Island::checkIfOnMountain(int x, int y) {
         }
     }
     return false;
+}
+
+void Island::checkIfOverResourceLimit() {
+    if (resources.getWood() >= resources.getMaxMadeira()) {
+        cout << "Limited your amount of wood." << endl;
+        resources.setWood(resources.getMaxMadeira());
+    }
+    if (resources.getIron() >= resources.getMaxFerro()) {
+        cout << "Limited your amount of iron." << endl;
+        resources.setIron(resources.getMaxFerro());
+    }
+    if (resources.getBarra() >= resources.getMaxBarra()) {
+        cout << "Limited your amount of steel bars." << endl;
+        resources.setBarra(resources.getMaxBarra());
+    }
+    if (resources.getCoal() >= resources.getMaxCarvao()) {
+        cout << "Limited your amount of coal." << endl;
+        resources.setCoal(resources.getMaxCarvao());
+    }
+    if (resources.getVigas() >= resources.getMaxVigas()) {
+        cout << "Limited your amount of vigas" << endl;
+        resources.setVigas(resources.getMaxVigas());
+    }
+    if (resources.getEletricidade() >= resources.getMaxEletricidade()) {
+        cout << "Limited your amount of electro." << endl;
+        resources.setEletricidade(resources.getMaxEletricidade());
+    }
+}
+
+void Island::updateMaxStorage() {
+    double wood = 100, iron = 0, steel = 0, coal = 0, vigas = 0, eletro = 0;
+    for (auto & edificio : building.edificios) {
+        if (edificio->getType() == "serracao") {
+            wood += 100;
+            vigas += 100;
+        } else if (edificio->getType() == "minaFerro") {
+            iron += 100 + 10 * edificio->getLevel();
+        } else if (edificio->getType() == "minaCarvao") {
+            coal += 100 + 10 * edificio->getLevel();
+        } else if (edificio->getType() == "fundicao") {
+            steel += 100 + 10 * edificio->getLevel();
+        } else if (edificio->getType() == "centralEletrica") {
+            coal += 100 + 10 * edificio->getLevel();
+        } else if (edificio->getType() == "bateria") {
+            eletro += 100 + 10 * edificio->getLevel();
+        }
+    }
+
+    resources.setMaxWood(wood);
+    resources.setMaxIron(iron);
+    resources.setMaxCoal(coal);
+    resources.setMaxBarra(steel);
+    resources.setMaxVigas(vigas);
+    resources.setMaxEletricidade(eletro);
 }
