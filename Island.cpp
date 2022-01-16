@@ -557,6 +557,8 @@ void Island::collectBuildingResources() {
                     resources.acquireCoal(1,1);
                 }
             }
+        } else if (building.edificios.at(i)->getType() == "bateria") {
+            resources.acquireEletricidade(1, 1);
         }
     }
 }
