@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Bateria.cpp" "/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/cmake-build-debug/CMakeFiles/IslandsCLion.dir/Bateria.cpp.o"
+  "/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/BuildingX.cpp" "/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/cmake-build-debug/CMakeFiles/IslandsCLion.dir/BuildingX.cpp.o"
   "/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Buildings.cpp" "/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/cmake-build-debug/CMakeFiles/IslandsCLion.dir/Buildings.cpp.o"
   "/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/CentralEletrica.cpp" "/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/cmake-build-debug/CMakeFiles/IslandsCLion.dir/CentralEletrica.cpp.o"
   "/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Deserto.cpp" "/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/cmake-build-debug/CMakeFiles/IslandsCLion.dir/Deserto.cpp.o"

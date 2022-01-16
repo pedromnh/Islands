@@ -5,6 +5,10 @@ CMakeFiles/IslandsCLion.dir/Bateria.cpp.o: \
  ../Bateria.cpp \
  ../Bateria.h \
  ../Buildings.h
+CMakeFiles/IslandsCLion.dir/BuildingX.cpp.o: \
+ ../BuildingX.cpp \
+ ../BuildingX.h \
+ ../Buildings.h
 CMakeFiles/IslandsCLion.dir/Buildings.cpp.o: \
  ../Buildings.cpp \
  ../Buildings.h
@@ -27,6 +31,7 @@ CMakeFiles/IslandsCLion.dir/Fundicao.cpp.o: \
  ../Fundicao.h
 CMakeFiles/IslandsCLion.dir/Interface.cpp.o: \
  ../Bateria.h \
+ ../BuildingX.h \
  ../Buildings.h \
  ../CentralEletrica.h \
  ../Deserto.h \
@@ -49,6 +54,7 @@ CMakeFiles/IslandsCLion.dir/Interface.cpp.o: \
  ../Zones.h
 CMakeFiles/IslandsCLion.dir/Island.cpp.o: \
  ../Bateria.h \
+ ../BuildingX.h \
  ../Buildings.h \
  ../CentralEletrica.h \
  ../Deserto.h \
@@ -103,6 +109,7 @@ CMakeFiles/IslandsCLion.dir/Pastagem.cpp.o: \
  ../Zones.h
 CMakeFiles/IslandsCLion.dir/Resources.cpp.o: \
  ../Bateria.h \
+ ../BuildingX.h \
  ../Buildings.h \
  ../CentralEletrica.h \
  ../Deserto.h \
@@ -135,6 +142,7 @@ CMakeFiles/IslandsCLion.dir/Zones.cpp.o: \
  ../Zones.h
 CMakeFiles/IslandsCLion.dir/main.cpp.o: \
  ../Bateria.h \
+ ../BuildingX.h \
  ../Buildings.h \
  ../CentralEletrica.h \
  ../Deserto.h \

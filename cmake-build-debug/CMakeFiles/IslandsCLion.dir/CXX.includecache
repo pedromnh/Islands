@@ -10,6 +10,10 @@
 Buildings.h
 /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Buildings.h
 
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/BuildingX.h
+Buildings.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Buildings.h
+
 /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Buildings.h
 iostream
 -
@@ -95,6 +99,8 @@ Bateria.h
 /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Bateria.h
 Fundicao.h
 /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Fundicao.h
+BuildingX.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/BuildingX.h
 Lenhador.h
 /Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Lenhador.h
 Operario.h

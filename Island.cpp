@@ -277,7 +277,19 @@ void Island::afternoonPhase(int day) {
                         resources.setMoney(resources.getMoney() - 10);
                     }
                 } else {
-                    cout << "Didn't find any adjacent mines or electrical centers" << endl;
+                    cout << "Didn't find any adjacent mines or electrical centers." << endl;
+                }
+            } else if (type == "znX") {
+                if (checkIfOnForest(line, col)) {
+                    if (resources.getMoney() >= 25) {
+                        building.edificios.emplace_back(new BuildingX(building.getAmountOfBuildingX(), line, col, day));
+                        cons(building.edificios.back()->getName(),
+                             building.edificios.back()->getCoordinateY(),
+                             building.edificios.back()->getCoordinateX()
+                        );
+                        resources.setMoney(resources.getMoney() - 25);
+                        roundOver = true;
+                    }
                 }
             }
         } else if (cmd == "cont") {
@@ -477,7 +489,7 @@ void Island::listNaturalZones() {
 
 void Island::collectResources(int currentDay) {
     collectNaturalResources(currentDay);
-    collectBuildingResources();
+    collectBuildingResources(currentDay);
     resources.listResources();
 }
 
@@ -504,7 +516,7 @@ void Island::collectNaturalResources(int currentDay) {
     }
 }
 
-void Island::collectBuildingResources() {
+void Island::collectBuildingResources(int currentDay) {
     int workerX, workerY, buildingX, buildingY;
     string status;
     for (int i = 0; i < building.edificios.size(); ++i) {
@@ -570,6 +582,21 @@ void Island::collectBuildingResources() {
             }
         } else if (building.edificios.at(i)->getType() == "bateria") {
             resources.acquireEletricidade(1, 1);
+        } else if (building.edificios.at(i)->getType() == "serracao") {
+            buildingX = building.edificios.at(i)->getCoordinateX();
+            buildingY = building.edificios.at(i)->getCoordinateY();
+            status = building.edificios.at(i)->getStatus();
+
+
+            for (auto & trabalhador : worker.trabalhadores) {
+                if (trabalhador->getType() == "lenhador") {
+                    workerX = trabalhador->getCoordinateX();
+                    workerY = trabalhador->getCoordinateY();
+                }
+                if (buildingX == workerX && buildingY == workerY && status == "Enabled" && (trabalhador->getDaysWorking(currentDay)) % 5 != 0) {
+                    resources.acquireVigas(1, 1);
+                }
+            }
         }
     }
 }
@@ -1069,4 +1096,16 @@ void Island::transform(std::string type, int amount) {
     } else {
         cout << type << " is not a valid type to transform." << endl;
     }
+}
+
+bool Island::checkIfOnForest(int x, int y) {
+    for (auto & zonaNatural : zone.zonasNaturais) {
+        if (zonaNatural->getCoordinateX() == x && zonaNatural->getCoordinateY() == y) {
+            if (zonaNatural->getType() == "floresta") {
+                return true;
+            }
+        }
+    }
+    cout << "You must build it on a forest!" << endl;
+    return false;
 }

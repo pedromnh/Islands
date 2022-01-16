@@ -25,6 +25,7 @@
 #include "CentralEletrica.h"
 #include "Bateria.h"
 #include "Fundicao.h"
+#include "BuildingX.h"
 
 #include "Lenhador.h"
 #include "Operario.h"
@@ -116,7 +117,7 @@ public:
 
     void collectResources(int currentDay);
     static void collectNaturalResources(int currentDay);
-    void collectBuildingResources();
+    void collectBuildingResources(int currentDay);
     void printTree(int day);
     static void printAtCoordinates(int x, int y);
     static void printZoneAtCoordinates(int x, int y);
@@ -135,6 +136,7 @@ public:
     void levelUpBuilding(string nameOfBuilding);
     static void moveID(std::string id);
     static void transform(std::string type, int amount);
+    bool checkIfOnForest(int x, int y);
 };
 
 #endif //ISLANDSCLION_ISLAND_H

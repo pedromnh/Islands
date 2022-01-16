@@ -28,6 +28,7 @@ private:
     int numOfElec = 0;
     int numOfBat = 0;
     int numOfFun = 0;
+    int numOfBuildingX = 0;
 
     int coordinateX;
     int coordinateY;
@@ -40,6 +41,7 @@ public:
     void incrementElec();
     void incrementBat();
     void incrementFun();
+    void incrementBuildingX();
 
 //    Decrementers
     void decrementMnF();
@@ -47,6 +49,7 @@ public:
     void decrementElec();
     void decrementBat();
     void decrementFun();
+    void decrementBuildingX();
 
 
 
@@ -64,6 +67,7 @@ public:
     int getAmountOfElec() const;
     int getAmountOfBat() const;
     int getAmountOfFun() const;
+    int getAmountOfBuildingX() const;
     int getDayBuilt() const;
 
     double getCost() const {return cost;}

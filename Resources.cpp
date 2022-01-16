@@ -27,7 +27,10 @@ void Resources::acquireCoal(double acquiredResource, double naturalMultiplier, i
 }
 
 void Resources::acquireVigas(double acquiredResource, double naturalMultiplier) {
-    vigas += acquiredResource * naturalMultiplier;
+    if (madeira >= 2) {
+        vigas += acquiredResource * naturalMultiplier;
+        madeira -= 2;
+    }
 }
 
 void Resources::acquireEletricidade(double acquiredResource, double naturalMultiplier) {

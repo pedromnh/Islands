@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/IslandsCLion.dir/Bateria.cpp.o"
+  "CMakeFiles/IslandsCLion.dir/BuildingX.cpp.o"
   "CMakeFiles/IslandsCLion.dir/Buildings.cpp.o"
   "CMakeFiles/IslandsCLion.dir/CentralEletrica.cpp.o"
   "CMakeFiles/IslandsCLion.dir/Deserto.cpp.o"

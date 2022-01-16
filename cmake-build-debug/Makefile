@@ -153,6 +153,30 @@ Bateria.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/IslandsCLion.dir/build.make CMakeFiles/IslandsCLion.dir/Bateria.cpp.s
 .PHONY : Bateria.cpp.s
 
+BuildingX.o: BuildingX.cpp.o
+.PHONY : BuildingX.o
+
+# target to build an object file
+BuildingX.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IslandsCLion.dir/build.make CMakeFiles/IslandsCLion.dir/BuildingX.cpp.o
+.PHONY : BuildingX.cpp.o
+
+BuildingX.i: BuildingX.cpp.i
+.PHONY : BuildingX.i
+
+# target to preprocess a source file
+BuildingX.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IslandsCLion.dir/build.make CMakeFiles/IslandsCLion.dir/BuildingX.cpp.i
+.PHONY : BuildingX.cpp.i
+
+BuildingX.s: BuildingX.cpp.s
+.PHONY : BuildingX.s
+
+# target to generate assembly for a file
+BuildingX.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IslandsCLion.dir/build.make CMakeFiles/IslandsCLion.dir/BuildingX.cpp.s
+.PHONY : BuildingX.cpp.s
+
 Buildings.o: Buildings.cpp.o
 .PHONY : Buildings.o
 
@@ -645,6 +669,9 @@ help:
 	@echo "... Bateria.o"
 	@echo "... Bateria.i"
 	@echo "... Bateria.s"
+	@echo "... BuildingX.o"
+	@echo "... BuildingX.i"
+	@echo "... BuildingX.s"
 	@echo "... Buildings.o"
 	@echo "... Buildings.i"
 	@echo "... Buildings.s"

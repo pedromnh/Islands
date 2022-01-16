@@ -84,3 +84,15 @@ void Buildings::decrementFun() {
 void Buildings::setMaxLevel(int nivel) {
     maxLevel = nivel;
 }
+
+void Buildings::incrementBuildingX() {
+    numOfBuildingX++;
+}
+
+void Buildings::decrementBuildingX() {
+    numOfBuildingX--;
+}
+
+int Buildings::getAmountOfBuildingX() const {
+    return numOfBuildingX;
+}
