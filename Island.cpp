@@ -1019,22 +1019,38 @@ void Island::updateChanceOfDestroyingBuilding(int currentDay) {
                     buildingIsDestroyed(buildingX, buildingY);
                 }
             }
-        } else {
+        } else if (zonaNatural->getType() == "zonaX") {
             naturalX = zonaNatural->getCoordinateX();
             naturalY = zonaNatural->getCoordinateY();
 
-            for (auto & edificio : building.edificios) {
+            for (auto &edificio: building.edificios) {
                 buildingX = edificio->getCoordinateX();
                 buildingY = edificio->getCoordinateY();
 
-                chanceOfDestroying = rand() % (101) + 0;
-//                cout << edificio->getChanceOfBreaking() << " >= " << chanceOfDestroying << endl;
-                if (edificio->getChanceOfBreaking() >= chanceOfDestroying && naturalX == buildingX && naturalY == buildingY) {
-                    cout << "A \"" << edificio->getType() <<
-                    "\", \"" <<  edificio->getName() << "\" has been destroyed!!" << endl;
+
+                if (buildingX == naturalX && buildingY == naturalY && (currentDay - edificio->getDayBuilt()) >= 0) {
+                    cout << "Because of the heavy radiation, ";
+                    cout << "a \"" << edificio->getType() <<
+                         "\", \"" << edificio->getName() << "\" has been destroyed and everyone has quit!" << endl;
+                    workerQuits(buildingX, buildingY, true);
                     buildingIsDestroyed(buildingX, buildingY);
                 }
             }
+        } else {
+                naturalX = zonaNatural->getCoordinateX();
+                naturalY = zonaNatural->getCoordinateY();
+
+                for (auto & edificio : building.edificios) {
+                    buildingX = edificio->getCoordinateX();
+                    buildingY = edificio->getCoordinateY();
+
+                    chanceOfDestroying = rand() % (101) + 0;
+                    if (edificio->getChanceOfBreaking() >= chanceOfDestroying && naturalX == buildingX && naturalY == buildingY) {
+                        cout << "A \"" << edificio->getType() <<
+                        "\", \"" <<  edificio->getName() << "\" has been destroyed!!" << endl;
+                        buildingIsDestroyed(buildingX, buildingY);
+                    }
+                }
         }
     }
 }
