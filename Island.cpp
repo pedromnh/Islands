@@ -149,6 +149,11 @@ void Island::randomizeNaturalZones() {
     for (int y = 1; y <= lines; y++) {
         for (int x = 1; x <= cols; x++) {
             randomizer = rand()% 6 + 0;
+            if (zone.getAmountOfZnZ() > 0) {
+                while (randomizer == 5) {
+                    randomizer = rand()% 6 + 0;
+                }
+            }
             switch (randomizer) {
                 case 0:
                     zone.zonasNaturais.emplace_back(new Montanha(zone.getAmountOfMnt(), x, y));
