@@ -988,15 +988,42 @@ bool Island::checkForAdjacentBuilding(string type, int x, int y) {
 }
 
 void Island::levelUpBuilding(string nameOfBuilding) {
+    int foundOne = 0;
     for (auto & edificio : building.edificios) {
         if (edificio->getName() == nameOfBuilding) {
+            foundOne++;
             if (edificio->getLevel() >= edificio->getMaxLevel()) {
                 cout << "This building's already level cap." << endl;
             } else {
-                if (resources.getMoney() >= edificio->getCostOfLevelUp()) {
-                    edificio->levelUp();
+                if (edificio->getType() == "bateria") {
+                    if (resources.getMoney() >= edificio->getCostOfLevelUp()) {
+                        edificio->levelUp();
+                        resources.setMoney(resources.getMoney() - edificio->getCostOfLevelUp());
+                    } else {
+                        cout << "Not enough money to purchase this upgrade." << endl;
+                    }
+                } else if (edificio->getType() == "minaCarvao") {
+                    if (resources.getMoney() >= edificio->getCostOfLevelUp() && resources.getVigas() >= 1) {
+                        edificio->levelUp();
+                        resources.setMoney(resources.getMoney() - edificio->getCostOfLevelUp());
+                        resources.setVigas(resources.getVigas() - 1);
+                    } else {
+                        cout << "Not enough resources to purchase this upgrade." << endl;
+                    }
+                } else if (edificio->getType() == "minaFerro") {
+                    if (resources.getMoney() >= edificio->getCostOfLevelUp() && resources.getVigas() >= 1) {
+                        edificio->levelUp();
+                        resources.setMoney(resources.getMoney() - edificio->getCostOfLevelUp());
+                        resources.setVigas(resources.getVigas() - 1);
+                    } else {
+                        cout << "Not enough resources to purchase this upgrade." << endl;
+                    }
                 }
+
             }
         }
+    }
+    if (foundOne == 0) {
+        cout << "Didn't find any building by that name." << endl;
     }
 }

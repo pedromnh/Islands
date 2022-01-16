@@ -57,6 +57,7 @@ int Buildings::getLevel() const {
 }
 
 void Buildings::levelUp() {
+    std::cout << "Levelled up!" << std::endl;
     level++;
 }
 

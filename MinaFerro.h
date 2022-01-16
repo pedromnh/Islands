@@ -17,6 +17,7 @@ public:
         setChanceOfBreaking(15);
         setDayBuilt(currentDay);
         setMaxLevel(5);
+        setCostOfLevelUp(15);
         name = "mnF";
         std::string amount = std::to_string(amountOfMnf + 1);
         name.append(amount);

@@ -17,6 +17,7 @@ public:
         setChanceOfBreaking(0);
         setDayBuilt(currentDay);
         setMaxLevel(5);
+        setCostOfLevelUp(5);
         name = "bat";
         std::string amount = std::to_string(amountOfBat + 1);
         name.append(amount);
