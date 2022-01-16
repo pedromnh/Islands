@@ -14,6 +14,7 @@ private:
 public:
     Fundicao(int amountOfFun, int x, int y, int currentDay) {
         setType(type);
+        setCost(10);
         setChanceOfBreaking(-1);
         setDayBuilt(currentDay);
         name = "fun";

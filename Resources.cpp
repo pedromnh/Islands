@@ -231,3 +231,15 @@ void Resources::setMaxBarra(double steel) {
 void Resources::setMaxCoal(double coal) {
     maxCarvao = coal;
 }
+
+void Resources::debcash(double amount) {
+    if ((money + amount) >= 0) {
+        money += amount;
+        if (amount >= 0) {
+            cout << "You've earned +" << amount <<"€" << endl;
+        } else {
+            cout << "You've spent " << amount <<"€" << endl;
+        }
+
+    }
+}

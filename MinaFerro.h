@@ -14,6 +14,7 @@ private:
 public:
     MinaFerro(int amountOfMnf, int x, int y, int currentDay) {
         setType(type);
+        setCost(10);
         setChanceOfBreaking(15);
         setDayBuilt(currentDay);
         setMaxLevel(5);

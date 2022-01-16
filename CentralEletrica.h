@@ -14,6 +14,7 @@ private:
 public:
     CentralEletrica(int amountOfElec, int x, int y, int currentDay) {
         setType(type);
+        setCost(15);
         setChanceOfBreaking(-1);
         setDayBuilt(currentDay);
         setMaxLevel(1);

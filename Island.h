@@ -143,6 +143,8 @@ public:
     bool checkIfOnMountain(int x, int y);
     void checkIfOverResourceLimit();
     void updateMaxStorage();
+    void debkill(std::string idOfWorker);
+    void sellBuilding(int x, int y);
 };
 
 #endif //ISLANDSCLION_ISLAND_H

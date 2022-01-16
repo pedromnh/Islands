@@ -14,6 +14,7 @@ private:
 public:
     MinaCarvao(int amountOfMnC, int x, int y, int currentDay) {
         setType(type);
+        setCost(10);
         setChanceOfBreaking(10);
         setDayBuilt(currentDay);
         setMaxLevel(5);

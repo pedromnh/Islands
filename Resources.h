@@ -87,6 +87,8 @@ public:
     void setMaxBarra(double steel);
     void setMaxCoal(double coal);
 
+    void debcash(double amount);
+
 
     void listResources();
 };

@@ -218,6 +218,7 @@ void Island::randomizeNaturalZones() {
 void Island::afternoonPhase(int day) {
     string cmd, type;
     int line, col, amount, zoneMultiplier = 1;
+    double doubleAmount;
 
     do {
         roundOver = false;
@@ -292,13 +293,13 @@ void Island::afternoonPhase(int day) {
                 }
             } else if (type == "znX") {
                 if (checkIfOnForest(line, col)) {
-                    if (resources.getMoney() >= (10 * zoneMultiplier) && !checkIfBuildingExistsAtLocation(line, col)) {
+                    if (resources.getMoney() >= (25 * zoneMultiplier) && !checkIfBuildingExistsAtLocation(line, col)) {
                         building.edificios.emplace_back(new BuildingX(building.getAmountOfBuildingX(), line, col, day));
                         cons(building.edificios.back()->getName(),
                              building.edificios.back()->getCoordinateY(),
                              building.edificios.back()->getCoordinateX()
                         );
-                        resources.setMoney(resources.getMoney() - (10 * zoneMultiplier));
+                        resources.setMoney(resources.getMoney() - (25 * zoneMultiplier));
                         roundOver = true;
                     }
                 }
@@ -343,7 +344,8 @@ void Island::afternoonPhase(int day) {
         } else if (cmd == "save") {
             save("saveName");
         } else if (cmd == "vende") {
-            vende("Ferro", 3);
+            cin >> line >> col;
+            sellBuilding(line, col);
         } else if (cmd == "listNat") {
             listNaturalZones();
         } else if (cmd == "printTree") {
@@ -375,6 +377,12 @@ void Island::afternoonPhase(int day) {
         } else if (cmd == "transform") {
             cin >> type >> amount;
             transform(type, amount);
+        } else if (cmd == "debcash") {
+            cin >> doubleAmount;
+            resources.debcash(doubleAmount);
+        } else if (cmd == "debkill") {
+            cin >> type;
+            debkill(type);
         } else {
                 cout << "Invalid command." << endl;
         }
@@ -756,7 +764,9 @@ void Island::printHelp() {
             "buy <type> <amount>\n"
             "levelUp\n"
             "moveID <id> <line> <col>\n"
-            "transform <type> <amount>\n"<< endl;
+            "transform <type> <amount>\n"
+            "debcash <amount>\n"
+            "debkill <id>\n"<< endl;
 }
 
 
@@ -1276,4 +1286,32 @@ void Island::updateMaxStorage() {
     resources.setMaxBarra(steel);
     resources.setMaxVigas(vigas);
     resources.setMaxEletricidade(eletro);
+}
+
+void Island::debkill(std::string idOfWorker) {
+    bool foundWorker = false;
+    for (auto & trabalhador: worker.trabalhadores) {
+        if (trabalhador->getWorkerId() == idOfWorker) {
+            foundWorker = true;
+            workerQuits(trabalhador->getCoordinateX(), trabalhador->getCoordinateY(), false);
+        }
+    }
+    if (!foundWorker) {
+        cout << "Couldn't find a worker with that id." << endl;
+    }
+}
+
+void Island::sellBuilding(int x, int y) {
+    bool foundBuilding = false;
+    for (auto & edificio : building.edificios) {
+        if (edificio->getCoordinateX() == x && edificio->getCoordinateY() == y) {
+            cout << "Sold a " << edificio->getType() << "." <<endl;
+            resources.setMoney(resources.getMoney() + edificio->getCost());
+            buildingIsDestroyed(x, y);
+            foundBuilding = true;
+        }
+    }
+    if (!foundBuilding) {
+        cout << "Couldn't find any building at those coordinates." << endl;
+    }
 }

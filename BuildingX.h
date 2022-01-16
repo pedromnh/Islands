@@ -15,6 +15,7 @@ private:
 public:
     BuildingX(int amountOfBuildingX, int x, int y, int currentDay) {
         setType(type);
+        setCost(25);
         setChanceOfBreaking(-1);
         setDayBuilt(currentDay);
         setMaxLevel(1);
