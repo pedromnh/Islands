@@ -343,6 +343,9 @@ void Island::afternoonPhase(int day) {
         } else if (cmd == "levelUp") {
             cin >> type;
             levelUpBuilding(type);
+        } else if (cmd == "transform") {
+            cin >> type >> amount;
+            transform(type, amount);
         } else {
                 cout << "Invalid command." << endl;
         }
@@ -668,7 +671,8 @@ void Island::printHelp() {
             "skip\n"
             "buy <type> <amount>\n"
             "levelUp\n"
-            "moveID <id> <line> <col>\n"<< endl;
+            "moveID <id> <line> <col>\n"
+            "transform <type> <amount>\n"<< endl;
 }
 
 
@@ -1045,5 +1049,19 @@ void Island::moveID(std::string id) {
     }
     if (!foundWorker) {
         cout << "Couldn't find a worker with the id: " << id << endl;
+    }
+}
+
+void Island::transform(std::string type, int amount) {
+    if (type == "madeira") {
+        if (resources.getWood() >= amount) {
+            resources.setWood(resources.getWood() - amount);
+            resources.setCoal(resources.getCoal() + amount);
+            cout << "Transformation was successful! You now have " << resources.getCoal() << " coal." << endl;
+        } else {
+            cout << "You don't own that much wood to transform." << endl;
+        }
+    } else {
+        cout << type << " is not a valid type to transform." << endl;
     }
 }

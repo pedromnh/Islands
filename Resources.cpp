@@ -144,3 +144,15 @@ double Resources::getVigas() {
 void Resources::setVigas(double viga) {
     vigas = viga;
 }
+
+void Resources::setWood(double wood) {
+    madeira = wood;
+}
+
+void Resources::setCoal(double coal) {
+    carvao = coal;
+}
+
+double Resources::getCoal() {
+    return carvao;
+}

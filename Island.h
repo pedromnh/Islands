@@ -134,6 +134,7 @@ public:
     bool checkForAdjacentBuilding(string type, int x, int y);
     void levelUpBuilding(string nameOfBuilding);
     static void moveID(std::string id);
+    static void transform(std::string type, int amount);
 };
 
 #endif //ISLANDSCLION_ISLAND_H

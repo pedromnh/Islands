@@ -30,6 +30,7 @@ public:
 
     double getWood();
     double getVigas();
+    double getCoal();
 
 
     void acquireWood(double acquiredResource, double naturalMultiplier);
@@ -54,6 +55,8 @@ public:
     double getMoney();
     void setMoney(double euro);
     void setVigas(double viga);
+    void setWood(double wood);
+    void setCoal(double coal);
 
 
     void listResources();
