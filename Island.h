@@ -114,8 +114,8 @@ public:
 
 
 
-    void collectResources();
-    static void collectNaturalResources();
+    void collectResources(int currentDay);
+    static void collectNaturalResources(int currentDay);
     void collectBuildingResources();
     void printTree(int day);
     static void printAtCoordinates(int x, int y);
@@ -133,6 +133,7 @@ public:
     bool checkForAdjacentForest(int x, int y);
     bool checkForAdjacentBuilding(string type, int x, int y);
     void levelUpBuilding(string nameOfBuilding);
+    static void moveID(std::string id);
 };
 
 #endif //ISLANDSCLION_ISLAND_H

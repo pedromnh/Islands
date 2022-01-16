@@ -14,7 +14,7 @@ private:
 public:
     Fundicao(int amountOfFun, int x, int y, int currentDay) {
         setType(type);
-        setChanceOfBreaking(0);
+        setChanceOfBreaking(-1);
         setDayBuilt(currentDay);
         name = "fun";
         std::string amount = std::to_string(amountOfFun + 1);

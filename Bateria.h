@@ -14,7 +14,7 @@ private:
 public:
     Bateria(int amountOfBat, int x, int y, int currentDay) {
         setType(type);
-        setChanceOfBreaking(0);
+        setChanceOfBreaking(-1);
         setDayBuilt(currentDay);
         setMaxLevel(5);
         setCostOfLevelUp(5);
@@ -23,7 +23,7 @@ public:
         name.append(amount);
         setCoordinateX(x);
         setCoordinateY(y);
-        setStatus("Disabled");
+        setStatus("Enabled");
     }
 
     ~Bateria() {

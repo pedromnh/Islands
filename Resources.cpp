@@ -8,8 +8,9 @@ void Resources::acquireWood(double acquiredResource, double naturalMultiplier) {
     madeira += acquiredResource * naturalMultiplier;
 }
 
-void Resources::acquireIron(double acquiredResource, double naturalMultiplier) {
-    ferro += acquiredResource * naturalMultiplier;
+void Resources::acquireIron(double acquiredResource, double naturalMultiplier, int level) {
+    auto levelDouble = static_cast<double>(level) - 1;
+    ferro += (levelDouble + acquiredResource * 2) * naturalMultiplier;
 }
 
 void Resources::acquireBarra(double acquiredResource, double naturalMultiplier) {
@@ -20,8 +21,9 @@ void Resources::acquireBarra(double acquiredResource, double naturalMultiplier) 
     }
 }
 
-void Resources::acquireCoal(double acquiredResource, double naturalMultiplier) {
-    carvao += acquiredResource * naturalMultiplier;
+void Resources::acquireCoal(double acquiredResource, double naturalMultiplier, int level) {
+    auto levelDouble = static_cast<double>(level);
+    carvao += (levelDouble * acquiredResource) * naturalMultiplier;
 }
 
 void Resources::acquireVigas(double acquiredResource, double naturalMultiplier) {

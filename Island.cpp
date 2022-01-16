@@ -104,7 +104,7 @@ void Island::des(int line, int col) {
 
 void Island::move(int id, int line, int col) {
     //island.at(line - 1).at(col - 1);
-    cout << "[PLACEHOLDER]: move" << endl;
+    cout << "[PLACEHOLDER]: moveID" << endl;
 }
 
 
@@ -129,7 +129,8 @@ void Island::cont(string type) {
 
 void Island::next() {
     //island.at(line - 1).at(col - 1);
-    cout << "[PLACEHOLDER]: next" << endl;
+    cout << "Skipping..." << endl;
+    changeRoundStatus();
 }
 
 void Island::save(string saveName) {
@@ -198,7 +199,7 @@ void Island::randomizeNaturalZones() {
                     zone.incrementZnZ();
                     break;
                 default:
-                    cout << "How did you get here?";
+                    cout << "How did you get here?" << endl;
             }
 
         }
@@ -307,7 +308,8 @@ void Island::afternoonPhase(int day) {
             cin >> line >> col;
             disableBuildingAtCoordinates(line, col);
         } else if (cmd == "move") {
-            move(1, line, col);
+            cin >> type;
+            moveID(type);
         } else if (cmd == "next") {
             next();
         } else if (cmd == "save") {
@@ -435,7 +437,7 @@ void Island::loading(int day) {
                     liga(linePosition, colPosition);
                 } else if (cmd == "des") {
                     des(linePosition, colPosition);
-                } else if (cmd == "move") {
+                } else if (cmd == "moveID") {
                     move(1, linePosition, colPosition);
                 } else if (cmd == "next") {
                     next();
@@ -465,13 +467,13 @@ void Island::listNaturalZones() {
     }
 }
 
-void Island::collectResources() {
-    collectNaturalResources();
+void Island::collectResources(int currentDay) {
+    collectNaturalResources(currentDay);
     collectBuildingResources();
     resources.listResources();
 }
 
-void Island::collectNaturalResources() {
+void Island::collectNaturalResources(int currentDay) {
     int naturalX, naturalY, workerX, workerY;
     for (auto & zonaNat : zone.zonasNaturais) {
         if (zonaNat->getType() == "floresta" && zonaNat->getTreeCount() > 0) {
@@ -484,7 +486,8 @@ void Island::collectNaturalResources() {
                     workerX = trabalhador->getCoordinateX();
                     workerY = trabalhador->getCoordinateY();
 
-                    if (naturalX == workerX && naturalY == workerY) {
+
+                    if (naturalX == workerX && naturalY == workerY && (trabalhador->getDaysWorking(currentDay)) % 5 != 0) {
                         resources.acquireWood(1, 1);
                     }
                 }
@@ -509,7 +512,7 @@ void Island::collectBuildingResources() {
                     workerY = worker.trabalhadores.at(j)->getCoordinateY();
                 }
                 if (buildingX == workerX && buildingY == workerY && status == "Enabled") {
-                    resources.acquireCoal(1, 1);
+                    resources.acquireCoal(1, 1, building.edificios.at(i)->getLevel());
                 }
             }
         } else if (building.edificios.at(i)->getType() == "minaFerro") {
@@ -524,7 +527,7 @@ void Island::collectBuildingResources() {
                     workerY = worker.trabalhadores.at(j)->getCoordinateY();
                 }
                 if (buildingX == workerX && buildingY == workerY && status == "Enabled") {
-                    resources.acquireIron(1, 1);
+                    resources.acquireIron(1, 1, building.edificios.at(i)->getLevel());
                 }
             }
         } else if (building.edificios.at(i)->getType() == "fundicao") {
@@ -554,7 +557,7 @@ void Island::collectBuildingResources() {
                     workerY = worker.trabalhadores.at(j)->getCoordinateY();
                 }
                 if (buildingX == workerX && buildingY == workerY && status == "Enabled") {
-                    resources.acquireCoal(1,1);
+                    resources.acquireCoal(1, 1, building.edificios.at(i)->getLevel());
                 }
             }
         } else if (building.edificios.at(i)->getType() == "bateria") {
@@ -663,7 +666,9 @@ void Island::printHelp() {
             "listResources\n"
             "sell <type> <amount>\n"
             "skip\n"
-            "buy <type> <amount>\n"<< endl;
+            "buy <type> <amount>\n"
+            "levelUp\n"
+            "moveID <id> <line> <col>\n"<< endl;
 }
 
 
@@ -1027,5 +1032,18 @@ void Island::levelUpBuilding(string nameOfBuilding) {
     }
     if (foundOne == 0) {
         cout << "Didn't find any building by that name." << endl;
+    }
+}
+
+void Island::moveID(std::string id) {
+    bool foundWorker = false;
+    for (auto & trabalhador : worker.trabalhadores) {
+        if (trabalhador->getWorkerId() == id) {
+            foundWorker = true;
+            trabalhador->moveWorker();
+        }
+    }
+    if (!foundWorker) {
+        cout << "Couldn't find a worker with the id: " << id << endl;
     }
 }

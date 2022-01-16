@@ -33,9 +33,9 @@ public:
 
 
     void acquireWood(double acquiredResource, double naturalMultiplier);
-    void acquireIron(double acquiredResource, double naturalMultiplier);
+    void acquireIron(double acquiredResource, double naturalMultiplier, int level);
     void acquireBarra(double acquiredResource, double naturalMultiplier);
-    void acquireCoal(double acquiredResource, double naturalMultiplier);
+    void acquireCoal(double acquiredResource, double naturalMultiplier, int level);
     void acquireVigas(double acquiredResource, double naturalMultiplier);
     void acquireEletricidade(double acquiredResource, double naturalMultiplier);
 

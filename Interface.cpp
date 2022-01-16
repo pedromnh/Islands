@@ -83,25 +83,31 @@ void Interface::mainGame() {
     do {
         switch (getCurrentPhase()) {
             case 1: // Morning Phase
-                cout << endl << endl << endl << endl;
+                spacePhasesOut();
+                if (day != 1) {
+                    startOfNextDayMsg();
+                }
                 morningMessage();
                 island.morningEffects(getDay());
                 setAfternoon();
                 break;
             case 2: //Afternoon Phase
+                spacePhasesOut();
                 afternoonMessage();
                 island.afternoonPhase(getDay());
                 setNight();
                 break;
             case 3: //Night Phase
+                spacePhasesOut();
                 nightMessage();
-                island.collectResources();
+                island.collectResources(getDay());
 
                 island.updateBuildingStatuses();
                 if (getDay() == 31)
                     endGame();
-                else
+                else {
                     setMorning();
+                }
                 break;
             case 0: //End of game
                 endGame();
@@ -109,5 +115,13 @@ void Interface::mainGame() {
         }
     } while (getCurrentPhase() != 0);
     island.list();
+}
+
+void Interface::startOfNextDayMsg() const {
+    cout << "<------ NEXT DAY ------>" << endl;
+}
+
+void Interface::spacePhasesOut() const {
+    cout << "\n\n\n";
 }
 

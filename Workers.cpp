@@ -51,7 +51,7 @@ int Workers::getAmountOfMineiros() const {
 void Workers::moveWorker() {
     int x, y;
     do {
-        std::cout << "Choose coordinates to move \"" << getType() << ", "<< getWorkerId() << "\" to: ";
+//        std::cout << "Choose coordinates to moveID \"" << getType() << ", "<< getWorkerId() << "\" to: ";
         std::cin >> x >> y;
     } while (!isValidMoveLocation());
     setCoordinateX(x);
