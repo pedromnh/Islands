@@ -71,3 +71,7 @@ int Zones::getAmountOfPnt() const {
 int Zones::getAmountOfZnZ() const {
     return numOfZnZ;
 }
+
+void Zones::killTree() {
+    std::cout << "Killed tree" << std::endl;
+}

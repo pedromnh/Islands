@@ -137,6 +137,9 @@ public:
     static void moveID(std::string id);
     static void transform(std::string type, int amount);
     bool checkIfOnForest(int x, int y);
+    static std::string findTypeOfNaturalZone(int x, int y);
+    void killTreeFromForestAtCoords(int x, int y);
+    bool checkIfBuildingExistsAtLocation(int x, int y);
 };
 
 #endif //ISLANDSCLION_ISLAND_H

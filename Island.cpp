@@ -39,7 +39,8 @@ void Island::cons(string type, int line, int col){
     || island.at(line - 1).at(col - 1).find("mnC") != string::npos
     || island.at(line - 1).at(col - 1).find("elec") != string::npos
     || island.at(line - 1).at(col - 1).find("bat") != string::npos
-    || island.at(line - 1).at(col - 1).find("fun") != string::npos) {
+    || island.at(line - 1).at(col - 1).find("fun") != string::npos
+    || island.at(line - 1).at(col - 1).find("znX") != string::npos) {
         cout << "Can't overwrite in that position." << endl;
     } else {
         island.at(line - 1).at(col - 1) = type;
@@ -57,6 +58,9 @@ void Island::cons(string type, int line, int col){
             roundOver = true;
         } else if (type.find("fun") != string::npos) {
             building.incrementFun();
+            roundOver = true;
+        } else if (type.find("znX") != string::npos) {
+            building.incrementBuildingX();
             roundOver = true;
         }
     }
@@ -222,7 +226,7 @@ void Island::afternoonPhase(int day) {
         if (cmd == "cons") {
             cin >> type >> line >> col;
             if (type == "mnF") {
-                if (resources.getVigas() >= 10) {
+                if (resources.getVigas() >= 10 && !checkIfBuildingExistsAtLocation(line, col)) {
                     building.edificios.emplace_back(new MinaFerro(building.getAmountOfMnF(), line, col, day));
                     cons(building.edificios.back()->getName(),
                          building.edificios.back()->getCoordinateY(),
@@ -231,7 +235,7 @@ void Island::afternoonPhase(int day) {
                     resources.setVigas(resources.getVigas() - 10);
                 }
             } else if (type == "mnC") {
-                if (resources.getVigas() >= 10) {
+                if (resources.getVigas() >= 10 && !checkIfBuildingExistsAtLocation(line, col)) {
                     building.edificios.emplace_back(new MinaCarvao(building.getAmountOfMnC(), line, col, day));
                     cons(building.edificios.back()->getName(),
                          building.edificios.back()->getCoordinateY(),
@@ -241,7 +245,7 @@ void Island::afternoonPhase(int day) {
                 }
             } else if (type == "elec") {
                 if (checkForAdjacentForest(line, col)) {
-                    if (resources.getMoney() >= 15) {
+                    if (resources.getMoney() >= 15 && !checkIfBuildingExistsAtLocation(line, col)) {
                         building.edificios.emplace_back(new CentralEletrica(building.getAmountOfElec(), line, col, day));
                         cons(building.edificios.back()->getName(),
                              building.edificios.back()->getCoordinateY(),
@@ -254,7 +258,7 @@ void Island::afternoonPhase(int day) {
                 }
             } else if (type == "bat") {
                 if (checkForAdjacentBuilding("bateria", line, col)) {
-                    if (resources.getMoney() >= 10 && resources.getVigas() >= 10) {
+                    if (resources.getMoney() >= 10 && resources.getVigas() >= 10 && !checkIfBuildingExistsAtLocation(line, col)) {
                         building.edificios.emplace_back(new Bateria(building.getAmountOfBat(), line, col, day));
                         cons(building.edificios.back()->getName(),
                              building.edificios.back()->getCoordinateY(),
@@ -268,7 +272,7 @@ void Island::afternoonPhase(int day) {
                 }
             } else if (type == "fun") {
                 if (checkForAdjacentBuilding("fundicao", line, col)) {
-                    if (resources.getMoney() >= 10) {
+                    if (resources.getMoney() >= 10 && !checkIfBuildingExistsAtLocation(line, col)) {
                         building.edificios.emplace_back(new Fundicao(building.getAmountOfFun(), line, col, day));
                         cons(building.edificios.back()->getName(),
                              building.edificios.back()->getCoordinateY(),
@@ -281,7 +285,7 @@ void Island::afternoonPhase(int day) {
                 }
             } else if (type == "znX") {
                 if (checkIfOnForest(line, col)) {
-                    if (resources.getMoney() >= 25) {
+                    if (resources.getMoney() >= 25 && !checkIfBuildingExistsAtLocation(line, col)) {
                         building.edificios.emplace_back(new BuildingX(building.getAmountOfBuildingX(), line, col, day));
                         cons(building.edificios.back()->getName(),
                              building.edificios.back()->getCoordinateY(),
@@ -531,7 +535,20 @@ void Island::collectBuildingResources(int currentDay) {
                     workerX = worker.trabalhadores.at(j)->getCoordinateX();
                     workerY = worker.trabalhadores.at(j)->getCoordinateY();
                 }
-                if (buildingX == workerX && buildingY == workerY && status == "Enabled") {
+                if (buildingX == workerX && buildingY == workerY && status == "Enabled"
+                && findTypeOfNaturalZone(buildingX, buildingY) == "deserto") {
+//                    cout << "Half coal." << endl;
+                    resources.acquireCoal(1, 0.5, building.edificios.at(i)->getLevel());
+                } else if (buildingX == workerX && buildingY == workerY && status == "Enabled"
+                && findTypeOfNaturalZone(buildingX, buildingY) == "montanha") {
+                    resources.acquireCoal(1, 2, building.edificios.at(i)->getLevel());
+//                    cout << "Double coal." << endl;
+                } else if (buildingX == workerX && buildingY == workerY && status == "Enabled"
+                && findTypeOfNaturalZone(buildingX, buildingY) == "floresta") {
+                    resources.acquireCoal(1, 1, building.edificios.at(i)->getLevel());
+                    killTreeFromForestAtCoords(buildingX, buildingY);
+//                    cout << "Normal coal but tree died." << endl;
+                } else if (buildingX == workerX && buildingY == workerY && status == "Enabled") {
                     resources.acquireCoal(1, 1, building.edificios.at(i)->getLevel());
                 }
             }
@@ -546,7 +563,20 @@ void Island::collectBuildingResources(int currentDay) {
                     workerX = worker.trabalhadores.at(j)->getCoordinateX();
                     workerY = worker.trabalhadores.at(j)->getCoordinateY();
                 }
-                if (buildingX == workerX && buildingY == workerY && status == "Enabled") {
+                if (buildingX == workerX && buildingY == workerY && status == "Enabled"
+                    && findTypeOfNaturalZone(buildingX, buildingY) == "deserto") {
+//                    cout << "Half iron." << endl;
+                    resources.acquireIron(1, 0.5, building.edificios.at(i)->getLevel());
+                } else if (buildingX == workerX && buildingY == workerY && status == "Enabled"
+                           && findTypeOfNaturalZone(buildingX, buildingY) == "montanha") {
+                    resources.acquireIron(1, 2, building.edificios.at(i)->getLevel());
+//                    cout << "Double Iron." << endl;
+                } else if (buildingX == workerX && buildingY == workerY && status == "Enabled"
+                           && findTypeOfNaturalZone(buildingX, buildingY) == "floresta") {
+                    resources.acquireIron(1, 1, building.edificios.at(i)->getLevel());
+                    killTreeFromForestAtCoords(buildingX, buildingY);
+//                    cout << "Normal iron but tree died." << endl;
+                } else if (buildingX == workerX && buildingY == workerY && status == "Enabled") {
                     resources.acquireIron(1, 1, building.edificios.at(i)->getLevel());
                 }
             }
@@ -608,7 +638,7 @@ void Island::printTree(int day) {
             " has " <<
             zone.zonasNaturais.at(i)->getTreeCount() <<
             " trees." << endl;
-            zone.zonasNaturais.at(i)->growTree(day);
+//            zone.zonasNaturais.at(i)->growTree(day);
         }
     }
 }
@@ -1107,5 +1137,40 @@ bool Island::checkIfOnForest(int x, int y) {
         }
     }
     cout << "You must build it on a forest!" << endl;
+    return false;
+}
+
+std::string Island::findTypeOfNaturalZone(int x, int y) {
+    for (auto & zonaNatural : zone.zonasNaturais) {
+        if (zonaNatural->getCoordinateX() == x && zonaNatural->getCoordinateY() == y) {
+            return zonaNatural->getType();
+        }
+    }
+    return "Couldn't find any natural zone at that location.";
+}
+
+void Island::killTreeFromForestAtCoords(int x, int y) {
+    for (auto & zonaNatural : zone.zonasNaturais) {
+        if (zonaNatural->getCoordinateX() == x && zonaNatural->getCoordinateY() == y) {
+            if (zonaNatural->getType() == "floresta") {
+                if (zonaNatural->getTreeCount() > 0) {
+                    zonaNatural->killTree();
+                } else {
+                    cout << "There's not enough trees!" << endl;
+                }
+            } else {
+                cout << "That's not a forest!" << endl;
+            }
+        }
+    }
+}
+
+bool Island::checkIfBuildingExistsAtLocation(int x, int y) {
+    for (auto & edificio : building.edificios) {
+        if (edificio->getCoordinateX() == x && edificio->getCoordinateY() == y) {
+            cout << "Can't overwrite at that location!" << endl;
+            return true;
+        }
+    }
     return false;
 }

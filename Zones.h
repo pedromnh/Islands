@@ -68,7 +68,7 @@ public:
     int treeCount;
     virtual int getTreeCount();
     virtual int growTree(int day);
-//    virtual void killTree();
+    virtual void killTree();
 };
 
 
