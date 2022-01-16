@@ -140,6 +140,7 @@ public:
     static std::string findTypeOfNaturalZone(int x, int y);
     void killTreeFromForestAtCoords(int x, int y);
     bool checkIfBuildingExistsAtLocation(int x, int y);
+    bool checkIfOnMountain(int x, int y);
 };
 
 #endif //ISLANDSCLION_ISLAND_H

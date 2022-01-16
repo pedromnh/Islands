@@ -217,7 +217,7 @@ void Island::randomizeNaturalZones() {
 
 void Island::afternoonPhase(int day) {
     string cmd, type;
-    int line, col, amount;
+    int line, col, amount, zoneMultiplier = 1;
 
     do {
         roundOver = false;
@@ -225,73 +225,80 @@ void Island::afternoonPhase(int day) {
         cin >> cmd;
         if (cmd == "cons") {
             cin >> type >> line >> col;
+
+            if (checkIfOnMountain(line, col)) {
+                zoneMultiplier = 2;
+            } else {
+                zoneMultiplier = 1;
+            }
+
             if (type == "mnF") {
-                if (resources.getVigas() >= 10 && !checkIfBuildingExistsAtLocation(line, col)) {
+                if (resources.getVigas() >= (10 * zoneMultiplier) && !checkIfBuildingExistsAtLocation(line, col)) {
                     building.edificios.emplace_back(new MinaFerro(building.getAmountOfMnF(), line, col, day));
                     cons(building.edificios.back()->getName(),
                          building.edificios.back()->getCoordinateY(),
                          building.edificios.back()->getCoordinateX()
                     );
-                    resources.setVigas(resources.getVigas() - 10);
+                    resources.setVigas(resources.getVigas() - (10 * zoneMultiplier));
                 }
             } else if (type == "mnC") {
-                if (resources.getVigas() >= 10 && !checkIfBuildingExistsAtLocation(line, col)) {
+                if (resources.getVigas() >= (10 * zoneMultiplier) && !checkIfBuildingExistsAtLocation(line, col)) {
                     building.edificios.emplace_back(new MinaCarvao(building.getAmountOfMnC(), line, col, day));
                     cons(building.edificios.back()->getName(),
                          building.edificios.back()->getCoordinateY(),
                          building.edificios.back()->getCoordinateX()
                     );
-                    resources.setVigas(resources.getVigas() - 10);
+                    resources.setVigas(resources.getVigas() - (10 * zoneMultiplier));
                 }
             } else if (type == "elec") {
                 if (checkForAdjacentForest(line, col)) {
-                    if (resources.getMoney() >= 15 && !checkIfBuildingExistsAtLocation(line, col)) {
+                    if (resources.getMoney() >= (15 * zoneMultiplier) && !checkIfBuildingExistsAtLocation(line, col)) {
                         building.edificios.emplace_back(new CentralEletrica(building.getAmountOfElec(), line, col, day));
                         cons(building.edificios.back()->getName(),
                              building.edificios.back()->getCoordinateY(),
                              building.edificios.back()->getCoordinateX()
                         );
-                        resources.setMoney(resources.getMoney() - 15);
+                        resources.setMoney(resources.getMoney() - (15 * zoneMultiplier));
                     }
                 } else {
                     cout << "Didn't find an adjacent forest" << endl;
                 }
             } else if (type == "bat") {
                 if (checkForAdjacentBuilding("bateria", line, col)) {
-                    if (resources.getMoney() >= 10 && resources.getVigas() >= 10 && !checkIfBuildingExistsAtLocation(line, col)) {
+                    if (resources.getMoney() >= (10 * zoneMultiplier) && resources.getVigas() >= (10 * zoneMultiplier) && !checkIfBuildingExistsAtLocation(line, col)) {
                         building.edificios.emplace_back(new Bateria(building.getAmountOfBat(), line, col, day));
                         cons(building.edificios.back()->getName(),
                              building.edificios.back()->getCoordinateY(),
                              building.edificios.back()->getCoordinateX()
                         );
-                        resources.setMoney(resources.getMoney() - 10);
-                        resources.setVigas(resources.getVigas() - 10);
+                        resources.setMoney(resources.getMoney() - (10 * zoneMultiplier));
+                        resources.setVigas(resources.getVigas() - (10 * zoneMultiplier));
                     }
                 } else {
                     cout << "Didn't find any adjacent electrical centers." << endl;
                 }
             } else if (type == "fun") {
                 if (checkForAdjacentBuilding("fundicao", line, col)) {
-                    if (resources.getMoney() >= 10 && !checkIfBuildingExistsAtLocation(line, col)) {
+                    if (resources.getMoney() >= (10 * zoneMultiplier) && !checkIfBuildingExistsAtLocation(line, col)) {
                         building.edificios.emplace_back(new Fundicao(building.getAmountOfFun(), line, col, day));
                         cons(building.edificios.back()->getName(),
                              building.edificios.back()->getCoordinateY(),
                              building.edificios.back()->getCoordinateX()
                         );
-                        resources.setMoney(resources.getMoney() - 10);
+                        resources.setMoney(resources.getMoney() - (10 * zoneMultiplier));
                     }
                 } else {
                     cout << "Didn't find any adjacent mines or electrical centers." << endl;
                 }
             } else if (type == "znX") {
                 if (checkIfOnForest(line, col)) {
-                    if (resources.getMoney() >= 25 && !checkIfBuildingExistsAtLocation(line, col)) {
+                    if (resources.getMoney() >= (10 * zoneMultiplier) && !checkIfBuildingExistsAtLocation(line, col)) {
                         building.edificios.emplace_back(new BuildingX(building.getAmountOfBuildingX(), line, col, day));
                         cons(building.edificios.back()->getName(),
                              building.edificios.back()->getCoordinateY(),
                              building.edificios.back()->getCoordinateX()
                         );
-                        resources.setMoney(resources.getMoney() - 25);
+                        resources.setMoney(resources.getMoney() - (10 * zoneMultiplier));
                         roundOver = true;
                     }
                 }
@@ -514,6 +521,18 @@ void Island::collectNaturalResources(int currentDay) {
                     if (naturalX == workerX && naturalY == workerY && (trabalhador->getDaysWorking(currentDay)) % 5 != 0) {
                         resources.acquireWood(1, 1);
                     }
+                }
+            }
+        } else if (zonaNat->getType() == "montanha") {
+            naturalX = zonaNat->getCoordinateX();
+            naturalY = zonaNat->getCoordinateY();
+
+            for (auto & trabalhador : worker.trabalhadores) {
+                workerX = trabalhador->getCoordinateX();
+                workerY = trabalhador->getCoordinateY();
+
+                if (naturalX == workerX && naturalY == workerY && (trabalhador->getDaysWorking(currentDay)) % 5 != 0) {
+                    resources.acquireIron(0.1, 0.5, 1);
                 }
             }
         }
@@ -1170,6 +1189,17 @@ bool Island::checkIfBuildingExistsAtLocation(int x, int y) {
         if (edificio->getCoordinateX() == x && edificio->getCoordinateY() == y) {
             cout << "Can't overwrite at that location!" << endl;
             return true;
+        }
+    }
+    return false;
+}
+
+bool Island::checkIfOnMountain(int x, int y) {
+    for (auto & zonaNatural : zone.zonasNaturais) {
+        if (zonaNatural->getCoordinateX() == x && zonaNatural->getCoordinateY() == y) {
+            if (zonaNatural->getType() == "montanha") {
+                return true;
+            }
         }
     }
     return false;
