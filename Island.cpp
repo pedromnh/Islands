@@ -776,10 +776,11 @@ void Island::printHelp() {
             "skip\n"
             "buy <type> <amount>\n"
             "levelUp\n"
-            "moveID <id> <line> <col>\n"
+            "move <id> <line> <col>\n"
             "transform <type> <amount>\n"
             "debcash <amount>\n"
-            "debkill <id>\n"<< endl;
+            "debkill <id>\n"
+            "apaga <saveName>\n"<< endl;
 }
 
 
