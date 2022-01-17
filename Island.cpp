@@ -764,7 +764,7 @@ void Island::printHelp() {
             "des <line> <col>\n"
             "next\n"
             "save <saveName>\n"
-            "load <saveName\n"
+            "load <saveName>\n"
             "listSaves\n"
             "listNat\n"
             "printTree\n"
