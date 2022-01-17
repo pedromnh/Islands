@@ -86,4 +86,9 @@ void Workers::setCostOfContract(double custo) {
     costOfContract = custo;
 }
 
+Workers::Workers(const Workers &game, std::string save) {
+    saveName = save;
+    std::cout << "Created" << std::endl;
+}
+
 

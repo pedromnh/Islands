@@ -9,6 +9,7 @@
 
 class Resources {
 private:
+    std::string saveName;
     double money;
     double ferro;
     double barra;
@@ -25,16 +26,24 @@ private:
     double maxEletricidade;
 
 public:
+    Resources(const Resources &game, std::string save);
     Resources() {
-        money = 500000.0;
-        madeira = 5.0;
-        ferro = 0.0;
-        barra = 0.0;
-        carvao = 0.0;
-        vigas = 0.0;
-        eletricidade = 0.0;
+        money = 100.0;
+        madeira = 0.0;
+        ferro = 55.0;
+        barra = 55.0;
+        carvao = 55.0;
+        vigas = 55.0;
+        eletricidade = 55.0;
+
         maxMadeira = 100.0;
+        maxFerro = 0;
+        maxBarra = 0;
+        maxMadeira = 0;
+        maxVigas = 0;
+        maxEletricidade = 0;
     }
+
 
     double getWood();
     double getVigas();
@@ -48,6 +57,7 @@ public:
     double getMaxMadeira() const;
     double getMaxVigas() const;
     double getMaxEletricidade() const;
+    virtual std::string getSaveName() {return saveName;}
 
 
 

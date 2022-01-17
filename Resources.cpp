@@ -243,3 +243,8 @@ void Resources::debcash(double amount) {
 
     }
 }
+
+Resources::Resources(const Resources &game, std::string save) {
+    saveName = save;
+    std::cout << "Created" << std::endl;
+}

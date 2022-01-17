@@ -96,3 +96,9 @@ void Buildings::decrementBuildingX() {
 int Buildings::getAmountOfBuildingX() const {
     return numOfBuildingX;
 }
+
+Buildings::Buildings(const Buildings &game, std::string save) {
+    saveName = save;
+    std::cout << "Created" << std::endl;
+}
+

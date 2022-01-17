@@ -145,6 +145,10 @@ public:
     void updateMaxStorage();
     void debkill(std::string idOfWorker);
     void sellBuilding(int x, int y);
+    void saveInMemory(std::string saveName);
+    void deleteSaveInMemory(std::string saveName);
+    void listExistingSaves();
+    void loadFromMemory(std::string saveName);
 };
 
 #endif //ISLANDSCLION_ISLAND_H

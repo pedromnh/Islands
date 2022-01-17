@@ -1,0 +1,9 @@
+minaCarvao 2
+minaFerro 3
+bateria 4
+centralEletrica 5
+fundicao 6
+serracao 7
+operario 8
+mineiro 9
+lenhador 10

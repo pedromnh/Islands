@@ -10,6 +10,10 @@ Buildings building;
 Workers worker;
 Resources resources;
 
+vector<Buildings *> saveBuildings;
+vector<Workers *> saveWorkers;
+vector<Resources *> saveResources;
+
 
 void Island::list() {
     for (int i = 0; i < lines; i++) {
@@ -342,7 +346,9 @@ void Island::afternoonPhase(int day) {
         } else if (cmd == "next") {
             next();
         } else if (cmd == "save") {
-            save("saveName");
+            cin >> type;
+            building.setSaveName(type);
+            saveInMemory(type);
         } else if (cmd == "vende") {
             cin >> line >> col;
             sellBuilding(line, col);
@@ -383,6 +389,14 @@ void Island::afternoonPhase(int day) {
         } else if (cmd == "debkill") {
             cin >> type;
             debkill(type);
+        } else if (cmd == "load") {
+            cin >> type;
+            loadFromMemory(type);
+        } else if (cmd == "listSaves") {
+            listExistingSaves();
+        } else if (cmd == "apaga") {
+            cin >> type;
+            deleteSaveInMemory(type);
         } else {
                 cout << "Invalid command." << endl;
         }
@@ -750,6 +764,8 @@ void Island::printHelp() {
             "des <line> <col>\n"
             "next\n"
             "save <saveName>\n"
+            "load <saveName\n"
+            "listSaves\n"
             "listNat\n"
             "printTree\n"
             "listBuildings\n"
@@ -1312,3 +1328,64 @@ void Island::sellBuilding(int x, int y) {
         cout << "Couldn't find any building at those coordinates." << endl;
     }
 }
+
+void Island::saveInMemory(std::string saveName) {
+    saveBuildings.emplace_back(new Buildings(building, saveName));
+    saveResources.emplace_back(new Resources(resources, saveName));
+    saveWorkers.emplace_back(new Workers(worker, saveName));
+}
+
+void Island::loadFromMemory(std::string saveName) {
+    bool foundSave = false;
+    for (auto & save : saveBuildings) {
+        if (save->getSaveName() == saveName) {
+            cout << "Loaded: " << save->getSaveName() << save->getTotalBuildingCount() << endl;
+
+            building.operator=(*save);
+
+            cout << "Updated: " << building.getTotalBuildingCount() << endl;
+            foundSave = true;
+        }
+    }
+    if (!foundSave) {
+        cout << "Couldn't find a save by that name." << endl;
+    }
+}
+
+void Island::listExistingSaves() {
+    cout << "The current save names: " << endl;
+    for (auto & saves : saveBuildings) {
+        cout << saves->getSaveName() << endl;
+    }
+}
+
+void Island::deleteSaveInMemory(std::string saveName) {
+    for (auto it = saveBuildings.begin(); it != saveBuildings.end();) {
+        if ((*it)->getSaveName() == saveName) {
+            delete * it;
+            it = saveBuildings.erase(it);
+        } else {
+            ++it;
+        }
+    }
+    for (auto it = saveWorkers.begin(); it != saveWorkers.end();) {
+        if ((*it)->getSaveName() == saveName) {
+            delete * it;
+            it = saveWorkers.erase(it);
+        } else {
+            ++it;
+        }
+    }
+
+    for (auto it = saveResources.begin(); it != saveResources.end();) {
+        if ((*it)->getSaveName() == saveName) {
+            delete * it;
+            it = saveResources.erase(it);
+        } else {
+            ++it;
+        }
+    }
+
+}
+
+
