@@ -30,11 +30,11 @@ public:
     Resources() {
         money = 100.0;
         madeira = 0.0;
-        ferro = 55.0;
-        barra = 55.0;
-        carvao = 55.0;
-        vigas = 55.0;
-        eletricidade = 55.0;
+        ferro = 0;
+        barra = 0;
+        carvao = 0;
+        vigas = 0;
+        eletricidade = 0;
 
         maxMadeira = 100.0;
         maxFerro = 0;

@@ -773,6 +773,7 @@ void Island::printHelp() {
             "atCoords <line> <col>\n"
             "listResources\n"
             "sell <type> <amount>\n"
+            "vende <line> <col>\n"
             "skip\n"
             "buy <type> <amount>\n"
             "levelUp\n"
