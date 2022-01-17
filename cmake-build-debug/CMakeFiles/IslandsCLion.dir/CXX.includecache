@@ -1,0 +1,160 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Bateria.h
+Buildings.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Buildings.h
+
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/BuildingX.h
+Buildings.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Buildings.h
+
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Buildings.h
+iostream
+-
+vector
+-
+
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/CentralEletrica.h
+Buildings.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Buildings.h
+
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Deserto.h
+Zones.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Zones.h
+
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Floresta.h
+Zones.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Zones.h
+
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Fundicao.h
+Bateria.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Bateria.h
+
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Interface.h
+Island.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Island.h
+Resources.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Resources.h
+Zones.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Zones.h
+time.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/time.h
+sstream
+-
+fstream
+-
+
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Island.cpp
+fstream
+-
+Island.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Island.h
+
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Island.h
+iostream
+-
+stdio.h
+-
+stdlib.h
+-
+time.h
+-
+vector
+-
+string.h
+-
+initializer_list
+-
+Interface.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Interface.h
+Montanha.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Montanha.h
+Deserto.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Deserto.h
+Pastagem.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Pastagem.h
+Floresta.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Floresta.h
+Pantano.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Pantano.h
+ZonaX.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/ZonaX.h
+MinaFerro.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/MinaFerro.h
+MinaCarvao.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/MinaCarvao.h
+CentralEletrica.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/CentralEletrica.h
+Bateria.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Bateria.h
+Fundicao.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Fundicao.h
+BuildingX.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/BuildingX.h
+Lenhador.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Lenhador.h
+Operario.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Operario.h
+Mineiro.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Mineiro.h
+
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Lenhador.h
+Workers.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Workers.h
+
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/MinaCarvao.h
+Buildings.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Buildings.h
+
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/MinaFerro.h
+Buildings.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Buildings.h
+
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Mineiro.h
+Workers.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Workers.h
+
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Montanha.h
+Zones.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Zones.h
+
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Operario.h
+Workers.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Workers.h
+
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Pantano.h
+Zones.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Zones.h
+
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Pastagem.h
+Zones.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Zones.h
+
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Resources.h
+Island.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Island.h
+iomanip
+-
+
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Workers.h
+iostream
+-
+vector
+-
+
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/ZonaX.h
+Zones.h
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Zones.h
+
+/Users/pedromnh/Dropbox/ISEC/Material/POO/OOP Projecto/IslandsCLion/Zones.h
+iostream
+-
+vector
+-
+

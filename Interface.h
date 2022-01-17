@@ -35,6 +35,8 @@ public:
     void morningMessage() const;
     void afternoonMessage() const;
     void nightMessage() const;
+    void startOfNextDayMsg() const;
+    void spacePhasesOut() const;
     int getCurrentPhase() const;
     void setMorning();
     void setAfternoon();

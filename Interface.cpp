@@ -39,7 +39,8 @@ void Interface::afternoonMessage() const {
 }
 
 void Interface::nightMessage() const {
-    cout << "Night phase of day #" << day << endl;
+    cout << "Night phase of day #" << day << endl <<
+    "Collecting resources... " << endl;
 }
 
 void Interface::load() {
@@ -55,6 +56,8 @@ bool Interface::chooseLoadOrStart() {
         "Load game: load_game" << endl <<
         "Your input: ";
         cin >> userInput;
+//        userInput = "new_game";
+//        cout << userInput << endl;
 
         if (userInput == "load_game") {
             loaded = true;
@@ -80,23 +83,30 @@ void Interface::mainGame() {
     do {
         switch (getCurrentPhase()) {
             case 1: // Morning Phase
-                cout << endl << endl << endl << endl;
+                spacePhasesOut();
+                if (day != 1) {
+                    startOfNextDayMsg();
+                }
                 morningMessage();
                 island.morningEffects(getDay());
                 setAfternoon();
                 break;
             case 2: //Afternoon Phase
+                spacePhasesOut();
                 afternoonMessage();
                 island.afternoonPhase(getDay());
                 setNight();
                 break;
             case 3: //Night Phase
+                spacePhasesOut();
                 nightMessage();
-                island.collectResources();
-                if (getDay() == 15)
+                island.collectResources(getDay());
+                island.updateBuildingStatuses();
+                if (getDay() == 31)
                     endGame();
-                else
+                else {
                     setMorning();
+                }
                 break;
             case 0: //End of game
                 endGame();
@@ -104,5 +114,13 @@ void Interface::mainGame() {
         }
     } while (getCurrentPhase() != 0);
     island.list();
+}
+
+void Interface::startOfNextDayMsg() const {
+    cout << "<------ NEXT DAY ------>" << endl;
+}
+
+void Interface::spacePhasesOut() const {
+    cout << "\n\n\n";
 }
 

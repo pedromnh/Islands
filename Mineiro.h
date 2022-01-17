@@ -16,12 +16,17 @@ public:
         setType(type);
         name = type;
         setCostOfContract(10);
+        setChanceOfQuitting(0);
         std::string amount = std::to_string(getAmountOfMineiros() + 1);
         name.append(amount);
         incrementMineiros();
         setDayHired(day);
         setId(totalWorkerCount);
         moveWorker();
+    }
+
+    ~Mineiro() {
+        decrementMineiros();
     }
 
     std::string getName() {

@@ -25,6 +25,7 @@
 #include "CentralEletrica.h"
 #include "Bateria.h"
 #include "Fundicao.h"
+#include "BuildingX.h"
 
 #include "Lenhador.h"
 #include "Operario.h"
@@ -78,7 +79,6 @@ public:
 
     void morningEffects(int day);
 
-
     void inicializeIsland();
 
     void afternoonPhase(int day);
@@ -115,14 +115,40 @@ public:
 
 
 
-    void collectResources();
-    static void collectNaturalResources();
-    void collectBuildingResources();
+    void collectResources(int currentDay);
+    static void collectNaturalResources(int currentDay);
+    void collectBuildingResources(int currentDay);
     void printTree(int day);
     static void printAtCoordinates(int x, int y);
     static void printZoneAtCoordinates(int x, int y);
     static void printBuildingAtCoordinates(int x, int y);
     static void printWorkersAtCoordinates(int x, int y);
+    static void printHelp();
+    void disableBuildingAtCoordinates(int x, int y);
+    void enableBuildingAtCoordinates(int x, int y);
+    void updateBuildingStatuses();
+    void updateChanceOfQuitting(int currentDay);
+    static void workerQuits(int x, int y, bool pantano);
+    void updateChanceOfDestroyingBuilding(int currentDay);
+    void buildingIsDestroyed(int x, int y);
+    bool checkForAdjacentForest(int x, int y);
+    bool checkForAdjacentBuilding(string type, int x, int y);
+    void levelUpBuilding(string nameOfBuilding);
+    static void moveID(std::string id);
+    static void transform(std::string type, int amount);
+    bool checkIfOnForest(int x, int y);
+    static std::string findTypeOfNaturalZone(int x, int y);
+    void killTreeFromForestAtCoords(int x, int y);
+    bool checkIfBuildingExistsAtLocation(int x, int y);
+    bool checkIfOnMountain(int x, int y);
+    void checkIfOverResourceLimit();
+    void updateMaxStorage();
+    void debkill(std::string idOfWorker);
+    void sellBuilding(int x, int y);
+    void saveInMemory(std::string saveName);
+    void deleteSaveInMemory(std::string saveName);
+    void listExistingSaves();
+    void loadFromMemory(std::string saveName);
 };
 
 #endif //ISLANDSCLION_ISLAND_H

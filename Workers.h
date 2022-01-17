@@ -11,6 +11,7 @@ class Workers {
 private:
     std::string workerId;
     std::string type;
+    std::string saveName;
 
     int daysSinceHired;
     int dayHired;
@@ -29,6 +30,8 @@ public:
     std::vector<Workers*> trabalhadores;
     virtual void enableChanceOfQuitting() { mayQuit = true; }
     void setId(int totalWorkerCount);
+    Workers() {}
+    Workers (const Workers &game, std::string save);
 
 //    Incrementers
     void incrementLenhadores();
@@ -51,6 +54,9 @@ public:
     virtual int getCoordinateY() const {return coordinateY;}
     virtual std::string getType() const {return  type;}
     double getCostOfContract() const;
+    int getChanceOfQuitting() const {return chanceOfQuitting;}
+    int getDaysWorking(int currentDay) const {return currentDay - dayHired;}
+    virtual std::string getSaveName() {return saveName;}
 
 
 //    Setters
@@ -59,6 +65,7 @@ public:
     void setType(std::string tipo);
     void setDayHired(int day);
     void setCostOfContract(double custo);
+    void setChanceOfQuitting(int chance) {chanceOfQuitting = chance;}
 
     void moveWorker();
     virtual bool isValidMoveLocation();

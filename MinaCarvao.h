@@ -12,14 +12,25 @@ private:
     std::string name;
     std::string type = "minaCarvao";
 public:
-    MinaCarvao(int amountOfMnC, int x, int y) {
+    MinaCarvao(int amountOfMnC, int x, int y, int currentDay) {
         setType(type);
+        setCost(10);
+        setChanceOfBreaking(10);
+        setDayBuilt(currentDay);
+        setMaxLevel(5);
+        setCostOfLevelUp(15);
         name = "mnC";
         std::string amount = std::to_string(amountOfMnC + 1);
         name.append(amount);
         setCoordinateX(x);
         setCoordinateY(y);
+        setStatus("Disabled");
     }
+
+    ~MinaCarvao() {
+        decrementMnC();
+    }
+
 
     std::string getName() override {
         return name;

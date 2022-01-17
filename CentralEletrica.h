@@ -12,14 +12,24 @@ private:
     std::string name;
     std::string type = "centralEletrica";
 public:
-    CentralEletrica(int amountOfElec, int x, int y) {
+    CentralEletrica(int amountOfElec, int x, int y, int currentDay) {
         setType(type);
+        setCost(15);
+        setChanceOfBreaking(-1);
+        setDayBuilt(currentDay);
+        setMaxLevel(1);
         name = "elec";
         std::string amount = std::to_string(amountOfElec + 1);
         name.append(amount);
         setCoordinateX(x);
         setCoordinateY(y);
+        setStatus("Disabled");
     }
+
+    ~CentralEletrica() {
+        decrementElec();
+    }
+
 
     std::string getName() override {
         return name;
